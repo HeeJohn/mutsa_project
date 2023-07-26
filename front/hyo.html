@@ -12,38 +12,45 @@
 </head>
 
 <body>
-    <div class="wrap">
-        <div class="side_nav">
-            <button class="side_nav1" type="button" onclick="location.href='#';">키오스크</button>
-            <button class="side_nav2" type="button" onclick="location.href='#';">은행</button>
-            <button class="side_nav3" type="button" onclick="location.href='#';">버스</button>
-            <button class="side_nav4" type="button" onclick="location.href='#';">게시판</button>
+    <div id = "wrap">
+        <div class = left_box>
+            <div class="side_nav">
+                <button class="side_nav1" type="button" onclick="location.href='#';">키오스크</button>
+                <button class="side_nav2" type="button" onclick="location.href='#';">은행</button>
+                <button class="side_nav3" type="button" onclick="location.href='#';">버스</button>
+                <button class="side_nav4" type="button" onclick="location.href='#';">게시판</button>
+            </div>
         </div>
-
-        <button class="login" type="button" onclick="location.href='#';">Login</button>
-
-        <div class="bezel">
-            <div class="background">
-                <div class="header">
-
-                </div>
-                <div class="main_section">
-
+    
+        <div class = "box">
+            <div class = "main_section">
+                <div class = "header"></div>
+                <div class = "dis_section">
+                    <div class = dis_btn>
+                        <div id = hex>1.</div>
+                        <div class = hex2>자세한 사용법을 통해 쉽게 알려드려요</div>
+                    </div>
+                    <div class = dis_img></div>
+                    <div class = dis_btn></div>
                 </div>
                 <div class="text_section">
                     여러 상황에서의 화면 사용이 어려우셨나요?<br>
                     연습과 퀴즈를 통해 키오스크 이용법을 익혀보세요!
                 </div>
-                <div class="nav_section">
-                    <button class="nav1" type="button" onclick="location.href='#';">키오스크</button>
-                    <button class="nav2" type="button" onclick="location.href='#';">은행</button>
-                    <button class="nav3" type="button" onclick="location.href='#';">버스</button>
-                    <button class="nav4" type="button" onclick="location.href='#';">게시판</button>
+                <div class = "nav_section">
+                    <button class = "nav1" onclick="location.href=';'">키오스크</button>
+                    <button class = "nav2" onclick="location.href=';'">은행</button>
+                    <button class = "nav3" onclick="location.href=';'">버스</button>
+                    <button class = "nav4" onclick="location.href=';'">게시판</button>
                 </div>
-                <div class="footer">
-                    <div class="footer_logo"></div>
+                <div class = "footer">
+                    <div class = "logo"></div>
                 </div>
-            </div>
+            </div>    
+        </div>
+
+        <div class = right_box>
+            <button class="login" type="button" onclick="location.href='#';">Login</button>
         </div>
     </div>
 </body>
