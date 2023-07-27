@@ -9,7 +9,6 @@
 #wrap {
     width: 1900px; height: 900px;
     display: flex;
-    align-items: center;
     position: absolute;
     /* left: 50%;
     top:50%;
@@ -27,7 +26,7 @@
     margin-left: auto;
     margin-right: auto;
 }
-/*------------------------------------------------------------------------------*/
+
 .left_box {
     box-sizing: border-box;
     width: 30%; height: 100%;
@@ -37,46 +36,15 @@
 
     
 }
-.side_nav{
-     height: 80%;     /*디폴트 width 13%    fixed width 4%*/
-    /* border: 2px solid blue; */
+
+.right_box {
+    box-sizing: border-box;
+    width: 30%; height: 100%;
     display: flex;
-    flex-direction: column;
-
-}
-.side_nav1 ,.side_nav2, .side_nav3, .side_nav4 {
-    width: 100%; height: 25%;
-    border: 6px solid #ABCBA4;
-    border-right: 0px;
-    background-color: rgba(255, 255, 255, 0);
-    writing-mode: vertical-lr;
-
+    justify-content: center;
+   
     
-    font-size: 35px;
-    color: #ABCBA4;
-    padding-left: 18px;
-    cursor: pointer;
 }
-
-.side_nav1{
-    border-color: #779472;
-    color: #779472;
-}
-.side_nav2{
-    border-top: 0px;
-}
-.side_nav3{ 
-    border-top: 0px;
-}
-.side_nav4{
-    border-top: 0px;
-}
-
-.side_nav1:hover{background-color: rgba(165, 165, 165, 0.163);}
-.side_nav2:hover{background-color: rgba(165, 165, 165, 0.163);}
-.side_nav3:hover{background-color: rgba(165, 165, 165, 0.163);}
-.side_nav4:hover{background-color: rgba(165, 165, 165, 0.163);}
-
 /*------------------------------------------------------------------------------*/
 .main_section {
     box-sizing: border-box;
@@ -288,15 +256,6 @@
 .side_nav4:hover{background-color: rgba(165, 165, 165, 0.163);}
 
 /*------------------------------------------------------------------------------*/
-.right_box {
-    box-sizing: border-box;
-    width: 30%; height: 100%;
-    display: flex;
-    justify-content: center;
-   
-    
-}
-
 .login{
     width: 25%; height: 5%;
     background-color: #6D9668;

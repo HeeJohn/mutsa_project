@@ -8,17 +8,21 @@
 /*------------------------------------left_box for sidebar ------------------------------------------*/
 .left_box {
     box-sizing: border-box;
-    width: 30%; height: 100%;
+    width: 30%; height: 90%;
     display: flex;
     justify-content: end;
-    align-items: center;
+    /* align-items: center; */
 }
 
 .side_nav{
-    width: 13%; height: 90%;
+    
+    width: 13.35%; height: 70.1%;     /*디폴트 width 13%    fixed width 4%*/
     /* border: 2px solid blue; */
     display: flex;
     flex-direction: column;
+
+    position: sticky;  /*sticky 사용하려면 top같은 속성이 정의되어야 동작함.*/
+    top: 100px; 
 }
 .side_nav1 ,.side_nav2, .side_nav3, .side_nav4 {
     width: 100%; height: 25%;
@@ -78,17 +82,21 @@
 #wrap{
     width: 1900px; height: 1200px;
     display: flex;
+    align-items: center;
+    position: absolute;
+    top: 30px;
     
-    /*transform: translate(-50%, -50%);*/
 }
 
 .kiosk_mega_backdround { /*검정 기계 배경*/
     box-sizing: border-box;
     width: 40%; height: 100%;
-    border: 50px solid #000;
-    border-radius: 50px;
+    border: 30px solid #000;
+    border-radius: 30px;
     margin: 0 auto;
     display: flex;
+
+    
 }
 .kiosc_mega_screen{
     background-color: black;
@@ -113,7 +121,7 @@
     width: 100%;
     height: 100%;
     background: url(../img/mega_start_img.jpg) no-repeat center / cover;
-    border-radius: 15px;
+    /* border-radius: 15px; */
 }
 
 #mega_start_btn { 
