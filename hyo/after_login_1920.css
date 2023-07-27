@@ -10,9 +10,11 @@
     width: 1900px; height: 900px;
     display: flex;
     position: absolute;
-    left: 50%;
+    /* left: 50%;
     top:50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); */
+
+    top: 30px
 }
 
 /*------------------------------------------------------------------------------*/
@@ -211,10 +213,13 @@
 /*------------------------------------------------------------------------------*/
 
 .side_nav{
-    width: 13%; height: 90%;
+    width: 4%; height: 80%;     /*디폴트 width 13%    fixed width 4%*/
     /* border: 2px solid blue; */
     display: flex;
     flex-direction: column;
+
+    position: fixed; 
+    
     
 }
 .side_nav1 ,.side_nav2, .side_nav3, .side_nav4 {
