@@ -1,12 +1,11 @@
-/*메가커피 - 스크린 크기와 동일한 버튼을 누르면 
-1. 광고 포스터 이미지 사라짐
-2. 포스터와 같은 크기의 투명한 버튼 사라짐
-3. 오더 창 나타남
-4. 4x3의 메뉴창 뜸
-5. 페이지 표시 버튼 뜸
-6. 결제 관련 페이지 뜸
-7. 담은 항복 가려짐
-*/
+
+/*----------------------- preset ------------------------*/
+var sec= 1000;
+var min= sec*60;
+
+function herf_home() {
+    location.href = "/caffe_order/kiosk/simulation/simulator.html";
+}
 function start_btn() {
     document.getElementById("mega_start_img").style.display = 'none';
     document.getElementById("mega_start_btn").style.display = 'none';
@@ -15,24 +14,30 @@ function start_btn() {
     document.getElementById("nextpage").style.display = 'flex';
     document.getElementById("pay").style.display = 'flex';
     hide_order_list();
-
+    timer_start();
+    setTimeout(invalid, min);
 }
+
+/*----------------------- timer ------------------------*/
+
+function timer_start(){
+    var time = 60;
+    var timer = document.getElementById("rest_time");
+  
+    return setInterval(() => {
+        timer.innerHTML = "남은 시간<br>"+time--+"초";
+    }, sec);
+}
+function invalid(){
+    location.href = "/caffe_order/kiosk/simulation/simulator.html";
+    clearInterval(timer_start);
+}
+/*----------------------- timer ------------------------*/
 
 function hide_order_list() {
-    var list = document.getElementsByClassName("cart");
-    for (i = 0; i < list.length; i++) {
-        list[i].style.display = 'none';
-    }
-}
-
-
-var menu_list = ["추천_음료"];
-function open_menu_table(id) {
-    all_menu_none();
-    // document.getElementById(menu_list[0]).style.display = 'none';
-    // menu_list.pop();
-    // menu_list.push(id);
-    document.getElementById(id).style.display = 'block';
+    var lists = document.getElementsByClassName("cart");
+        for(var list of lists)
+            list.style.display= 'none';
 }
 
 function all_menu_none() {
@@ -47,6 +52,20 @@ function all_menu_none() {
     document.getElementById("Beverage").style.display = 'none';
     document.getElementById("디저트").style.display = 'none';
 }
+/*----------------------- preset ------------------------*/
+
+
+/*----------------------- timer ------------------------*/
+
+/*----------------------- timer ------------------------*/
+
+/*----------------------- menu_browsing ------------------------*/
+var menu_list = ["추천_음료"];
+
+function open_menu_table(id) {
+    all_menu_none();
+    document.getElementById(id).style.display = 'block';
+}
 
 var menu_bar_page = 1;
 
@@ -55,91 +74,90 @@ function turn_menu_page(btn) {
     if (btn == "menu_bar_right") {
         if (menu_bar_page != 3) {
             var past = document.getElementsByClassName(current_page_id + menu_bar_page);
-            past[0].style.display = 'none';
-            past[1].style.display = 'none';
-            past[2].style.display = 'none';
-            past[3].style.display = 'none';
-            menu_bar_page += 1;
-            if(menu_bar_page == 3) {
-                all_menu_none();
+            for(var menu of past)
+                menu.style.display = "none";
+
+            menu_bar_page += 1;f 
+
+            all_menu_none();
+            if(menu_bar_page == 3) 
                 document.getElementById("Beverage").style.display = 'block';
-            }
-            if(menu_bar_page == 2) {
-                all_menu_none();
+            if(menu_bar_page == 2) 
                 document.getElementById("스무디_프라페").style.display = 'block';
-            }
-
+    
         }
-        var now = document.getElementsByClassName(current_page_id + menu_bar_page);
-        now[0].style.display = 'block';
-        now[1].style.display = 'block';
-        now[2].style.display = 'block';
-        now[3].style.display = 'block';
-
-
+        var menus = document.getElementsByClassName(current_page_id + menu_bar_page);
+        for(var menu of menus)
+            menu.style.display = 'block';
     }
 
     if (btn == "menu_bar_left") {
         if (menu_bar_page != 1) {
             var past = document.getElementsByClassName(current_page_id + menu_bar_page);
-            past[0].style.display = 'none';
-            past[1].style.display = 'none';
-            past[2].style.display = 'none';
-            past[3].style.display = 'none';
+            for(var menu of past)
+                menu.style.display = "none";
+
             menu_bar_page -= 1;
-            if(menu_bar_page == 2) {
-                all_menu_none();
+
+            all_menu_none();
+            if(menu_bar_page == 2) 
                 document.getElementById("커피_콜드브루").style.display = 'block';
-            }
-            if(menu_bar_page == 1) {
-                all_menu_none();
+            if(menu_bar_page == 1) 
                 document.getElementById("커피_ICE").style.display = 'block';
-            }
         }
-        var now = document.getElementsByClassName(current_page_id + menu_bar_page);
-        now[0].style.display = 'block';
-        now[1].style.display = 'block';
-        now[2].style.display = 'block';
-        now[3].style.display = 'block';
+
+        var menus = document.getElementsByClassName(current_page_id + menu_bar_page);
+        for(var menu of menus)
+            menu.style.display = 'block';
     }
-
 }
+/*----------------------- menu_browsing ------------------------*/
 
 
-function Item(name, price) {
+/*---------------- pick items /count & coloring ------------------*/
+
+function itemGet(name, price) {
     this.name = name;
     this.number = 0;
     this.price = parseInt(price);
 }
 
 var order_list = [];
-function option(id, type, price) {
+var colorCount =1;
+
+function option(id,price) {
+  
     var drink = document.getElementById(id);
-    drink.style.borderStyle = 'solid';
-    drink.style.borderColor = 'red';
+    var order = new itemGet(id, price);
+    var found = false;
+    order.number +=1;
 
-    var order = new Item(id, price);
-    order.number += 1;
-
-    var cnt = 0;
-    for (i = 0; i < order_list.length; i++) {
+    for(var i in order_list)
+    {     
         if (order.name == order_list[i].name) {
-            order_list[i].number += 1;
-            cnt += 1;
-        }
+                order_list[i].number += 1;
+                found= true;
+                break;
+            }
     }
-    if (cnt == 0 || order_list.length == 0) {
+    if(!found){
+        if(colorCount>7){
+            maxItems();
+            return;
+        }
+        colorCount++;
+        drink.style.borderStyle = 'solid';
+        drink.style.borderColor = 'red';
         order_list.push(order);
     }
-    
-    open_order_list(order_list);
 
-    if (type == "no_option") {
-        /**/
-    }
+    open_order_list(order_list);
 }
 
-
+function maxItems() {
+    alert("7개 이상의 아이템을 선택하셨습니다. 추가 선택이 불가합니다.");
+}
+/*---------------- pick items /count & coloring ------------------*/
 
 function delete_item(index) {
     order_list = order_list.splice(index, 1);
@@ -164,7 +182,7 @@ function open_order_list(order_list) {
         total_num += order_list[i].number;
         total_price += (order_list[i].price)*(order_list[i].number);
     }
-    document.getElementById("item_number").innerHTML= "_________________________<br>선택한 상품 " + (total_num) + "개";
+    document.getElementById("item_number").innerHTML= "__________________<br>선택한 상품 " + (total_num) + "개";
     document.getElementById("total_price").innerHTML = (total_price)+"원<br>결제하기";
     total_list[0] = total_num;
     total_list[1] = total_price;
@@ -183,7 +201,7 @@ function 전체삭제() {
 }
  */
 
-/*결제 창*/
+/*---------------- payment window ------------------*/
 function open_window_pay () {
 
     document.getElementById("window_pay").style.display = 'block';
@@ -208,7 +226,6 @@ function open_window_pay () {
 function close_window_pay () {
     document.getElementById("window_pay").style.display = 'none';
     document.getElementById("screen_to_window_pay").style.display  = 'none';
-
 }
 
 function write_order_list_window_pay (order_list) {
@@ -217,10 +234,7 @@ function write_order_list_window_pay (order_list) {
         document.getElementById(window_id).style.display = 'flex';
         document.getElementById("w_order_" + (i + 1)).innerText = (i + 1) + ". " + (order_list[i].name);
         document.getElementById("w_number_" + (i + 1)).innerText = (order_list[i].number) + "개 " + (order_list[i].price) * (order_list[i].number) + "원";
-
-
     }
-
 }
 
 function change_window_btn() {
@@ -262,11 +276,14 @@ function close_w_카드결제() {
 
 }
 
+/*---------------- payment window ------------------*/
+
+
+/*---------------- finish ------------------*/
 function 결제완료() {
     alert("감사합니다. 결제가 완료되었습니다. 교환권과 카드를 챙겨가세요.");
-    location.href = "mega.html";
+    location.href = "/caffe_order/kiosk/simulation/simulator.html";
 }
 
-function herf_home() {
-    location.href = "mega.html";
-}
+
+/*---------------- finish ------------------*/
