@@ -168,7 +168,6 @@ function open_order_list(order_list) {
     document.getElementById("total_price").innerHTML = (total_price)+"원<br>결제하기";
     total_list[0] = total_num;
     total_list[1] = total_price;
-
 }
 
 /*전체 삭제 창
