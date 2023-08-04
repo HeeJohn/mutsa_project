@@ -55,10 +55,6 @@ function all_menu_none() {
 /*----------------------- preset ------------------------*/
 
 
-/*----------------------- timer ------------------------*/
-
-/*----------------------- timer ------------------------*/
-
 /*----------------------- menu_browsing ------------------------*/
 var menu_list = ["추천_음료"];
 
@@ -124,13 +120,24 @@ function itemGet(name, price) {
 
 var order_list = [];
 var colorCount =1;
+var missionSucced = false;
 
 function option(id,price) {
-  
+
     var drink = document.getElementById(id);
     var order = new itemGet(id, price);
     var found = false;
     order.number +=1;
+
+    var mission= document.getElementById('mega_top_bar_name');
+    switch(mission.innerText)
+    {
+        case '아이스 아메리카노' :  mission = document.getElementById('ice_아메리카노'); break;
+        case '뜨거운 카페 라떼' :  mission = document.getElementById('hot_카페라떼'); break;
+    }
+
+    if(id == mission.id)
+        missionSucced =true;
 
     for(var i in order_list)
     {     
@@ -159,11 +166,17 @@ function maxItems() {
 }
 /*---------------- pick items /count & coloring ------------------*/
 
-function delete_item(index) {
-    order_list = order_list.splice(index, 1);
+function del_item(item,price) {
+    var target = document.getElementById(item);
+    var val =document.getElementById(price);
     open_order_list(order_list);
 }
-
+function add_item(item,price){
+    var target = document.getElementById(item).innerHTML;
+    var val =document.getElementById(price).innerText;
+    option(target,val);
+    open_order_list(order_list);
+}
 
 /*order_list에 표시하기*/
 var total_list= [0, 0];
@@ -285,5 +298,16 @@ function 결제완료() {
     location.href = "/caffe_order/kiosk/simulation/simulator.html";
 }
 
+
+function 결제완료_item(item) {
+    if(missionSucced == true) {
+    alert("축하합니다. " + item +" 주문하기 성공!");
+    location.href = "/caffe_order/kiosk/practice/americano/americano_mission.html";
+    }
+    else {
+        alert( item + " 주문하기 실패! 다시 도전해보세요.");
+        location.href = "/caffe_order/kiosk/practice/americano/americano_mission.html";
+    }
+}
 
 /*---------------- finish ------------------*/
