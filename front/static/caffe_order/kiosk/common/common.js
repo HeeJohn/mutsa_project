@@ -15,18 +15,18 @@ function start_btn() {
     document.getElementById("pay").style.display = 'flex';
     hide_order_list();
     timer_start();
-    setTimeout(invalid, min);
+    setTimeout(invalid, min*3);
 }
 
 /*----------------------- timer ------------------------*/
 
 function timer_start(){
-    var time = 60;
+    var time = 3;
     var timer = document.getElementById("rest_time");
-  
+    timer.innerHTML = "남은 시간<br>"+time+"분";
     return setInterval(() => {
-        timer.innerHTML = "남은 시간<br>"+time--+"초";
-    }, sec);
+        timer.innerHTML = "남은 시간<br>"+time--+"분";
+    }, min);
 }
 function invalid(){
     location.href = "/caffe_order/kiosk/simulation/simulator.html";
