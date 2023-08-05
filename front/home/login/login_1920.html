@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>after_login_1920</title>
-    <link rel="stylesheet" href="/front/static/login/login_1920.css">
+    <link rel="stylesheet" href="/front/home/login/login_1920.css">
     <link href="https://webfontworld.github.io/BMHannaPro/BMHannaPro.css" rel="stylesheet"> <!-- 배달의 민족 한나체 (호스팅방식) -->
 </head>
 
@@ -20,14 +20,14 @@
                 <div class="header"></div>
                 <div class="dis_section_1">
                     <div class="input_box">
-                        <input type="text" id=id_input name="아이디" value="아이디"  size="20" maxlength="15">
+                        <input type="text" id=id_input name="아이디" placeholder="아이디"  size="20" maxlength="15" required autofocus>
                     </div>
                     <div class="input_box">
-                        <input type="text" id=pw_input name="패스워드" value="패스워드"  size="20" maxlength="20">
+                        <input type="password"  id=pw_input name="패스워드"  size="20" maxlength="20" placeholder="비밀번호" required>
                     </div>
                     <div class="btn_box">
-                        <button class="login_btn" type="button">login</button>
-                        <button class="join_btn" type="button">join</button>
+                        <button class="login_btn" type="button" onclick="location.href='#';">로그인</button>
+                        <button class="join_btn" type="button" onclick="location.href='../signin/signin_1920.html';">회원가입</button>
                     </div>
                 </div>
                 <div class="footer">

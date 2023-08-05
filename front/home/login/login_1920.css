@@ -74,7 +74,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
 }
 #id_input,#pw_input{
     width: 70%; height: 50%;
@@ -84,9 +83,18 @@
     padding-left: 5%;
     font-size: 30px;
     color: white;
-
 }
-
+input[type="password"] {
+    font-family: "Arial", sans-serif; /* 기본 폰트 적용 */
+    -webkit-text-security: disc;
+    font-weight: bold;
+  }
+  
+  /* Placeholder 색상 설정 */
+  input::placeholder 
+  {
+    color: #ffffff; 
+  }
 .btn_box{
     width: 75%; height: 20%;
     /* border: 2px solid black; */
@@ -103,8 +111,9 @@
     font-size: 40px;
     color: white;
 }
-.login_btn:hover{background-color: #8fb98bf4;}
-.join_btn:hover{background-color: #8fb98bf4;}
+.login_btn:hover,
+.join_btn:hover{background-color: #8fb98bf4; cursor: pointer;}
+
 input:focus{outline: 2px solid white;}
 
 
