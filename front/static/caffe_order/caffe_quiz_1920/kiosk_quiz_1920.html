@@ -15,7 +15,7 @@
     <div id="wrap">
         <div class=left_box>
             <div class="side_nav">
-                <button class="side_nav1" type="button" onclick="location.href='#';">키오스크</button>
+                <button class="side_nav1" type="button" onclick="location.href='/front/static/caffe_order/caffe_main_1920.html';">키오스크</button>
                 <button class="side_nav2" type="button" onclick="location.href='#';">은행</button>
                 <button class="side_nav3" type="button" onclick="location.href='#';">버스</button>
                 <button class="side_nav4" type="button" onclick="location.href='#';">게시판</button>
@@ -56,6 +56,11 @@
                     </svg>
                     <button class="dis_next_btn" type="button" onclick="dis_step_fade()">다음</button>
                 </div>
+                <div id="step_1"></div>
+                <div id="step_2"></div>
+                <div id="step_3"></div>
+                <div id="step_4"></div>
+                <div id="step_5"></div>
             </div>
         </div>
 
@@ -63,29 +68,53 @@
             <button class="login" type="button" onclick="location.href='#';">Logout</button>
 
             <div id="explain_box_1">
-                1단계는 메뉴 고르기 입니다!<br>
-                상단의 카테고리를 넘겨가면서<br>
-                원하시는 메뉴를 선택해주세요.<br>
-                <button class="next_btn" type="button" onclick="next_text_1()">다음 단계</button>
+                <div class="text_section">
+                    상단의 카테고리를 넘겨가면서<br>
+                    원하시는 메뉴를 선택해주세요.<br>
+                </div>
+                <div class="btn_section">
+                    <button class="next_btn" type="button" onclick="next_text_1()">다음 단계</button>
+                </div>
             </div>
-
-
             <div id="explain_box_2">
-                2
-                <button class="next_btn" type="button" onclick="next_text_2()">다음 단계</button>
+                <div class="text_section">
+                    선택한 메뉴를 확인해주세요.<br>
+                    매장에서 먹고간다면 먹고가기 버튼을<br>
+                    포장해서 가져간다면 가져가기 버튼을<br>
+                    눌러주세요.<br> 
+                </div>
+                <div class="btn_section">
+                    <button class="next_btn" type="button" onclick="next_text_2()">다음 단계</button>
+                </div>
             </div>
             <div id="explain_box_3">
-                3
-                <button class="next_btn" type="button" onclick="next_text_3()">다음 단계</button>
+                <div class="text_section">
+                    결제 방식을 선택해주세요.<br>
+                    쿠폰으로 결제하려면<br>
+                    쿠폰사용 버튼을 눌러주세요.<br>
+                </div>
+                <div class="btn_section">
+                    <button class="next_btn" type="button" onclick="next_text_3()">다음 단계</button>
+                </div>
             </div>
             <div id="explain_box_4">
-                4
-                <button class="next_btn" type="button" onclick="next_text_4()">다음 단계</button>
+                <div class="text_section">
+                    총 결제 금액을 확인해주세요.<br>
+                </div>
+                <div class="btn_section">
+                    <button class="next_btn" type="button" onclick="next_text_4()">다음 단계</button>
+                </div>
             </div>
             <div id="explain_box_5">
-                5
-                <button class="next_btn" type="button" onclick="replay()">다시하기</button>
-                <button class="next_btn" type="button" onclick="location.href='#';">홈으로 돌아가기</button>
+                <div class="text_section">
+                    카드 투입구에<br>
+                    카드를 삽입해주세요.<br>
+                    결제 끝!<br>
+                </div>
+                <div class="btn_section">
+                    <button class="next_btn" type="button" onclick="replay()">다시하기</button>
+                    <button class="next_btn" type="button" onclick="location.href='/front/static/caffe_order/caffe_main_1920.html';">홈으로</button>
+                </div>
             </div>
         </div>
     </div>
