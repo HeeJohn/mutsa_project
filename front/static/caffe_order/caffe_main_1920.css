@@ -90,6 +90,8 @@
     width: 98%; height: 10%;
     margin-left: auto;
     margin-right: auto;
+    display: flex;
+    justify-content: center;
 }
 
 .dis_section_1 {
