@@ -50,6 +50,8 @@
     width: 98%; height: 10%;
     margin-left: auto;
     margin-right: auto;
+    display: flex;
+    justify-content: center;
 }
 
 .dis_section {
@@ -65,7 +67,7 @@
 .dis_btn {
     box-sizing: border-box;
     width: 100%; height: 20%;
-    border: 5px solid black;
+    /* border: 5px solid black; */
     display: flex;
     align-items: center;
     padding-left: 5%;
@@ -117,13 +119,13 @@
 .dis_img {
     box-sizing: border-box;
     width: 100%; height: 60%;
-    border: 5px solid black;
+    /* border: 5px solid black; */
 }
 
 .dis_btn {
     box-sizing: border-box;
     width: 100%; height: 20%;
-    border: 5px solid black;
+    /* border: 5px solid black; */
 
 }
 
