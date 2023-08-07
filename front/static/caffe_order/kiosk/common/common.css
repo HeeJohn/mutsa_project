@@ -78,6 +78,7 @@
 }
 .login:hover{background-color: #62845c;}
 .login:active{position:relative; top:1px;}
+
 /*--------------------------------------------------------------------------------------------------*/
 
 /*------------------------------------main box for kiosk ------------------------------------------*/
@@ -214,14 +215,14 @@
     width: 100%;
     height: 100%;
 }
-#row {
+.row {
     display: flex;
     justify-content: space-evenly;
     width: 100%;
     height: 33%;  
 }
 
-#row> div {
+.row> div {
     width: 25%;
     height: 100%;
 }

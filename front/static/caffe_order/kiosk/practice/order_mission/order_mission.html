@@ -6,12 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/front/static/caffe_order/kiosk/common/common.css">
     <link rel="stylesheet" href="/front/static/caffe_order/kiosk/common/mega_menu.css">
-    <title>아이스 아메리카노 주문하기</title>
+    <link rel="stylesheet" href="/front/static/caffe_order/kiosk/practice/order_mission/order_mission.css">
+    <title>메가 커피 키오스크 연습</title>
     <link href="https://webfontworld.github.io/BMHannaPro/BMHannaPro.css" rel="stylesheet">
 </head>
 
 <body>
   
+
     <div id="wrap">
         <div class=left_box>
             <div class="side_nav">
@@ -26,6 +28,12 @@
             <div class="kiosc_mega_screen">
 
                 <div class="screen_top">
+                    <div class="level_button">
+                        <h1>미션 난이도 선택</h1>
+                        <button id="level1" type="button" value="1">초급</button>
+                        <button id="level2" type="button" value="4">중급</button>
+                        <button id="level3" type="button" value="7">고급</button>
+                    </div>
                     <div id="mega_start_img">
                         <button id="mega_start_btn" onclick="start_btn()"></button>
                     </div>
@@ -34,14 +42,15 @@
                     <div id="mega_order">
                         <div id="top_bar">
                             <div id="mega_top_bar_home" onclick="herf_home()"></div>
-                            <div id="mega_top_bar_name">아이스 아메리카노</div>
+                            <div id="mega_top_bar_name">카페 키오스크 배우기</div>
                             <div id="mega_top_bar_lang">LANG</div>
                         </div>
 
                         <div id="mega_menu_bar">
                             <div id="menu_bar_left" onclick="turn_menu_page(this.id)">&#60;</div>
                             <div class="mega_menu_1" title="추천_음료" onclick="open_menu_table(this.title)">추천(음료)</div>
-                            <div class="mega_menu_1" title="추천_디저트" onclick="open_menu_table(this.title)">추천(디저트)</div>
+                            <div class="mega_menu_1" title="Beverage" onclick="open_menu_table(this.title)">Beverage
+                            </div>
                             <div class="mega_menu_1" title="커피_HOT" onclick="open_menu_table(this.title)">커피(HOT)</div>
                             <div class="mega_menu_1" title="커피_ICE" onclick="open_menu_table(this.title)">커피(ICE)</div>
 
@@ -51,22 +60,6 @@
                             <div class="mega_menu_2" title="Tea" onclick="open_menu_table(this.title)">TEA</div>
                             <div class="mega_menu_2" title="커피_콜드브루" onclick="open_menu_table(this.title)">커피(콜드브루)
                             </div>
-
-                            <div class="mega_menu_3" title="Beverage" onclick="open_menu_table(this.title)">Beverage
-                            </div>
-                            <div class="mega_menu_3" title="디저트" onclick="open_menu_table(this.title)">디저트</div>
-                            <div class="mega_menu_3"></div>
-                            <div class="mega_menu_3"></div>
-
-
-                            <!-- <div class="mega_menu_3" title="아이스크림" onclick="open_menu_table(this.title)">아이스크림</div>  -->
-                            <!--<div class="mega_menu_3" title="병음료" onclick="open_menu_table(this.title)">병음료</div>
-
-                        <div class="mega_menu_4" title="MD상품" onclick="open_menu_table(this.title)">MD상품</div>
-                        <div class="mega_menu_4" title="세트상품" onclick="open_menu_table(this.title)">세트상품</div>
-                        <div class="mega_menu_4"></div>
-                        <div class="mega_menu_4"></div> -->
-
                             <div id="menu_bar_right" onclick="turn_menu_page(this.id)">></div>
                         </div>
                     </div>
@@ -77,46 +70,46 @@
                         <div id="left_btn">&#60;</div>
 
                         <div id="추천_음료" class="p1">
-                            <div id="row">
+                            <div class = "row">
                                 <div id="ice_아메리카노" title="coffee" data-price="2000"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="유니콘프라페"data-price="4800"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="딸기쿠키프라페"data-price="3900"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="커피프라페"data-price="3900"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                             </div>
-                            <div id="row">
+                            <div class = "row">
                                 <div id="hot_토피넛마끼아또" title="coldbrew" data-price="3900"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="ice_토피넛마끼아또" title="coldbrew" data-price="3900"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="hot_레몬차"data-price="3000"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="ice_레몬차"data-price="3000"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                             </div>
-                            <div id="row">
+                            <div class = "row">
                                 <div id="hot_사과유자차"data-price="3500"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="ice_사과유자차"data-price="3500"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="hot_허니자몽블랙티"data-price="3500"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="ice_허니자몽블랙티"data-price="3500"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                             </div>
                         </div>
 
                         <div id="추천_음료_p2" class="p1">
-                            <div id="row">
+                            <div class = "row">
                                 <div id="ice_흑당버블그린티라떼"data-price="3800"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="ice_흑당버블밀크티라떼"data-price="3800"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="ice_흑당라떼"data-price="3000"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div></div>
                             </div>
                         </div>
@@ -128,292 +121,292 @@
 
 
                         <div id="커피_HOT" class="p1">
-                            <div id="row">
+                            <div class = "row">
                                 <div id="hot_아메리카노" title="coffee" data-price="1500"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="hot_꿀아메리카노" title="coffee" data-price="2500"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="hot_헤이즐넛라떼" title="coffee" data-price="3200"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="hot_바닐라아메리카노" title="coffee" data-price="2500"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                             </div>
-                            <div id="row">
+                            <div class = "row">
                                 <div id="hot_카페라떼" title="coffee" data-price="2700"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="hot_카푸치노" title="coffee" data-price="2700"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="hot_연유라뗴" title="coffee" data-price="3700"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="hot_티라미수라떼" title="coffee" data-price="3900"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                             </div>
-                            <div id="row">
+                            <div class = "row">
                                 <div id="hot_캬라멜마끼아또" title="coffee" data-price="3500"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="hot_바닐라라떼" title="coffee" data-price="3200"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="hot_헤이즐넛아메리카노" title="coffee" data-price="2500"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="hot_카메모카" title="coffee" data-price="3700"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                             </div>
                         </div>
 
                         <div id="커피_ICE" class="p1">
-                            <div id="row">
+                            <div class = "row">
                                 <div id="ice_아메리카노" title="coffee" data-price="2000"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="ice_꿀아메리카노" title="coffee" data-price="2500"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="ice_헤이즐넛아메리카노" title="coffee" data-price="2500"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="ice_바닐라아메리카노" title="coffee" data-price="2500"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                             </div>
-                            <div id="row" class="p1">
+                            <div class = "row" class="p1">
                                 <div id="ice_카페라떼" title="coffee" data-price="2700"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="ice_바닐라라떼" title="coffee" data-price="3200"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="ice_큐브라떼" title="coffee" data-price="3900"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="ice_티라미수라떼" title="coffee" data-price="3900"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                             </div>
-                            <div id="row">
+                            <div class = "row">
                                 <div id="ice_캬라멜마끼아또" title="coffee" data-price="3500"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="ice_카푸치노" title="coffee" data-price="2700"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="ice_헤이즐넛라떼" title="coffee" data-price="3200"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="ice_카메모카" title="coffee" data-price="3700"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                             </div>
                         </div>
 
                         <div id="스무디_프라페" class="p1">
-                            <div id="row">
+                            <div class = "row">
                                 <div id="쿠키프라페"data-price="3900"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="민트프라페"data-price="3900"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="유니콘프라페"data-price="4800"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="리얼초코프라페"data-price="3900"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                             </div>
-                            <div id="row">
+                            <div class = "row">
                                 <div id="녹차프라페"data-price="3900"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="딸기쿠키프라페"data-price="3900"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="스트로베리치즈홀릭"data-price="4500"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="커피프라페"data-price="3900"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                             </div>
-                            <div id="row">
+                            <div class = "row">
                                 <div id="퐁크러쉬플레인"data-price="3900"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="퐁크러쉬딸기"data-price="3900"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="퐁크러쉬바나나"data-price="3900"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="플레인요거트스무디"data-price="3900"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                             </div>
                         </div>
                         <div id="스무디_프라페_p2" class="p1">
-                            <div id="row">
+                            <div class = "row">
                                 <div id="딸기요거트스무디"data-price="3900"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="망고요거트스무디"data-price="3900"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div></div>
                                 <div></div>
                             </div>
                         </div>
 
                         <div id="에이드_주스" class="p1">
-                            <div id="row">
+                            <div class = "row">
                                 <div id="레몬에이드"data-price="3500"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="블루레몬에이드"data-price="3500"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="자몽에이드"data-price="3500"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="메가에이드"data-price="3900"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                             </div>
-                            <div id="row">
+                            <div class = "row">
                                 <div id="청포도에이드"data-price="3500"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="매직에이드(블루)"data-price="3500"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="매직에이드(핑크)"data-price="3500"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="체리콕"data-price="3000"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                             </div>
-                            <div id="row">
+                            <div class = "row">
                                 <div id="라임모히또"data-price="3800"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="청포도모히또"data-price="3800"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="자몽모히또"data-price="3800"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="딸기주스"data-price="3800"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                             </div>
                         </div>
                         <div id="에이드_주스_p2" class="p1">
-                            <div id="row">
+                            <div class = "row">
                                 <div id="초코바나나주스"data-price="3800"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="오곡바나나주스"data-price="3800"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="딸기바나나주스"data-price="3800"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div></div>
                             </div>
                         </div>
 
                         <div id="Tea" class="p1">
-                            <div id="row">
+                            <div class = "row">
                                 <div id="hot_녹차"data-price="2500"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="hot_페퍼민트"data-price="2500"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="hot_캐모마일"data-price="2500"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="hot_얼그레이"data-price="2500"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                             </div>
-                            <div id="row">
+                            <div class = "row">
                                 <div id="hot_허니자몽블랙티"data-price="3500"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="hot_레몬차"data-price="3000"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="hot_자몽차"data-price="3000"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="hot_유자차"data-price="3000"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                             </div>
-                            <div id="row">
+                            <div class = "row">
                                 <div id="hot_사과유자차"data-price="3500"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="ice_녹차"data-price="2500"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="ice_페퍼민트"data-price="2500"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="ice_캐모마일"data-price="2500"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                             </div>
                         </div>
 
                         <div id="Tea_p2" class="p1">
-                            <div id="row">
+                            <div class = "row">
                                 <div id="ice_얼그레이"data-price="2500"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="ice_허니자몽블랙티"data-price="3500"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="ice_레몬차"data-price="3000"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="ice_자몽차"data-price="3000"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                             </div>
-                            <div id="row">
+                            <div class = "row">
                                 <div id="ice_유자차"data-price="3000"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="ice_사과유자차"data-price="3500"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="복숭아아이스티"data-price="3000"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div></div>
                             </div>
                         </div>
 
                         <div id="커피_콜드브루" class="p1">
-                            <div id="row">
+                            <div class = "row">
                                 <div id="hot_콜드브루오리지널"data-price="3300"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="hot_콜드브루라떼"data-price="3800"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="ice_콜드브루오리지널"data-price="3300"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="ice_콜드브루라떼"data-price="3800"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                             </div>
-                            <div id="row">
+                            <div class = "row">
                                 <div id="콜드브루상품용"data-price="20000"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="hot_콜드브루디카페인"data-price="3300"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="hot_콜드브루디카페인라떼"data-price="3800"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="ice_콜드브루디카페인"data-price="3300"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                             </div>
-                            <div id="row">
+                            <div class = "row">
                                 <div id="ice_콜드블루디카페인라떼"data-price="3800"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="콜드브루디카페인상품용"data-price="20000"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div></div>
                                 <div></div>
                             </div>
                         </div>
 
                         <div id="Beverage" class="p1">
-                            <div id="row">
+                            <div class = "row">
                                 <div id="hot_녹차라떼" data-price="3200"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="핫초코" data-price="3200"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="hot_메가초코" data-price="3800"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="hot_민트크림초코" data-price="3500"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                             </div>
-                            <div id="row">
+                            <div class = "row">
                                 <div id="hot_고구마라떼"data-price="3500"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="hot_곡물라떼"data-price="3000"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="hot_로얄밀크티라떼"data-price="3500"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="ice_딸기라떼"data-price="3500"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                             </div>
-                            <div id="row">
+                            <div class = "row">
                                 <div id="ice_녹차라떼"data-price="3200"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="아이스초코"data-price="3200"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="ice_메가초코"data-price="3800"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="ice_민트크림초코"data-price="3500"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                             </div>
                         </div>
                         <div id="Beverage_2p" class="p1">
-                            <div id="row">
+                            <div class = "row">
                                 <div id="ice_고구마라떼"data-price="3500"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="ice_곡물라떼"data-price="3000"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="ice_로얄밀크티라떼"data-price="3500"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="ice_오레오초코라떼"data-price="3900"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                             </div>
-                            <div id="row">
+                            <div class = "row">
                                 <div id="hot_토피넛라떼"data-price="3800"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div id="ice_토피넛라떼"data-price="3800"
-                                    onclick="option(this.id, this.dataset.price)"></div>
+                                    onclick="pick_item(this.id, this.dataset.price)"></div>
                                 <div></div>
                                 <div></div>
                             </div>
@@ -435,57 +428,57 @@
                             <div id="order_1" class="cart">
                                 <div id="delete_1">X</div>
                                 <div id="range_1" class="menu"></div>
-                                <div id="minus_1"onclick ="del_item('range_1','item_price_1')">ㅡ</div>
+                                <div id="minus_1">ㅡ</div>
                                 <div id="amount_1"></div>
-                                <div id="plus_1"onclick ="add_item('range_1','item_price_1')">+</div>
+                                <div id="plus_1">+</div>
                                 <div id="item_price_1"></div>
                             </div>
                             <div id="order_2" class="cart">
                                 <div id="delete_2">X</div>
                                 <div id="range_2" class="menu"></div>
-                                <div id="minus_2"onclick ="del_item('range_2','item_price_2')">ㅡ</div>
+                                <div id="minus_2">ㅡ</div>
                                 <div id="amount_2"></div>
-                                <div id="plus_2"onclick ="add_item('range_2','item_price_2')">+</div>
+                                <div id="plus_2"c>+</div>
                                 <div id="item_price_2"></div>
                             </div>
                             <div id="order_3" class="cart">
                                 <div id="delete_3">X</div>
                                 <div id="range_3"class="menu"></div>
-                                <div id="minus_3"onclick ="del_item('range_3','item_price_3')">ㅡ</div>
+                                <div id="minus_3">ㅡ</div>
                                 <div id="amount_3"></div>
-                                <div id="plus_3"onclick ="add_item('range_3','item_price_3')">+</div>
+                                <div id="plus_3">+</div>
                                 <div id="item_price_3"></div>
                             </div>
                             <div id="order_4" class="cart">
                                 <div id="delete_4">X</div>
                                 <div id="range_4"class="menu"></div>
-                                <div id="minus_4"onclick ="del_item('range_4','item_price_4')">ㅡ</div>
+                                <div id="minus_4">ㅡ</div>
                                 <div id="amount_4"></div>
-                                <div id="plus_4"onclick ="add_item('range_4','item_price_4')">+</div>
+                                <div id="plus_4">+</div>
                                 <div id="item_price_4"></div>
                             </div>
                             <div id="order_5" class="cart">
                                 <div id="delete_5">X</div>
                                 <div id="range_5"class="menu"></div>
-                                <div id="minus_5"onclick ="del_item('range_5','item_price_5')">ㅡ</div>
+                                <div id="minus_5">ㅡ</div>
                                 <div id="amount_5"></div>
-                                <div id="plus_5"onclick ="add_item('range_5','item_price_5')">+</div>
+                                <div id="plus_5">+</div>
                                 <div id="item_price_5"></div>
                             </div>
                             <div id="order_6" class="cart">
                                 <div id="delete_6">X</div>
                                 <div id="range_6"class="menu"></div>
-                                <div id="minus_6"onclick ="del_item('range_6','item_price_6')">ㅡ</div>
+                                <div id="minus_6">ㅡ</div>
                                 <div id="amount_6"></div>
-                                <div id="plus_6"onclick ="add_item('range_6','item_price_6')">+</div>
+                                <div id="plus_6">+</div>
                                 <div id="item_price_6"></div>
                             </div>
                             <div id="order_7" class="cart">
                                 <div id="delete_7">X</div>
                                 <div id="range_7"class="menu"></div>
-                                <div id="minus_7"onclick ="del_item('range_7','item_price_7')">ㅡ</div>
+                                <div id="minus_7">ㅡ</div>
                                 <div id="amount_7"></div>
-                                <div id="plus_7"onclick ="add_item('range_7','item_price_7')">+</div>
+                                <div id="plus_7">+</div>
                                 <div id="item_price_7"></div>
                             </div>
 
@@ -606,7 +599,7 @@
                         <div id="barcode_png"></div>
                     </div>
                     <div id="insert_card">
-                        <div id="insert_card_moving" onclick="결제완료_item('아메리카노')"></div>
+                        <div id="insert_card_moving" onclick="결제완료()"></div>
                         <div class="card_insert">
                             <div class="insert_card_Text">카드를 넣어주세요</div>
                             <div id="insert_card_block"></div>
@@ -630,12 +623,29 @@
 
         </div>
         <div class=right_box>
-            <button class="login" type="button" onclick="location.href='#';">Login</button>
+            <div>  <button class="login" type="button" onclick="location.href='#';">Login</button></div>
+            <div class="misson_level" id="level_1"> 
+                <h1>난이도: 하</h1>
+                <h2>미션으로 주어진 음료 1잔을 주문해보세요.</h2>
+                <span>주문해야 할 음료 : </span> <span class="target"></span>
+            </div>
+            <div class="misson_level" id="level_2"> 
+                <h1>난이도: 중</h1>
+                <h2>미션으로 주어진 음료 4잔을 주문해보세요.</h2>
+                <span>주문해야 할 음료 : </span> <span class="target"></span>
+            </div>
+            <div class="misson_level" id="level_3"> 
+                <h1>난이도: 상</h1>
+                <h2>미션으로 주어진 음료 7잔을 주문해보세요.</h2>
+                <span>주문해야 할 음료 : </span> <span class="target"></span>
+            </div>
         </div>
     </div>
 
-    <script src="/front/static/caffe_order/kiosk/common/common.js"></script>
 
+   
+    <script type="module" src="/front/static/caffe_order/kiosk/practice/order_mission/order_mission.js"></script>
+    <script type="module" src="/front/static/caffe_order/kiosk/common/common.js"></script>
 </body>
 
 </html>
