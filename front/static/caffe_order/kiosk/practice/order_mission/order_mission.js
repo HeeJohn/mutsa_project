@@ -1,6 +1,7 @@
 // import every function form common.js
 import * as commonModule from '/front/static/caffe_order/kiosk/common/common.js';
 
+const returnAddress = '/front/static/caffe_order/kiosk/practice/order_mission/order_mission.html';
 /* ========= preset ========= */
 // map each items of menu with the increasing numbers
 const menu = new Map();
@@ -48,8 +49,34 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // moving card
   cardMovingButton.addEventListener('click', function () {
-    alert("감사합니다. 결제가 완료되었습니다. 교환권과 카드를 챙겨가세요.");
-    location.href = "/front/static/caffe_order/kiosk/simulation/simulator.html";
+    function buy_item(items) {
+      if (missionSucced == true) {
+        alert(
+          "축하합니다. " +
+          items+
+          " 주문하기 성공!"
+        );
+        location.href = returnAddress;
+      } else {
+        alert(
+          items + " 주문하기 실패! 다시 도전해보세요."
+        );
+        location.href =
+          returnAddress;
+      }
+    }
+    
+    let missionSucced = false;
+    let count = 0;
+    for (let i = 1; i <= missionItems.length; i++) {
+      let success = document.getElementById('item_' + i).checked;
+      if (success == true)
+        count++;
+    }
+    if(missionItems.length==count)
+      missionSucced=true;
+    
+    buy_item(missionItems);
   });
   // confirmButton to scroll down the window page
   confirmPayButton.addEventListener('click', function () {
@@ -84,14 +111,14 @@ document.addEventListener('DOMContentLoaded', function () {
   });
   // open payment window
   openPaymentWindow.addEventListener('click', function () {
-    commonModule.open_window_pay();
+    commonModule.open_window_pay(order_list);
   });
   // for picking items
   pickItems.forEach(selectedItem => {
     selectedItem.addEventListener('click', function () {
       const id = this.getAttribute('id');
       const price = this.getAttribute('data-price');
-      commonModule.pick_item(id, price);
+      pick_item(id, price);
     }
     )
   });
@@ -122,7 +149,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // home icon
   megaHomeIcon.addEventListener('click', function () {
     location.href =
-    "/front/static/caffe_order/kiosk/practice/order_mission/order_mission.html";
+      "/front/static/caffe_order/kiosk/practice/order_mission/order_mission.html";
   });
   //start button
   megaStartBtn.addEventListener('click', function () {
@@ -139,7 +166,7 @@ document.addEventListener('DOMContentLoaded', function () {
 //to avoid duplication of menu, get only the unique numbers according to the mission level.
 const uniqueNumbers = new Set();
 // list of items the user has to order.
-let missionItems = [];
+const missionItems = [];
 
 //creaete unique random numbers to avoid duplication of same drinks.
 function generateUniqueRandomNumbers(count, max) {
@@ -151,8 +178,8 @@ function generateUniqueRandomNumbers(count, max) {
 // when level button clicked.
 function handleButtonClick(event) {
   // the number of drinks that the user has to order.
-  const buttonValue = event.target.value; 
-  
+  const buttonValue = event.target.value;
+
   // create the unique random numbers to get random drinks.
   generateUniqueRandomNumbers(buttonValue, menu.size);
 
@@ -160,16 +187,18 @@ function handleButtonClick(event) {
   // get items' names from the map with the numbers.
   uniqueNumbers.forEach((value) => missionItems.push(menu.get(value)));
 
-  //display deciription on the right bar 
-  // to let the user aware of what to do.
-  let decription = document.getElementById("level_" + buttonValue);
-  decription.style.display = "block";
-
-  console.log(missionItems);
+  //hide level selecting button to start the mission.
   const levelButtons = document.getElementsByClassName('level_button');
   for (let i = 0; i < levelButtons.length; i++) {
     levelButtons[i].style.display = 'none';
   }
+  //display deciription on the right bar 
+  // so the user can understand the rule or misson.
+  let decription = document.getElementById("level_" + buttonValue);
+  decription.style.display = "block";
+
+
+  // display a list of mission items so the user knows what to order.
   const targetElement = decription.querySelector(".target");
   let itemNumber = 1;
   let itemList = "";
@@ -177,18 +206,72 @@ function handleButtonClick(event) {
     itemList +=
       '<div>' +
       '<label for = "item_' + itemNumber + '">' + itemNumber + '. ' + value + '</label>' +
-      '<input type="checkbox" id = "item_' + itemNumber++ + '" name = "' + value + '"/>'
+      '<input type="checkbox" id = "item_' + itemNumber++ + '" name = "' + value + '"disabled>'
       + '</div>';
   });
   targetElement.innerHTML = itemList;
 
+  // mission start.
   commonModule.start_btn();
 }
 
 
+/*==================== 3. pick & count & coloring itmes ====================*/
+//get item infromation from HTML
+function itemGet(name, price) {
+  this.name = name; // name of selected item
+  this.number = 1; // number count for how many items are selecting for each.
+  this.price = parseInt(price); // price of selected item
+}
+
+let order_list = [];
+let colorCount = 1;
+let mission = 0;
+
+// when the user clicks any image of the item on the menu table.
+// add selected items to the order_list array;
+function pick_item(id, price) {
+  let drink = document.getElementById(id); //
+  let order = new itemGet(id, price);
+  let found = false;
+
+
+  missionItems.forEach((value) => {
+    if (id == value) {
+      const checkbox = document.getElementById('item_' + (mission + 1));
+      checkbox.disabled = false;
+      checkbox.checked = true;
+      checkbox.disabled = true;
+      ++mission;
+    }
+  });
 
 
 
+  for (let i in order_list) {
+    //if seleted item was selected before.
+    if (order.name == order_list[i].name) {
+      order_list[i].number += 1; // item count for each item ex) x2 or x3
+      found = true; //
+      break;
+    }
+  }
+  if (!found) {
+    if (colorCount > 7) {
+      maxItems();
+      return;
+    }
+    colorCount++;
+    drink.style.borderStyle = "solid";
+    drink.style.borderColor = "red";
+    order_list.push(order);
+  }
 
+  commonModule.open_order_list(order_list);
+}
 
+function maxItems() {
+  alert("7개 이상의 아이템을 선택하셨습니다. 추가 선택이 불가합니다.");
+}
 
+/*==================== 3. pick & count & coloring itmes ====================*/

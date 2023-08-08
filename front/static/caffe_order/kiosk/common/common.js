@@ -16,9 +16,9 @@ export {
     back_2_window_btn,
     open_w_카드결제,
     close_w_카드결제,
-    결제완료_item,
     href_home,
     scrollToBottom,
+    open_order_list,
 };
 export { menu_list };
 /*=============================== 1. preset =================================*/
@@ -151,7 +151,7 @@ function itemGet(name, price) {
 
 let order_list = [];
 let colorCount = 1;
-let missionSucced = 0;
+
 
 // when the user clicks any image of the item on the menu table.
 // add selected items to the order_list array;
@@ -235,7 +235,7 @@ function open_order_list(order_list) {
 
 /*======================== 5. display payment window =======================*/
 /*---------------- payment window ------------------*/
-function open_window_pay() {
+function open_window_pay(order_list) {
     document.getElementById("window_pay").style.display = "block";
     document.getElementById("screen_to_window_pay").style.display = "block";
     write_order_list_window_pay(order_list);
@@ -314,28 +314,3 @@ function scrollToBottom() {
     window.scrollTo(0, document.documentElement.scrollHeight);
 }
 /*======================== 5. display payment window =======================*/
-
-/*---------------- finish ------------------*/
-
-function 결제완료_item(item) {
-    if (missionSucced == true) {
-        alert(
-            "축하합니다. " +
-            missionItems.forEach((value) => {
-                value + ", ";
-            }) +
-            " 주문하기 성공!"
-        );
-        location.href =
-            "/caffe_order/kiosk/practice/americano/americano_mission.html";
-    } else {
-        alert(
-            missionItems.forEach((value) => {
-                value + ", ";
-            }) + " 주문하기 실패! 다시 도전해보세요."
-        );
-        location.href =
-            "/caffe_order/kiosk/practice/americano/americano_mission.html";
-    }
-}
-/*---------------- finish ------------------*/
