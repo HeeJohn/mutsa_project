@@ -1,7 +1,6 @@
 // import every function form common.js
 import * as commonModule from '/front/static/caffe_order/kiosk/common/common.js';
 
-
 /* ========= preset ========= */
 // map each items of menu with the increasing numbers
 const menu = new Map();
@@ -122,7 +121,8 @@ document.addEventListener('DOMContentLoaded', function () {
   });
   // home icon
   megaHomeIcon.addEventListener('click', function () {
-    commonModule.href_home();
+    location.href =
+    "/front/static/caffe_order/kiosk/practice/order_mission/order_mission.html";
   });
   //start button
   megaStartBtn.addEventListener('click', function () {
@@ -136,16 +136,34 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 /* --- button listner ----- */
+//to avoid duplication of menu, get only the unique numbers according to the mission level.
 const uniqueNumbers = new Set();
-function handleButtonClick(event) {
+// list of items the user has to order.
+let missionItems = [];
 
+//creaete unique random numbers to avoid duplication of same drinks.
+function generateUniqueRandomNumbers(count, max) {
+  while (uniqueNumbers.size < count) {
+    const randomNumber = Math.floor(Math.random() * max) + 1;
+    uniqueNumbers.add(randomNumber);
+  }
+}
+// when level button clicked.
+function handleButtonClick(event) {
+  // the number of drinks that the user has to order.
   const buttonValue = event.target.value; 
+  
+  // create the unique random numbers to get random drinks.
+  generateUniqueRandomNumbers(buttonValue, menu.size);
+
+  // create missionItem list with the unique random number.
+  // get items' names from the map with the numbers.
+  uniqueNumbers.forEach((value) => missionItems.push(menu.get(value)));
+
+  //display deciription on the right bar 
+  // to let the user aware of what to do.
   let decription = document.getElementById("level_" + buttonValue);
   decription.style.display = "block";
-
-  generateUniqueRandomNumbers(buttonValue, menu.size);
-  let missionItems = [];
-  uniqueNumbers.forEach((value) => missionItems.push(menu.get(value)));
 
   console.log(missionItems);
   const levelButtons = document.getElementsByClassName('level_button');
