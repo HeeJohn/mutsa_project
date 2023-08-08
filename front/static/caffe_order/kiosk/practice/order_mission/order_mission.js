@@ -1,7 +1,5 @@
 import { start_btn,pick_item } from '/front/static/caffe_order/kiosk/common/common.js';
 /* ========= preset ========= */
-let startImage = document.getElementById('mega_start_img');
-startImage.style.display ='none';
 
 
 /* ========= preset ========= */
@@ -46,9 +44,8 @@ levelButtons.forEach(button => {
 function handleButtonClick(event) {
   const buttonValue = event.target.value;
   let decription = document.getElementById("level_"+buttonValue);
-  decription.style.display = "display";
-  let target = decription.document.getElementsByClassName('target');
-  target.
+  decription.style.display = "block";
+
   generateUniqueRandomNumbers(buttonValue,menu.size);
   let missionItems = [];
   uniqueNumbers.forEach((value)=>missionItems.push(menu.get(value)));
@@ -58,7 +55,17 @@ function handleButtonClick(event) {
   for (let i = 0; i < levelButtons.length; i++) {
     levelButtons[i].style.display = 'none';
   }
-  start_btn();
+  const targetElement = decription.querySelector(".target");
+  let itemNumber =1;
+  let itemList ="";
+  missionItems.forEach((value )=> { 
+    itemList += 
+    '<div>' + 
+    '<label for = "item_'+ itemNumber +'">'+itemNumber+'. '+value+ '</label>' +
+    '<input type="checkbox" id = "item_'+  itemNumber++ + '" name = "'+ value+ '"/>'
+    +'</div>';
+  });
+  targetElement.innerHTML=  itemList;
 }
 /*----------------------- random ------------------------*/
 
