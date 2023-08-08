@@ -5,25 +5,34 @@
 // 4. display windows for payment (final check for ordered list, card_insertion)
 // 5. finish comment
 
-export{
-
-}
-export{
+export {
     start_btn,
-    
-}
+    open_menu_table,
+    turn_menu_page,
+    pick_item,
+    open_window_pay,
+    change_window_btn,
+    close_window_pay,
+    back_2_window_btn,
+    open_w_카드결제,
+    close_w_카드결제,
+    결제완료_item,
+    href_home,
+    scrollToBottom,
+};
+export { menu_list };
 /*=============================== 1. preset =================================*/
 //when the user press the "화면을 터치해주세요", move to the other orderScreen.
 function start_btn() {
     //before touching screen.
-    document.getElementById("mega_start_img").style.display = 'none';
-    document.getElementById("mega_start_btn").style.display = 'none';
+    document.getElementById("mega_start_img").style.display = "none";
+    document.getElementById("mega_start_btn").style.display = "none";
 
     //after touching screen.
-    document.getElementById("mega_order").style.display = 'block';
-    document.getElementById("mega_menu_table").style.display = 'block';
-    document.getElementById("nextpage").style.display = 'flex';
-    document.getElementById("pay").style.display = 'flex';
+    document.getElementById("mega_order").style.display = "block";
+    document.getElementById("mega_menu_table").style.display = "block";
+    document.getElementById("nextpage").style.display = "flex";
+    document.getElementById("pay").style.display = "flex";
     hide_order_list(); //hide icons on order_list before any items added.
     timer_start(); // timer starts
     setTimeout(invalid, setTime); // duration of timer.
@@ -31,125 +40,106 @@ function start_btn() {
 
 //hide icons on order_list before any items added. Because none of item was selected yet.
 function hide_order_list() {
-  let lists = document.getElementsByClassName("cart");
-      for(let list of lists)
-          list.style.display= 'none';
+    let lists = document.getElementsByClassName("cart");
+    for (let list of lists) list.style.display = "none";
 }
 
 /*---------- timer ----------*/
 
 //time variables for timer.
-let sec= 1000; //1sec
-let min= sec*60; //1min
-let setTime = min*3; //3min
+let sec = 1000; //1sec
+let min = sec * 60; //1min
+let setTime = min * 3; //3min
 
 //when timeOut method's called, sends the user to the beginning : ex) session expired.
-function invalid(){
-  location.href = "/front/static/caffe_order/kiosk/simulation/simulator.html";
-  clearInterval(timer_start); // remove setInterval method.
+function invalid() {
+    location.href = "/front/static/caffe_order/kiosk/simulation/simulator.html";
+    clearInterval(timer_start); // remove setInterval method.
 }
 
 //timer to see the time counting down.
-function timer_start(){
-  let mintutes = setTime/min; //3 min
-  let seconds = 59; // starting from 59 sec
-  let timer = document.getElementById("rest_time");
+function timer_start() {
+    let mintutes = setTime / min; //3 min
+    let seconds = 59; // starting from 59 sec
+    let timer = document.getElementById("rest_time");
 
-  timer.innerHTML = "남은 시간<br>"+mintutes--+"분"; // display time for the first.
+    timer.innerHTML = "남은 시간<br>" + mintutes-- + "분"; // display time for the first.
 
-  //each seconds it overwrites updated String in the HTML of '#rest_time".
-  return setInterval(() => {
-      if(seconds==0) mintutes--;
-      if(seconds==-1) seconds=59;
-      timer.innerHTML = "남은 시간<br>"+mintutes+"분 "+seconds-- +"초";
-  }, sec);
+    //each seconds it overwrites updated String in the HTML of '#rest_time".
+    return setInterval(() => {
+        if (seconds == 0) mintutes--;
+        if (seconds == -1) seconds = 59;
+        timer.innerHTML = "남은 시간<br>" + mintutes + "분 " + seconds-- + "초";
+    }, sec);
 }
 /*---------- timer ---------*/
 
-
 /*=============================== 1. preset =================================*/
-
-
-
-
 
 /*============================= 2. Browsing menu ============================*/
 
-
 let menu_list = ["추천_음료"];
-
 
 //show items on the table : (all those images of drinks)
 function open_menu_table(id) {
     all_menu_none();
-    document.getElementById(id).style.display = 'block';
+    document.getElementById(id).style.display = "block";
 }
 
 /* ------ conversion of menu_bar page----------*/
 function turn_menu_page(btn) {
-    let firstPage ="mega_menu_1";
-    let secondPage ="mega_menu_2";
+    let firstPage = "mega_menu_1";
+    let secondPage = "mega_menu_2";
 
     //--when right arrow button pressed, move to next menu_bar page---
     if (btn == "menu_bar_right") {
         let past = document.getElementsByClassName(firstPage); // first menu_bar
-        for(let menu of past)
-             menu.style.display = "none"; // all categories from first menu_bar 
+        for (let menu of past) menu.style.display = "none"; // all categories from first menu_bar
 
         all_menu_none(); // hide displayed images on the menu table to show new items.
 
         // display all items on the menu table. (itmes from first menu category of second menu bar ).
-        document.getElementById("스무디_프라페").style.display = 'block'; 
-        
-    
+        document.getElementById("스무디_프라페").style.display = "block";
+
         let menus = document.getElementsByClassName(secondPage); // second menu_bar
-        for(let menu of menus)
-            menu.style.display = 'block'; // all categories from second menu_bar 
+        for (let menu of menus) menu.style.display = "block"; // all categories from second menu_bar
     }
 
-     //--when left arrow button pressed, return to first menu_bar page--
+    //--when left arrow button pressed, return to first menu_bar page--
     if (btn == "menu_bar_left") {
         let past = document.getElementsByClassName(secondPage); // second menu_bar
-        for(let menu of past)
-             menu.style.display = "none"; // all categories from second menu_bar 
+        for (let menu of past) menu.style.display = "none"; // all categories from second menu_bar
 
         all_menu_none(); // hide displayed images on the menu table to show new items.
 
-        // display all items on the menu table. (itmes from first menu category of first menu bar ).   
-        document.getElementById("커피_ICE").style.display = 'block';
+        // display all items on the menu table. (itmes from first menu category of first menu bar ).
+        document.getElementById("커피_ICE").style.display = "block";
 
         let menus = document.getElementsByClassName(firstPage); // first menu_bar
-        for(let menu of menus)
-            menu.style.display = 'block';   // all categories from first menu_bar 
+        for (let menu of menus) menu.style.display = "block"; // all categories from first menu_bar
     }
 }
 
-
-// hide unneccssary menu when either right arrow or left arrow pressed to show new menu_bar  
+// hide unneccssary menu when either right arrow or left arrow pressed to show new menu_bar
 function all_menu_none() {
-    document.getElementById("추천_음료").style.display = 'none';
-    document.getElementById("추천_디저트").style.display = 'none';
-    document.getElementById("커피_HOT").style.display = 'none';
-    document.getElementById("커피_ICE").style.display = 'none';
-    document.getElementById("스무디_프라페").style.display = 'none';
-    document.getElementById("에이드_주스").style.display = 'none';
-    document.getElementById("Tea").style.display = 'none';
-    document.getElementById("커피_콜드브루").style.display = 'none';
-    document.getElementById("Beverage").style.display = 'none';
-    document.getElementById("디저트").style.display = 'none';
+    document.getElementById("추천_음료").style.display = "none";
+    document.getElementById("추천_디저트").style.display = "none";
+    document.getElementById("커피_HOT").style.display = "none";
+    document.getElementById("커피_ICE").style.display = "none";
+    document.getElementById("스무디_프라페").style.display = "none";
+    document.getElementById("에이드_주스").style.display = "none";
+    document.getElementById("Tea").style.display = "none";
+    document.getElementById("커피_콜드브루").style.display = "none";
+    document.getElementById("Beverage").style.display = "none";
+    document.getElementById("디저트").style.display = "none";
 }
 
 // For home_icon button. it sends the user to the beginning.
-function herf_home() { 
+function href_home() {
     location.href = "/front/static/caffe_order/kiosk/simulation/simulator.html";
 }
 
 /*============================= 2. Browsing menu ============================*/
-
-
-
-
-
 
 /*==================== 3. pick & count & coloring itmes ====================*/
 //get item infromation from HTML
@@ -160,37 +150,35 @@ function itemGet(name, price) {
 }
 
 let order_list = [];
-let colorCount =1;
+let colorCount = 1;
 let missionSucced = 0;
 
 // when the user clicks any image of the item on the menu table.
 // add selected items to the order_list array;
-function pick_item(id,price) {
-
+function pick_item(id, price) {
     let drink = document.getElementById(id); //
     let order = new itemGet(id, price);
     let found = false;
-    order.number +=1;
+    order.number += 1;
 
     // missionItems.forEach((value)=> {if(id==value) mission++;});
 
-    for(let i in order_list)
-    {    
+    for (let i in order_list) {
         //if seleted item was selected before.
         if (order.name == order_list[i].name) {
-                order_list[i].number += 1; // item count for each item ex) x2 or x3
-                found= true; // 
-                break;
-            }
+            order_list[i].number += 1; // item count for each item ex) x2 or x3
+            found = true; //
+            break;
+        }
     }
-    if(!found){
-        if(colorCount>7){
+    if (!found) {
+        if (colorCount > 7) {
             maxItems();
             return;
         }
         colorCount++;
-        drink.style.borderStyle = 'solid';
-        drink.style.borderColor = 'red';
+        drink.style.borderStyle = "solid";
+        drink.style.borderColor = "red";
         order_list.push(order);
     }
 
@@ -202,152 +190,152 @@ function maxItems() {
 }
 /*==================== 3. pick & count & coloring itmes ====================*/
 
-
-
-
-
-
 /*======================== 4. display ordered list ========================*/
-function del_item(item,price) {
+function del_item(item, price) {
     let target = document.getElementById(item);
-    let val =document.getElementById(price);
+    let val = document.getElementById(price);
     open_order_list(order_list);
 }
-function add_item(item,price){
+function add_item(item, price) {
     let target = document.getElementById(item).innerHTML;
-    let val =document.getElementById(price).innerText;
-    option(target,val);
+    let val = document.getElementById(price).innerText;
+    option(target, val);
     open_order_list(order_list);
 }
 
 /*order_list에 표시하기*/
-let total_list= [0, 0];
-
+let total_list = [0, 0];
 
 function open_order_list(order_list) {
     let total_num = 0;
     let total_price = 0;
 
-    for (i = 0; i < order_list.length; i++) {
+    for (let i = 0; i < order_list.length; i++) {
         let order_id = "order_" + (i + 1);
-        document.getElementById(order_id).style.display = 'flex';
+        document.getElementById(order_id).style.display = "flex";
 
-        document.getElementById("range_" + (i + 1)).innerText = (i + 1) + ". " + (order_list[i].name);
-        document.getElementById("amount_" + (i + 1)).innerText = (order_list[i].number) + "개";
-        document.getElementById("item_price_" + (i + 1)).innerText = (order_list[i].price) * (order_list[i].number) + "원";
-        
+        document.getElementById("range_" + (i + 1)).innerText =
+            i + 1 + ". " + order_list[i].name;
+        document.getElementById("amount_" + (i + 1)).innerText =
+            order_list[i].number + "개";
+        document.getElementById("item_price_" + (i + 1)).innerText =
+            order_list[i].price * order_list[i].number + "원";
+
         total_num += order_list[i].number;
-        total_price += (order_list[i].price)*(order_list[i].number);
+        total_price += order_list[i].price * order_list[i].number;
     }
-    document.getElementById("item_number").innerHTML= "__________________<br>선택한 상품 " + (total_num) + "개";
-    document.getElementById("total_price").innerHTML = (total_price)+"원<br>결제하기";
+    document.getElementById("item_number").innerHTML =
+        "__________________<br>선택한 상품 " + total_num + "개";
+    document.getElementById("total_price").innerHTML =
+        total_price + "원<br>결제하기";
     total_list[0] = total_num;
     total_list[1] = total_price;
 }
 /*======================== 4. display ordered list ========================*/
 
-
-
-
-
-
 /*======================== 5. display payment window =======================*/
 /*---------------- payment window ------------------*/
-function open_window_pay () {
-
-    document.getElementById("window_pay").style.display = 'block';
-    document.getElementById("screen_to_window_pay").style.display  = 'block';
+function open_window_pay() {
+    document.getElementById("window_pay").style.display = "block";
+    document.getElementById("screen_to_window_pay").style.display = "block";
     write_order_list_window_pay(order_list);
-    
+
     document.getElementById("w_total_number").innerText = total_list[0];
-    document.getElementById("w_total_price").innerText =total_list[1];
-    
-    document.getElementById("돌아가기").style.display = 'block';
-    document.getElementById("먹고가기").style.display = 'block';
-    document.getElementById("가져가기").style.display = 'block';
-  
-    document.getElementById("돌아가기_2").style.display = 'none';
-    document.getElementById("쿠폰사용").style.display = 'none';
-    document.getElementById("페이코").style.display = 'none';
-    document.getElementById("카드결제").style.display = 'none';
-    
-  
-  }
-  
-  function close_window_pay () {
-    document.getElementById("window_pay").style.display = 'none';
-    document.getElementById("screen_to_window_pay").style.display  = 'none';
-  }
-  
-  function write_order_list_window_pay (order_list) {
-    for (i=0; i<order_list.length; i++) {
-        let window_id = "window_" + (i+1);
-        document.getElementById(window_id).style.display = 'flex';
-        document.getElementById("w_order_" + (i + 1)).innerText = (i + 1) + ". " + (order_list[i].name);
-        document.getElementById("w_number_" + (i + 1)).innerText = (order_list[i].number) + "개 " + (order_list[i].price) * (order_list[i].number) + "원";
+    document.getElementById("w_total_price").innerText = total_list[1];
+
+    document.getElementById("돌아가기").style.display = "block";
+    document.getElementById("먹고가기").style.display = "block";
+    document.getElementById("가져가기").style.display = "block";
+
+    document.getElementById("돌아가기_2").style.display = "none";
+    document.getElementById("쿠폰사용").style.display = "none";
+    document.getElementById("페이코").style.display = "none";
+    document.getElementById("카드결제").style.display = "none";
+}
+
+function close_window_pay() {
+    document.getElementById("window_pay").style.display = "none";
+    document.getElementById("screen_to_window_pay").style.display = "none";
+}
+
+function write_order_list_window_pay(order_list) {
+    for (let i = 0; i < order_list.length; i++) {
+        let window_id = "window_" + (i + 1);
+        document.getElementById(window_id).style.display = "flex";
+        document.getElementById("w_order_" + (i + 1)).innerText =
+            i + 1 + ". " + order_list[i].name;
+        document.getElementById("w_number_" + (i + 1)).innerText =
+            order_list[i].number +
+            "개 " +
+            order_list[i].price * order_list[i].number +
+            "원";
     }
-  }
-  
-  function change_window_btn() {
-    document.getElementById("돌아가기").style.display = 'none';
-    document.getElementById("먹고가기").style.display = 'none';
-    document.getElementById("가져가기").style.display = 'none';
-  
-    document.getElementById("돌아가기_2").style.display = 'block';
-    document.getElementById("쿠폰사용").style.display = 'block';
-    document.getElementById("페이코").style.display = 'block';
-    document.getElementById("카드결제").style.display = 'block';
-    
-  }
-  
-  function back_2_window_btn() {
-    document.getElementById("돌아가기").style.display = 'block';
-    document.getElementById("먹고가기").style.display = 'block';
-    document.getElementById("가져가기").style.display = 'block';
+}
 
-    document.getElementById("돌아가기_2").style.display = 'none';
-    document.getElementById("쿠폰사용").style.display = 'none';
-    document.getElementById("페이코").style.display = 'none';
-    document.getElementById("카드결제").style.display = 'none';
-  }
-  
+function change_window_btn() {
+    document.getElementById("돌아가기").style.display = "none";
+    document.getElementById("먹고가기").style.display = "none";
+    document.getElementById("가져가기").style.display = "none";
 
-  function open_w_카드결제() {
-    document.getElementById("window_pay").style.display = 'none';
+    document.getElementById("돌아가기_2").style.display = "block";
+    document.getElementById("쿠폰사용").style.display = "block";
+    document.getElementById("페이코").style.display = "block";
+    document.getElementById("카드결제").style.display = "block";
+}
 
-    document.getElementById("w_카드결제").style.display = 'block';
-    document.getElementById("insert_card_moving").style.display='block';
-    document.getElementById("w_카드결제_total_price").innerText = total_list[1]+"원";
+function back_2_window_btn() {
+    document.getElementById("돌아가기").style.display = "block";
+    document.getElementById("먹고가기").style.display = "block";
+    document.getElementById("가져가기").style.display = "block";
+
+    document.getElementById("돌아가기_2").style.display = "none";
+    document.getElementById("쿠폰사용").style.display = "none";
+    document.getElementById("페이코").style.display = "none";
+    document.getElementById("카드결제").style.display = "none";
+}
+
+function open_w_카드결제() {
+    document.getElementById("window_pay").style.display = "none";
+
+    document.getElementById("w_카드결제").style.display = "block";
+    document.getElementById("insert_card_moving").style.display = "block";
+    document.getElementById("w_카드결제_total_price").innerText =
+        total_list[1] + "원";
     scrollToBottom();
-  }
-  
-  function close_w_카드결제() {
-    document.getElementById("w_카드결제").style.display = 'none';
-    document.getElementById("screen_to_window_pay").style.display = 'none';
-    document.getElementById("insert_card_moving").style.display = 'none';
+}
 
+function close_w_카드결제() {
+    document.getElementById("w_카드결제").style.display = "none";
+    document.getElementById("screen_to_window_pay").style.display = "none";
+    document.getElementById("insert_card_moving").style.display = "none";
 }
 
 function scrollToBottom() {
     window.scrollTo(0, document.documentElement.scrollHeight);
-  }
+}
 /*======================== 5. display payment window =======================*/
-  
 
 /*---------------- finish ------------------*/
-function 결제완료() {
-    alert("감사합니다. 결제가 완료되었습니다. 교환권과 카드를 챙겨가세요.");
-    location.href = "/front/static/caffe_order/kiosk/simulation/simulator.html";
-}
 
 function 결제완료_item(item) {
-    if(missionSucced == true) {
-    alert("축하합니다. " + missionItems.forEach((value)=>{ value+", "}) +" 주문하기 성공!");
-    location.href = "/caffe_order/kiosk/practice/americano/americano_mission.html";
-    }
-    else {
-        alert( missionItems.forEach((value)=>{ value+", "}) + " 주문하기 실패! 다시 도전해보세요.");
-        location.href = "/caffe_order/kiosk/practice/americano/americano_mission.html";
+    if (missionSucced == true) {
+        alert(
+            "축하합니다. " +
+            missionItems.forEach((value) => {
+                value + ", ";
+            }) +
+            " 주문하기 성공!"
+        );
+        location.href =
+            "/caffe_order/kiosk/practice/americano/americano_mission.html";
+    } else {
+        alert(
+            missionItems.forEach((value) => {
+                value + ", ";
+            }) + " 주문하기 실패! 다시 도전해보세요."
+        );
+        location.href =
+            "/caffe_order/kiosk/practice/americano/americano_mission.html";
     }
 }
 /*---------------- finish ------------------*/

@@ -358,3 +358,7 @@
 #ice_토피넛라떼 {
     background: url(../img/mega_\(ICE\)토피넛라떼.jpg) no-repeat center / contain;
 }
+
+#barcode_insert{
+    background: url(../img/barcode_scan.png) no-repeat center / contain;
+}
