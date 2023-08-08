@@ -152,7 +152,6 @@ function itemGet(name, price) {
 let order_list = [];
 let colorCount = 1;
 
-
 // when the user clicks any image of the item on the menu table.
 // add selected items to the order_list array;
 function pick_item(id, price) {
