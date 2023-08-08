@@ -10,7 +10,7 @@ export{
 }
 export{
     start_btn,
-    pick_item,
+    
 }
 /*=============================== 1. preset =================================*/
 //when the user press the "화면을 터치해주세요", move to the other orderScreen.

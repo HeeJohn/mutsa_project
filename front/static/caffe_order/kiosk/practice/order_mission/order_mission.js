@@ -1,7 +1,7 @@
-import { start_btn,pick_item } from '/front/static/caffe_order/kiosk/common/common.js';
+import { start_btn } from '/front/static/caffe_order/kiosk/common/common.js';
 /* ========= preset ========= */
 
-
+document.getElementById('mega_start_img').style.display='none';
 /* ========= preset ========= */
 
 
@@ -66,6 +66,8 @@ function handleButtonClick(event) {
     +'</div>';
   });
   targetElement.innerHTML=  itemList;
+  document.getElementById('mega_start_img').style.display='block';
+  start_btn();
 }
 /*----------------------- random ------------------------*/
 
