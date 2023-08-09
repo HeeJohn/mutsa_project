@@ -19,10 +19,39 @@ document.addEventListener('DOMContentLoaded', function() {
   const payCancelButtons = document.querySelectorAll('.close_w_카드결제'); // x button for total cancellation.
   const confirmPayButton = document.getElementById('승인요청'); // confirmButton to scroll down the window page
   const cardMovingButton = document.getElementById('insert_card_moving'); // moving card
+  const deleteButtons = document.querySelectorAll('.delete_button'); // delete selected items from the oreder_list
+  const minusButton = document.querySelectorAll('.minus_button');// add selected items from the oreder_list
+  const plusButton = document.querySelectorAll('plus_button');// remove selected items from the oreder_list
 
-  
   /* -------------- event listener ---------- */
 
+  // delete selected items from the oreder_list
+  deleteButtons.forEach((button)=>{
+    button.addEventListener('click',function(){
+      const target = this.getAttribute('id');
+      const number =target[target.search('[0-9]')];
+      const content = document.getElementById('range_'+number);
+      commonModule.delete_button(content.id,order_list);
+    });
+  });
+  // add selected items from the oreder_list
+  minusButton.forEach((button)=>{
+    button.addEventListener('click',function(){
+      const target =this.getAttribute('id');
+      target.search('[0-9]');
+      const content = document.getElementById('range_'+target);
+      commonModule.add_button(content.id,order_list);
+    });
+  });
+  // remove selected items from the oreder_list
+  plusButton.forEach((button)=>{
+    button.addEventListener('click',function(){
+      const target =this.getAttribute('id');
+      target.search('[0-9]');
+      const content = document.getElementById('range_'+target);
+      commonModule.remove_button(content.id,order_list);
+    });
+  });
   // moving card
   cardMovingButton.addEventListener('click',function(){
     alert("감사합니다. 결제가 완료되었습니다. 교환권과 카드를 챙겨가세요.");
@@ -61,14 +90,14 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   // open payment window
   openPaymentWindow.addEventListener('click',function(){
-    commonModule.open_window_pay();
+    commonModule.open_window_pay(order_list);
   });
   // for picking items
   pickItems.forEach(selectedItem => {
     selectedItem.addEventListener('click',function(){
       const id = this.getAttribute('id');
       const price = this.getAttribute('data-price');
-      commonModule.pick_item(id,price);
+      pick_item(id,price);
     }
   )});
   // first menu bar (page1)
@@ -104,3 +133,52 @@ document.addEventListener('DOMContentLoaded', function() {
       commonModule.start_btn();
   });
 });
+
+
+/*==================== 3. pick & count & coloring itmes ====================*/
+//get item infromation from HTML
+function itemGet(name, price) {
+  this.name = name; // name of selected item
+  this.number = 0; // number count for how many items are selecting for each.
+  this.price = parseInt(price); // price of selected item
+}
+
+let order_list = [];
+let colorCount = 1;
+
+// when the user clicks any image of the item on the menu table.
+// add selected items to the order_list array;
+function pick_item(id, price) {
+  let drink = document.getElementById(id); //
+  let order = new itemGet(id, price);
+  let found = false;
+  order.number += 1;
+
+  // missionItems.forEach((value)=> {if(id==value) mission++;});
+
+  for (let i in order_list) {
+      //if seleted item was selected before.
+      if (order.name == order_list[i].name) {
+          order_list[i].number += 1; // item count for each item ex) x2 or x3
+          found = true; //
+          break;
+      }
+  }
+  if (!found) {
+      if (colorCount > 7) {
+          maxItems();
+          return;
+      }
+      colorCount++;
+      drink.style.borderStyle = "solid";
+      drink.style.borderColor = "red";
+      order_list.push(order);
+  }
+
+  commonModule.open_order_list(order_list);
+}
+
+function maxItems() {
+  alert("7개 이상의 아이템을 선택하셨습니다. 추가 선택이 불가합니다.");
+}
+/*==================== 3. pick & count & coloring itmes ====================*/

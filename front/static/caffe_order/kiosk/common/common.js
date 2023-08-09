@@ -19,8 +19,11 @@ export {
     href_home,
     scrollToBottom,
     open_order_list,
+    delete_button,
+    remove_button,
+    add_button,
 };
-export { menu_list };
+
 /*=============================== 1. preset =================================*/
 //when the user press the "화면을 터치해주세요", move to the other orderScreen.
 function start_btn() {
@@ -152,7 +155,6 @@ function itemGet(name, price) {
 let order_list = [];
 let colorCount = 1;
 
-
 // when the user clicks any image of the item on the menu table.
 // add selected items to the order_list array;
 function pick_item(id, price) {
@@ -190,18 +192,41 @@ function maxItems() {
 }
 /*==================== 3. pick & count & coloring itmes ====================*/
 
-/*======================== 4. display ordered list ========================*/
-function del_item(item, price) {
-    let target = document.getElementById(item);
-    let val = document.getElementById(price);
-    open_order_list(order_list);
+/*==================== 4. delete, add, minus itmes ====================*/
+
+function delete_button(id, order_list) {
+    order_list.forEach(item => {
+        /*parsing*/
+        const target = document.getElementById(id);
+        const innerText = target.innerText.substring(3);
+        const drink = document.getElementById(innerText);
+        console.log(drink.id);
+        /*parsing*/
+        // console.log(item.number);
+        // console.log(item);
+
+        if (item.name == drink) {
+            target.style.borderStyle = "none";
+            for(let i =0; i< item.number; i++)
+            {
+                --colorCount;
+                console.log(colorCount);
+            }
+        }
+    });
 }
-function add_item(item, price) {
-    let target = document.getElementById(item).innerHTML;
-    let val = document.getElementById(price).innerText;
-    option(target, val);
-    open_order_list(order_list);
+function add_button(id, order_list) {
+
 }
+function remove_button(id, order_list) {
+
+}
+
+/*====================  4. delete, add, minus itmes ====================*/
+
+
+
+/*======================== 5. display ordered list ========================*/
 
 /*order_list에 표시하기*/
 let total_list = [0, 0];
@@ -231,9 +256,9 @@ function open_order_list(order_list) {
     total_list[0] = total_num;
     total_list[1] = total_price;
 }
-/*======================== 4. display ordered list ========================*/
+/*======================== 5. display ordered list ========================*/
 
-/*======================== 5. display payment window =======================*/
+/*======================== 6. display payment window =======================*/
 /*---------------- payment window ------------------*/
 function open_window_pay(order_list) {
     document.getElementById("window_pay").style.display = "block";
@@ -313,4 +338,4 @@ function close_w_카드결제() {
 function scrollToBottom() {
     window.scrollTo(0, document.documentElement.scrollHeight);
 }
-/*======================== 5. display payment window =======================*/
+/*======================== 6. display payment window =======================*/

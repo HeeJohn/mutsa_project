@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // home icon
   megaHomeIcon.addEventListener('click', function () {
     location.href =
-      "/front/static/caffe_order/kiosk/practice/order_mission/order_mission.html";
+      "/front/static/caffe_order/kiosk/order_mission/order_mission.html";
   });
   //start button
   megaStartBtn.addEventListener('click', function () {

@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     font-family: 'BMHannaPro';
+    cursor: pointer;
 }
 *::selection{background-color: #b7b6b600;}
 
@@ -117,28 +118,28 @@
     box-sizing: border-box;
     width: 100%; height: 100%;
     background-color: #0000009e;
-    background-image: url( "/front/static/caffe_order/caffe_quiz_1920/kiosk_quiz_img/1step_img.png" );
+    background-image: url( "/front/static/caffe_order/kiosk/caffe_guide_1920/kiosk_guide_img/1step_img.png" );
     background-size: cover;
     
 }
 #step_2{
     box-sizing: border-box;
     width: 100%; height: 100%;
-    background-image: url( "/front/static/caffe_order/caffe_quiz_1920/kiosk_quiz_img/2step_img.png" );
+    background-image: url( "/front/static/caffe_order/kiosk/caffe_guide_1920/kiosk_guide_img/2step_img.png" );
     background-size: cover;
 
 }
 #step_3{
     box-sizing: border-box;
     width: 100%; height: 100%;
-    background-image: url( "/front/static/caffe_order/caffe_guide_1920/kiosk_guide_img/3step_img.png" );
+    background-image: url( "/front/static/caffe_order/kiosk/caffe_guide_1920/kiosk_guide_img/3step_img.png" );
     background-size: cover;
 
 }
 #step_4{
     box-sizing: border-box;
     width: 100%; height: 100%;
-    background-image: url( "/front/static/caffe_order/caffe_guide_1920/kiosk_guide_img/4step_img.png" );
+    background-image: url( "/front/static/caffe_order/kiosk/caffe_guide_1920/kiosk_guide_img/4step_img.png" );
     background-size: cover;
 
 }
@@ -146,7 +147,7 @@
     box-sizing: border-box;
     width: 100%; height: 100%;
     background-color: #0000009e;
-    background-image: url( "/front/static/caffe_order/caffe_guide_1920/kiosk_guide_img/5step_img.png" );
+    background-image: url( "/front/static/caffe_order/kiosk/caffe_guide_1920/kiosk_guide_img/5step_img.png" );
     background-size: contain;
     background-repeat: no-repeat;
     background-position: 50%;
