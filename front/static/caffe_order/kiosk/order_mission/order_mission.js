@@ -1,7 +1,7 @@
 // import every function form common.js
 import * as commonModule from '/front/static/caffe_order/kiosk/common/common.js';
 
-const returnAddress = '/front/static/caffe_order/kiosk/practice/order_mission/order_mission.html';
+const returnAddress = '/front/static/caffe_order/kiosk/order_mission/order_mission.html';
 /* ========= preset ========= */
 // map each items of menu with the increasing numbers
 const menu = new Map();
@@ -44,16 +44,48 @@ document.addEventListener('DOMContentLoaded', function () {
   const confirmPayButton = document.getElementById('승인요청'); // confirmButton to scroll down the window page
   const cardMovingButton = document.getElementById('insert_card_moving'); // moving card
   const levelButtons = document.querySelectorAll('button[id^="level"]'); // buttons for selecting level of missions
+  const deleteButtons = document.querySelectorAll('.delete_button'); // delete selected items from the oreder_list
+  const minusButton = document.querySelectorAll('.minus_button');// add selected items from the oreder_list
+  const plusButton = document.querySelectorAll('.plus_button');// remove selected items from the oreder_list
+
 
   /* -------------- event listener ---------- */
 
+
+  // delete selected items from the oreder_list
+  deleteButtons.forEach((button) => {
+    button.addEventListener('click', function () {
+      const target = this.getAttribute('id');
+      const number = target[target.search('[0-9]')];
+      const content = document.getElementById('range_' + number);
+      commonModule.delete_button(content.id, order_list);
+    });
+  });
+  // add selected items from the oreder_list
+  minusButton.forEach((button) => {
+    button.addEventListener('click', function () {
+      const target = this.getAttribute('id');
+      const number = target[target.search('[0-9]')];
+      const content = document.getElementById('range_' + number);
+      commonModule.remove_button(content.id, order_list);
+    });
+  });
+  // remove selected items from the oreder_list
+  plusButton.forEach((button) => {
+    button.addEventListener('click', function () {
+      const target = this.getAttribute('id');
+      const number = target[target.search('[0-9]')];
+      const content = document.getElementById('range_' + number);
+      commonModule.add_button(content.id, order_list);
+    });
+  });
   // moving card
   cardMovingButton.addEventListener('click', function () {
     function buy_item(items) {
       if (missionSucced == true) {
         alert(
           "축하합니다. " +
-          items+
+          items +
           " 주문하기 성공!"
         );
         location.href = returnAddress;
@@ -65,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function () {
           returnAddress;
       }
     }
-    
+
     let missionSucced = false;
     let count = 0;
     for (let i = 1; i <= missionItems.length; i++) {
@@ -73,9 +105,9 @@ document.addEventListener('DOMContentLoaded', function () {
       if (success == true)
         count++;
     }
-    if(missionItems.length==count)
-      missionSucced=true;
-    
+    if (missionItems.length == count)
+      missionSucced = true;
+
     buy_item(missionItems);
   });
   // confirmButton to scroll down the window page
@@ -179,7 +211,7 @@ function generateUniqueRandomNumbers(count, max) {
 function handleButtonClick(event) {
   // the number of drinks that the user has to order.
   const buttonValue = event.target.value;
-
+  console.log(buttonValue);
   // create the unique random numbers to get random drinks.
   generateUniqueRandomNumbers(buttonValue, menu.size);
 
@@ -225,8 +257,7 @@ function itemGet(name, price) {
 }
 
 let order_list = [];
-let colorCount = 1;
-let mission = 0;
+
 
 // when the user clicks any image of the item on the menu table.
 // add selected items to the order_list array;
@@ -235,17 +266,21 @@ function pick_item(id, price) {
   let order = new itemGet(id, price);
   let found = false;
 
-
+  let checked = new Map();
   missionItems.forEach((value) => {
-    if (id == value) {
-      const checkbox = document.getElementById('item_' + (mission + 1));
+    checked.set(value,false);
+  });
+
+  let mission = 0;
+  missionItems.forEach((value) => {
+    mission++;
+    if (id == value ) {
+      const checkbox = document.getElementById('item_' + (mission));
       checkbox.disabled = false;
       checkbox.checked = true;
       checkbox.disabled = true;
-      ++mission;
     }
   });
-
 
 
   for (let i in order_list) {
@@ -257,17 +292,18 @@ function pick_item(id, price) {
     }
   }
   if (!found) {
-    if (colorCount > 7) {
+    if (commonModule.getColorCount() == 7) {
       maxItems();
       return;
     }
-    colorCount++;
+    commonModule.addColorCount();
     drink.style.borderStyle = "solid";
     drink.style.borderColor = "red";
     order_list.push(order);
   }
 
   commonModule.open_order_list(order_list);
+  commonModule.scrollDown();
 }
 
 function maxItems() {

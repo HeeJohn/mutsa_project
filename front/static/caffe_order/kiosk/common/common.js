@@ -24,6 +24,7 @@ export {
     getColorCount,
     addColorCount,
     minusColorCount,
+    scrollDown
 };
 export {
 }
@@ -287,6 +288,10 @@ function remove_button(id, order_list) {
 
 
 /*======================== 5. display ordered list ========================*/
+function scrollDown() {
+    let content = document.getElementById('order_lsit');
+    content.scrollTop = content.scrollHeight;
+}
 
 /*order_list에 표시하기*/
 let total_list = [0, 0];

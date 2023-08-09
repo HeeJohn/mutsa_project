@@ -177,6 +177,7 @@ function pick_item(id, price) {
   }
 
   commonModule.open_order_list(order_list);
+  commonModule.scrollDown();
 }
 
 function maxItems() {
