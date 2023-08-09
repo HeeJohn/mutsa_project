@@ -9,7 +9,6 @@ export {
     start_btn,
     open_menu_table,
     turn_menu_page,
-    pick_item,
     open_window_pay,
     change_window_btn,
     close_window_pay,
@@ -23,6 +22,9 @@ export {
     remove_button,
     add_button,
 };
+export{
+    colorCount,
+}
 
 /*=============================== 1. preset =================================*/
 //when the user press the "화면을 터치해주세요", move to the other orderScreen.
@@ -145,6 +147,11 @@ function href_home() {
 /*============================= 2. Browsing menu ============================*/
 
 /*==================== 3. pick & count & coloring itmes ====================*/
+
+// const order_list = [];
+let colorCount = 0;
+
+/*
 //get item infromation from HTML
 function itemGet(name, price) {
     this.name = name; // name of selected item
@@ -152,8 +159,7 @@ function itemGet(name, price) {
     this.price = parseInt(price); // price of selected item
 }
 
-let order_list = [];
-let colorCount = 1;
+
 
 // when the user clicks any image of the item on the menu table.
 // add selected items to the order_list array;
@@ -178,47 +184,49 @@ function pick_item(id, price) {
             maxItems();
             return;
         }
-        colorCount++;
+        ++colorCount;
         drink.style.borderStyle = "solid";
         drink.style.borderColor = "red";
         order_list.push(order);
     }
-
+   
     open_order_list(order_list);
 }
 
 function maxItems() {
     alert("7개 이상의 아이템을 선택하셨습니다. 추가 선택이 불가합니다.");
 }
+*/
 /*==================== 3. pick & count & coloring itmes ====================*/
 
 /*==================== 4. delete, add, minus itmes ====================*/
 
-function delete_button(id, order_list) {
-    order_list.forEach(item => {
-        /*parsing*/
-        const target = document.getElementById(id);
-        const innerText = target.innerText.substring(3);
-        const drink = document.getElementById(innerText);
-        console.log(drink.id);
-        /*parsing*/
-        // console.log(item.number);
-        // console.log(item);
-
-        if (item.name == drink) {
-            target.style.borderStyle = "none";
-            for(let i =0; i< item.number; i++)
-            {
-                --colorCount;
-                console.log(colorCount);
-            }
+function delete_button(id, order_list, colorCount) {
+    /*parsing*/
+    const target = document.getElementById(id); // bring content(drink) from range div
+    const innerText = target.innerText.substring(3); // get substring without "number."
+    const drink = document.getElementById(innerText); // get item image div on the table
+    console.log(drink.id); // check
+    /*parsing*/
+    // to erase the item from the order_list, and unmark the item with nomral boarder.
+    for (let i = 0; i < order_list.length; i++) {
+        //only matched item in the ordered_list.
+        if (order_list[i].name == drink.id) {
+            drink.style.borderStyle = "none";
+            drink.style.borderColor = "none";
+            colorCount--; // 7 was max numbers to select.
+            console.log(colorCount);
+            order_list.splice(i, 1); // remove items from the list.
+            console.log(order_list); // check
+            break;
         }
-    });
+    }
+    open_order_list(order_list);
 }
-function add_button(id, order_list) {
+function add_button(id, order_list , colorCount) {
 
 }
-function remove_button(id, order_list) {
+function remove_button(id, order_list , colorCount) {
 
 }
 
@@ -234,7 +242,7 @@ let total_list = [0, 0];
 function open_order_list(order_list) {
     let total_num = 0;
     let total_price = 0;
-
+    hide_order_list();
     for (let i = 0; i < order_list.length; i++) {
         let order_id = "order_" + (i + 1);
         document.getElementById(order_id).style.display = "flex";

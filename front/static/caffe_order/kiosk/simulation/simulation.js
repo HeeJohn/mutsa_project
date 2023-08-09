@@ -2,7 +2,7 @@
 import * as commonModule from '/front/static/caffe_order/kiosk/common/common.js';
 
 //after all content loaded.
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   /* -------------- get elements ---------- */
   const megaStartBtn = document.getElementById('mega_start_btn'); //start button
   const megaHomeIcon = document.getElementById('mega_top_bar_home'); // home icon
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const menuBar2 = document.querySelectorAll('.mega_menu_2') // seoond menu bar (page2)
   const pickItems = document.querySelectorAll('.pick_item'); // for picking items
   const openPaymentWindow = document.getElementById('total_price'); // open payment window
-  const closePaymentWindow  = document.querySelectorAll('.close_window_pay'); // close payment window
+  const closePaymentWindow = document.querySelectorAll('.close_window_pay'); // close payment window
   const paymentWindow = document.querySelectorAll('.change_window_btn'); // pay start
   const backButton = document.getElementById('돌아가기_2'); // back button before final payment.
   const payWithCardButton = document.getElementById('카드결제'); // button  for card payment
@@ -26,111 +26,114 @@ document.addEventListener('DOMContentLoaded', function() {
   /* -------------- event listener ---------- */
 
   // delete selected items from the oreder_list
-  deleteButtons.forEach((button)=>{
-    button.addEventListener('click',function(){
+  deleteButtons.forEach((button) => {
+    button.addEventListener('click', function () {
       const target = this.getAttribute('id');
-      const number =target[target.search('[0-9]')];
-      const content = document.getElementById('range_'+number);
-      commonModule.delete_button(content.id,order_list);
+      const number = target[target.search('[0-9]')];
+      const content = document.getElementById('range_' + number);
+      colorCount--;
+      commonModule.delete_button(content.id, order_list);
     });
   });
   // add selected items from the oreder_list
-  minusButton.forEach((button)=>{
-    button.addEventListener('click',function(){
-      const target =this.getAttribute('id');
+  minusButton.forEach((button) => {
+    button.addEventListener('click', function () {
+      const target = this.getAttribute('id');
       target.search('[0-9]');
-      const content = document.getElementById('range_'+target);
-      commonModule.add_button(content.id,order_list);
+      const content = document.getElementById('range_' + target);
+      commonModule.add_button(content.id, order_list);
     });
   });
   // remove selected items from the oreder_list
-  plusButton.forEach((button)=>{
-    button.addEventListener('click',function(){
-      const target =this.getAttribute('id');
+  plusButton.forEach((button) => {
+    button.addEventListener('click', function () {
+      const target = this.getAttribute('id');
       target.search('[0-9]');
-      const content = document.getElementById('range_'+target);
-      commonModule.remove_button(content.id,order_list);
+      const content = document.getElementById('range_' + target);
+      
+      commonModule.remove_button(content.id, order_list, colorCount);
     });
   });
   // moving card
-  cardMovingButton.addEventListener('click',function(){
+  cardMovingButton.addEventListener('click', function () {
     alert("감사합니다. 결제가 완료되었습니다. 교환권과 카드를 챙겨가세요.");
     location.href = "/front/static/caffe_order/kiosk/simulation/simulator.html";
   });
   // confirmButton to scroll down the window page
-  confirmPayButton.addEventListener('click',function(){
+  confirmPayButton.addEventListener('click', function () {
     commonModule.scrollToBottom();
     alert('아래 카드를 클릭해주세요!');
   });
   // x button for total cancellation.
-  payCancelButtons.forEach(cancelButton=>{
-    cancelButton.addEventListener('click',function(){
+  payCancelButtons.forEach(cancelButton => {
+    cancelButton.addEventListener('click', function () {
       commonModule.close_w_카드결제();
     });
   });
   // button clicked for card payment
-  payWithCardButton.addEventListener('click',function(){
+  payWithCardButton.addEventListener('click', function () {
     commonModule.open_w_카드결제();
   });
   //back button before final payment
-  backButton.addEventListener('click', function(){
+  backButton.addEventListener('click', function () {
     commonModule.back_2_window_btn();
   });
   // pay start 
-  paymentWindow.forEach(payButton=> {
-    payButton.addEventListener('click',function(){
+  paymentWindow.forEach(payButton => {
+    payButton.addEventListener('click', function () {
       commonModule.change_window_btn();
     });
   });
   // close payement widnow
   closePaymentWindow.forEach(closeButton => {
-    closeButton.addEventListener('click',function(){
-        commonModule.close_window_pay();
-      })
-    });
+    closeButton.addEventListener('click', function () {
+      commonModule.close_window_pay();
+    })
+  });
   // open payment window
-  openPaymentWindow.addEventListener('click',function(){
+  openPaymentWindow.addEventListener('click', function () {
     commonModule.open_window_pay(order_list);
   });
   // for picking items
   pickItems.forEach(selectedItem => {
-    selectedItem.addEventListener('click',function(){
+    selectedItem.addEventListener('click', function () {
       const id = this.getAttribute('id');
       const price = this.getAttribute('data-price');
-      pick_item(id,price);
+      pick_item(id, price);
     }
-  )});
+    )
+  });
   // first menu bar (page1)
   menuBar1.forEach(menuItem1 => {
-      menuItem1.addEventListener('click', function() {
-          const title = this.getAttribute('title');
-          commonModule.open_menu_table(title);
-      });
+    menuItem1.addEventListener('click', function () {
+      const title = this.getAttribute('title');
+      commonModule.open_menu_table(title);
+    });
   });
   // seoond menu bar (page2)
   menuBar2.forEach(menuItem2 => {
-    menuItem2.addEventListener('click', function() {
-        const title = this.getAttribute('title');
-        commonModule.open_menu_table(title);
+    menuItem2.addEventListener('click', function () {
+      const title = this.getAttribute('title');
+      commonModule.open_menu_table(title);
     });
-});
+  });
   // right arrow of menu bar
-  rightArrowMenuBar.addEventListener('click',function(event){
+  rightArrowMenuBar.addEventListener('click', function (event) {
     const id = event.target.id;
     commonModule.turn_menu_page(id);
   });
   // left arrow of menu bar
-  leftArrowMenuBar.addEventListener('click',function(event){
+  leftArrowMenuBar.addEventListener('click', function (event) {
     const id = event.target.id;
     commonModule.turn_menu_page(id);
   });
   // home icon
-  megaHomeIcon.addEventListener('click',function(){
+  megaHomeIcon.addEventListener('click', function () {
     commonModule.href_home();
   });
-   //start button
-  megaStartBtn.addEventListener('click', function() {
-      commonModule.start_btn();
+  //start button
+  megaStartBtn.addEventListener('click', function () {
+    commonModule.start_btn();
   });
 });
 
@@ -143,8 +146,8 @@ function itemGet(name, price) {
   this.price = parseInt(price); // price of selected item
 }
 
-let order_list = [];
-let colorCount = 1;
+const order_list = [];
+let colorCount = commonModule.colorCount;
 
 // when the user clicks any image of the item on the menu table.
 // add selected items to the order_list array;
@@ -154,27 +157,26 @@ function pick_item(id, price) {
   let found = false;
   order.number += 1;
 
-  // missionItems.forEach((value)=> {if(id==value) mission++;});
-
   for (let i in order_list) {
-      //if seleted item was selected before.
-      if (order.name == order_list[i].name) {
-          order_list[i].number += 1; // item count for each item ex) x2 or x3
-          found = true; //
-          break;
-      }
+    //if seleted item was selected before.
+    if (order.name == order_list[i].name) {
+      order_list[i].number += 1; // item count for each item ex) x2 or x3
+      found = true; //
+      break;
+    }
   }
   if (!found) {
-      if (colorCount > 7) {
-          maxItems();
-          return;
-      }
-      colorCount++;
-      drink.style.borderStyle = "solid";
-      drink.style.borderColor = "red";
-      order_list.push(order);
-  }
+    if (colorCount == 7) {
+      maxItems();
+      return;
+    }
 
+    colorCount++;
+    drink.style.borderStyle = "solid";
+    drink.style.borderColor = "red";
+    order_list.push(order);
+  }
+  console.log(colorCount);
   commonModule.open_order_list(order_list);
 }
 
