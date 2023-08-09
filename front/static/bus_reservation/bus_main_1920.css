@@ -1,0 +1,523 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'BMHannaPro';
+    box-sizing: border-box;
+}
+*::selection{background-color: #b7b6b600;}
+
+#wrap {
+    width: 1900px; height: 900px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    /* left: 50%;
+    top:50%;
+    transform: translate(-50%, -50%); */
+
+    top: 30px
+}
+
+/*------------------------------------------------------------------------------*/
+.box {
+    box-sizing: border-box;
+    width: 40%; height: 100%;
+    border: 30px solid #000;
+    border-radius: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}
+/*------------------------------------------------------------------------------*/
+.left_box {
+    box-sizing: border-box;
+    width: 30%; height: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+
+    
+}
+/*------------------------------------------------------------------------------*/
+#page_1 {
+    width: 100%; height: 100%;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+}
+.page_1_dis_section{
+    width: 100%; height: 20%;
+    border: 1px solid #000;
+    display: flex;
+    flex-direction: row;
+}
+.page_1_title{
+    width: 70%; height: 100%;
+    border: 1px solid #000;
+    text-align: center;
+    font-size: 40px;
+    padding-top: 8%;
+}
+.page_1_time{
+    width: 30%; height: 100%;
+    border: 1px solid #000;
+    text-align: center;
+    font-size: 40px;
+    padding-top: 8%;
+}
+.page_1_btn_section{
+    width: 100%; height: 80%;
+    border: 1px solid #000;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.on_the_spot{
+    width: 50%; height: 30%;
+    border: 1px solid #000;
+    border-radius: 30px;
+    background-color: orange;
+    color: white;
+    font-size: 30px;
+    margin-bottom: 8%;
+}
+.online_reservation{
+    width: 50%; height: 30%;
+    border: 1px solid #000;
+    border-radius: 30px;
+    background-color: navy;
+    color: white;
+    font-size: 30px;
+}
+.on_the_spot:hover{background-color: rgba(255, 166, 0, 0.818);}
+.online_reservation:hover{background-color: rgba(0, 0, 128, 0.798);}
+/*------------------------------------------------------------------------------*/
+#page_2{
+    width: 100%; height: 100%;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+}
+#page_2_header_section{
+    width: 100%; height: 8%;
+    /* border: 1px solid #000; */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+.back_btn{
+    width: 12%; height: 100%;
+    border: 0px;
+    background-color: #00000000;
+    cursor: pointer;
+}
+.page_2_title{
+    width: 88%; height: 100%;       /*나중에 가운데 정렬 시키기*/
+    float: center;
+    font-size: 35px;
+    padding-top: 2%;
+    text-align: center;
+}
+.start-end_section{
+    width: 100%; height: 22%;
+    /* border: 1px solid #000; */
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: start;
+}
+.start_btn{
+    width: 45%; height: 90%;
+    border: 3px solid #6D9668;
+    border-radius: 20px;
+    background-color: #00000000;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    cursor: pointer;
+}
+.end_btn{
+    width: 45%; height: 90%;
+    border: 3px solid #6D9668;
+    
+    border-radius: 20px;
+    background-color: #00000000;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    cursor: pointer;
+}
+.small_text{
+    width: 100%; height: 25%;
+    border: 0px;
+    border-radius: 17px 17px 0 0;
+    font-size: 28px;
+    padding-top: 2%;
+    background-color:#ABCBA4;
+    color: white;
+}
+.start_result, .end_result{
+    width: 100%; height: 75%;
+    text-align: center;
+    font-size: 23px;
+    padding-top: 15%;
+}
+.list_section{
+    width: 100%; height: 70%;
+    display: flex;
+    flex-direction: row;
+}
+.high_list{
+    width: 25%; height: 100%;
+    border-top: 2px solid rgba(128, 128, 128, 0.409);
+    overflow-y:scroll;
+}
+.low_list{
+    width: 75%; height: 100%;
+    border-top: 1px solid rgba(128, 128, 128, 0.409);
+    overflow-y:auto;
+}
+.province{
+    width: 100%; height: 13%;
+    border: 0px;
+    font-size: 28px;
+    text-align: center;
+    background-color: #00000000;
+    cursor: pointer;
+}
+.city{
+    width: 100%; height: 13%;
+    border: 1px solid rgba(128, 128, 128, 0.409);
+    font-size: 28px;
+    text-align: start;
+    padding-left: 5%;
+    background-color: #00000000;
+    cursor: pointer;
+}
+.city:focus{background-color:#ABCBA4}
+.province:focus{background-color:#ABCBA4}
+/*------------------------------------------------------------------------------*/
+#page_3{
+    width: 100%; height: 100%;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+}
+#page_3_header_section{
+    width: 100%; height: 8%;
+    /* border: 1px solid #000; */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+.page_3_back_btn{
+    width: 12%; height: 100%;
+    border: 0px;
+    background-color: #00000000;
+    cursor: pointer;
+    
+}
+.page_3_title{
+    width: 88%; height: 100%;       /*나중에 가운데 정렬 시키기*/
+    float: center;
+    font-size: 35px;
+    padding-top: 2%;
+    text-align: center;
+}
+.page_3_start-end_section{
+    width: 100%; height: 22%;
+    /* border: 1px solid #000; */
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: start;
+}
+.page_3_start_btn{
+    width: 45%; height: 90%;
+    border: 3px solid gray;
+    border-radius: 20px;
+    background-color: #00000000;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    cursor: pointer;
+}
+.page_3_end_btn{
+    width: 45%; height: 90%;
+    border: 3px solid gray;
+    
+    border-radius: 20px;
+    background-color: #00000000;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    cursor: pointer;
+}
+.page_3_small_text{
+    width: 100%; height: 25%;
+    border: 0px;
+    border-radius: 15px 15px 0 0;
+    font-size: 28px;
+    padding-top: 2%;
+    background-color:gray;
+    color: white;
+}
+.page_3_start_result, .page_3_end_result{
+    width: 100%; height: 75%;
+    text-align: center;
+    font-size: 23px;
+    padding-top: 15%;
+}
+.page_3_date_section{
+    width: 100%; height: 5%;
+    text-align: center;
+    font-size: 30px;
+}
+.page_3_list_section{
+    width: 100%; height: 65%;
+}
+.bus_time_list{
+    width: 100%; height: 100%;
+    /* border-top: 2px solid rgba(128, 128, 128, 0.409); */
+    overflow:scroll;
+}
+.bus_time{
+    width: 100%; height: 18%;
+    border: 0px;
+    border-top: 2px solid rgba(128, 128, 128, 0.756);
+    display: flex;
+    flex-direction: row;
+    background-color: #00000000;
+}
+.bus_time:hover{background-color: #abcba49d;}
+.bus_time:focus{background-color: #abcba49d;}
+.time_box{
+    width: 30%; height: 100%;
+    border: 0px;
+    font-size: 30px;
+    padding-top: 5%;
+}
+.bus_info{
+    width: 40%; height: 100%;
+    border: 0px;
+    font-size: 20px;
+    padding-top: 2%;
+}
+.bus_seat{
+    width: 30%; height: 100%;
+    border: 0px;
+    font-size: 30px;
+    padding-top: 3%;
+}
+/*------------------------------------------------------------------------------*/
+#page_4{
+    width: 100%; height: 100%;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+}
+.page_4_seat_info_section{
+    width: 100%; height: 15%;
+    /* border: 1px solid black; */
+    background-color: rgba(128, 128, 128, 0.135);
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center
+}
+.page_4_info_text{
+    width: 60%; height: 90%;
+    /* border: 1px solid black; */
+    font-size: 30px;
+    line-height: 150%;
+    padding-top: 2%;
+}
+.seat_selection{
+    width: 20%; height: 80%;
+    border: 4px solid #90ab8a;
+    border-radius: 20px;
+    background-color: #ABCBA4;
+    font-size: 30px;
+    margin-right: 2%;
+}
+.seat_selection:hover{background-color:#a4c49c;}
+.dis_seat_section{
+    width: 100%; height: 77%;
+    /* border: 2px solid blue; */
+    padding: 3%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    overflow-y: scroll;
+}
+.left_line_box{
+    width: 50%; height: 100%;
+    /* border: 2px solid rgb(255, 0, 0); */
+    display: flex;
+    flex-direction: row;
+}
+.left_line_1, .left_line_2{
+    width: 50%; 
+    /* border: 2px solid rgb(255, 0, 0); */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.right_line{
+    width: 25%; height: 100%;
+    /* border: 2px solid rgb(255, 0, 0); */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.seat{
+    width: 80%; height: 50%; 
+    border: 4px solid #ABCBA4;
+    border-radius: 15px;
+    background-color: #00000000;
+    font-size: 30px;
+    margin: 5% 0 5% 0;
+}
+.seat:hover{background-color: #abcba49d;}
+.seat:focus{background-color: #abcba49d;}
+/*------------------------------------------------------------------------------*/
+#page_5{
+    width: 100%; height: 100%;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+}
+.dis_ticket_section{
+    width: 100%; height: 75%;
+    /* border: 4px solid black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.ticket_box{
+    width: 90%; height: 90%;
+    border: 4px solid #6D9668;
+    border-radius: 50px;
+}
+.ticket_date{
+    width: 100%; height: 15%;
+    /* border: 1px solid black; */
+    border-radius: 45px 45px 0 0;
+    border-bottom: 4px solid #6D9668;
+    background-color: #ABCBA4;
+    font-size: 40px;
+    color: white;
+    padding-top: 4%;
+    padding-left: 5%;
+}
+.ticket_info{
+    width: 100%; height: 85%;
+    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.course_box{
+    width: 100%; height: 30%;
+    /* border: 1px solid black; */
+    font-size: 40px;
+    line-height: 150%;
+    padding-left: 5%;
+}
+.selected_bus_info{
+    width: 100%; height: 50%;
+    /* border: 1px solid black; */
+    font-size: 40px;
+    line-height: 150%;
+    padding-left: 5%;   
+}
+
+.charge_section{
+    width: 100%; height: 17%;
+    border-top: 2px solid rgba(128, 128, 128, 0.237);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.charge_btn{
+    width:50%; height: 60%;
+    border: 5px solid #ABCBA4;
+    border-radius: 25px;
+    background-color: #00000000;
+    font-size: 30px;
+}
+.charge_btn:hover{background-color: #c6e9bd;}
+/*------------------------------------------------------------------------------*/
+.side_nav{
+    width: 4%; height: 80%;     /*디폴트 width 13%    fixed width 4%*/
+    /* border: 2px solid blue; */
+    display: flex;
+    flex-direction: column;
+
+    position: fixed; 
+    
+    
+}
+.side_nav1 ,.side_nav2, .side_nav3, .side_nav4 {
+    width: 100%; height: 25%;
+    border: 6px solid #ABCBA4;
+    border-right: 0px;
+    background-color: rgba(255, 255, 255, 0);
+    writing-mode: vertical-lr;
+
+    
+    font-size: 35px;
+    color: #ABCBA4;
+    padding-left: 18px;
+    cursor: pointer;
+}
+
+.side_nav1{
+    border-color: #779472;
+    color: #779472;
+}
+.side_nav2{
+    border-top: 0px;
+}
+.side_nav3{ 
+    border-top: 0px;
+}
+.side_nav4{
+    border-top: 0px;
+}
+
+.side_nav1:hover{background-color: rgba(165, 165, 165, 0.163);}
+.side_nav2:hover{background-color: rgba(165, 165, 165, 0.163);}
+.side_nav3:hover{background-color: rgba(165, 165, 165, 0.163);}
+.side_nav4:hover{background-color: rgba(165, 165, 165, 0.163);}
+
+/*------------------------------------------------------------------------------*/
+.right_box {
+    box-sizing: border-box;
+    width: 30%; height: 100%;
+    display: flex;
+    justify-content: center;
+   
+    
+}
+
+.login{
+    width: 25%; height: 5%;
+    background-color: #6D9668;
+    border-radius: 15px;
+    border: 0px;
+    font-size: 25px;
+    color: white;
+    cursor: pointer;
+    
+}
+.login:hover{background-color: #62845c;}
+.login:active{position:relative; top:1px;}
+/*------------------------------------------------------------------------------*/

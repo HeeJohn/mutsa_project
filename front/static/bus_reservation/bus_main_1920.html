@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>버스 시뮬</title>
+    <link rel="stylesheet" href="/front/static/bus_reservation/bus_main_1920.css">
+    <link href="https://webfontworld.github.io/BMHannaPro/BMHannaPro.css" rel="stylesheet"> <!-- 배달의 민족 한나체 (호스팅방식) -->
+</head>
+
+<body onload="page_default()">
+    <script src="/front/static/bus_reservation/bus_main.js"></script>
+    <div id="wrap">
+        <div class=left_box>
+            <div class="side_nav">
+                <button class="side_nav1" type="button" onclick="location.href='/front/static/caffe_order/kiosk/kiosk_main/caffe_main_1920.html';">키오스크</button>
+                <button class="side_nav2" type="button" onclick="location.href='#';">은행</button>
+                <button class="side_nav3" type="button" onclick="location.href='#';">버스</button>
+                <button class="side_nav4" type="button" onclick="location.href='#';">게시판</button>
+            </div>
+        </div>
+
+        <div class="box">
+            <div id="page_1">
+                <div class="page_1_dis_section">
+                    <div class="page_1_title">버스 승차권 발매기</div>
+                    <div class="page_1_time">time</div>
+                </div>
+                <div class="page_1_btn_section">
+                    <button class="on_the_spot" onclick="dis_page_2()">현장발매</button>
+                    <button class="online_reservation" onclick="location.href='#';">온라인 예매 발권</button>
+                </div>
+            </div>
+            <div id="page_2">
+                <div id="page_2_header_section">
+                    <button class="back_btn">
+                        <svg 
+                            width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <mask id="path-1-inside-1_11_2" fill="white">
+                            <path d="M0.144661 24.8553L24.8934 0.10661L49.6421 24.8553L24.8934 49.6041L0.144661 24.8553Z"/>
+                            </mask>
+                            <path d="M0.144661 24.8553L-5.51219 19.1985L-11.169 24.8553L-5.51219 30.5122L0.144661 24.8553ZM5.80152 30.5122L30.5503 5.76346L19.2365 -5.55024L-5.51219 19.1985L5.80152 30.5122ZM30.5503 43.9472L5.80152 19.1985L-5.51219 30.5122L19.2365 55.2609L30.5503 43.9472Z" fill="#000080" mask="url(#path-1-inside-1_11_2)"/>
+                        </svg>
+                    </button>
+                    <div class="page_2_title">출발지 검색</div>
+                </div>
+                <div class="start-end_section">
+                    <button class="start_btn">
+                        <div class="small_text">출발지</div>
+                        <div class="start_result">출발지를 선택해주세요.</div>
+                    </button>
+                    <button class="end_btn" onclick="dis_page_3()">
+                        <div class="small_text">도착지</div>
+                        <div class="end_result">도착지를 선택해주세요.</div>
+                    </button>
+                </div>
+                <div class="list_section">
+                    <div class="high_list">
+                        <button class="province">전체</button>
+                        <button class="province">서울</button>
+                        <button class="province">인천/경기</button>
+                        <button class="province">강원</button>
+                        <button class="province">대전/충남</button>
+                        <button class="province">충북</button>
+                        <button class="province">광주/전남</button>
+                        <button class="province">전북</button>
+                        <button class="province">부산/경남</button>
+                        <button class="province">대구/경북</button>
+                    </div>
+                    <div class="low_list">
+                        <button class="city">서울경부</button>
+                        <button class="city">센트럴시티(서울)</button>
+                        <button class="city">동서울</button>
+                        <button class="city">광주(유-스퀘어)</button>
+                        <button class="city">대전복합</button>
+                        <button class="city">서울남부</button>
+                        <button class="city">원주종합</button>
+                        <button class="city">인천</button>
+                        <button class="city">청주고속터미널</button>
+                        <button class="city">청주시외</button>
+                        <button class="city">천안고속</button>
+                        <button class="city">천안</button>
+                        <button class="city">동대구</button>
+                    </div>
+                </div>
+            </div>
+            <div id="page_3">
+                <div id="page_2_header_section">
+                    <button class="back_btn">
+                        <svg 
+                            width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <mask id="path-1-inside-1_11_2" fill="white">
+                            <path d="M0.144661 24.8553L24.8934 0.10661L49.6421 24.8553L24.8934 49.6041L0.144661 24.8553Z"/>
+                            </mask>
+                            <path d="M0.144661 24.8553L-5.51219 19.1985L-11.169 24.8553L-5.51219 30.5122L0.144661 24.8553ZM5.80152 30.5122L30.5503 5.76346L19.2365 -5.55024L-5.51219 19.1985L5.80152 30.5122ZM30.5503 43.9472L5.80152 19.1985L-5.51219 30.5122L19.2365 55.2609L30.5503 43.9472Z" fill="#000080" mask="url(#path-1-inside-1_11_2)"/>
+                        </svg>
+                    </button>
+                    <div class="page_2_title">배차 조회</div>
+                </div>
+                <div class="page_3_start-end_section">
+                    <button class="page_3_start_btn">
+                        <div class="page_3_small_text">출발지</div>
+                        <div class="page_3_start_result">출발지</div>
+                    </button>
+                    <button class="page_3_end_btn">
+                        <div class="page_3_small_text">도착지</div>
+                        <div class="page_3_end_result">도착지</div>
+                    </button>
+                </div>
+                <div class="page_3_date_section">08.10(목)</div>
+                <div class="page_3_list_section">
+                    <div class="bus_time_list">
+                        <button class="bus_time" onclick="dis_page_4()">
+                            <div class="time_box">20:20</div>
+                            <div class="bus_info">동양고속<br>16,000원<br>2시간 예상</div>
+                            <div class="bus_seat">17석<br>[우등]</div>
+                        </button>
+                        <button class="bus_time">
+                            <div class="time_box">20:40</div>
+                            <div class="bus_info">중앙고속<br>11,400원<br>2시간 예상</div>
+                            <div class="bus_seat">41석<br>[일반]</div>
+                        </button>
+                        <button class="bus_time">
+                            <div class="time_box">21:00</div>
+                            <div class="bus_info">CHUNIL EXPRESS<br>18,300원<br>2시간 예상</div>
+                            <div class="bus_seat">24석<br>[프리미엄]</div>
+                        </button>
+                        <button class="bus_time">
+                            <div class="time_box">배차시간</div>
+                            <div class="bus_info">버스 정보</div>
+                            <div class="bus_seat">남은 좌석</div>
+                        </button>
+                        <button class="bus_time">
+                            <div class="time_box">배차시간</div>
+                            <div class="bus_info">버스 정보</div>
+                            <div class="bus_seat">남은 좌석</div>
+                        </button>
+                        <button class="bus_time">
+                            <div class="time_box">배차시간</div>
+                            <div class="bus_info">버스 정보</div>
+                            <div class="bus_seat">남은 좌석</div>
+                        </button>
+                        <button class="bus_time">
+                            <div class="time_box">배차시간</div>
+                            <div class="bus_info">버스 정보</div>
+                            <div class="bus_seat">남은 좌석</div>
+                        </button>
+                        <button class="bus_time">
+                            <div class="time_box">배차시간</div>
+                            <div class="bus_info">버스 정보</div>
+                            <div class="bus_seat">남은 좌석</div>
+                        </button>
+                        <button class="bus_time">
+                            <div class="time_box">배차시간</div>
+                            <div class="bus_info">버스 정보</div>
+                            <div class="bus_seat">남은 좌석</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id="page_4">
+                <div id="page_2_header_section">
+                    <button class="back_btn">
+                        <svg 
+                            width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <mask id="path-1-inside-1_11_2" fill="white">
+                            <path d="M0.144661 24.8553L24.8934 0.10661L49.6421 24.8553L24.8934 49.6041L0.144661 24.8553Z"/>
+                            </mask>
+                            <path d="M0.144661 24.8553L-5.51219 19.1985L-11.169 24.8553L-5.51219 30.5122L0.144661 24.8553ZM5.80152 30.5122L30.5503 5.76346L19.2365 -5.55024L-5.51219 19.1985L5.80152 30.5122ZM30.5503 43.9472L5.80152 19.1985L-5.51219 30.5122L19.2365 55.2609L30.5503 43.9472Z" fill="#000080" mask="url(#path-1-inside-1_11_2)"/>
+                        </svg>
+                    </button>
+                    <div class="page_2_title">매수 및 좌석 선택</div>
+                </div>
+                <div class="page_4_seat_info_section">
+                    <div class="page_4_info_text">
+                        서울경부 > 대전복합<br>전체 21 석 | 잔여 14석
+                    </div>
+                    <button class="seat_selection" onclick="dis_page_5()">선택완료</button>
+                </div>
+                <div class="dis_seat_section">
+                    <div class="left_line_box">
+                        <div class="left_line_1">
+                            <button class="seat">1</button>
+                            <button class="seat">2</button>
+                            <button class="seat">3</button>
+                            <button class="seat">4</button>
+                            <button class="seat">5</button>
+                        </div>
+                        <div class="left_line_2">
+                            <button class="seat">6</button>
+                            <button class="seat">7</button>
+                            <button class="seat">8</button>
+                            <button class="seat">9</button>
+                            <button class="seat">10</button>
+                        </div>
+                    </div>
+                    <div class="right_line">
+                        <button class="seat">11</button>
+                        <button class="seat">12</button>
+                        <button class="seat">13</button>
+                        <button class="seat">14</button>
+                        <button class="seat">15</button>
+                    </div>
+                </div>
+            </div>
+            <div id="page_5">
+                <div id="page_2_header_section">
+                    <button class="back_btn">
+                        <svg 
+                            width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <mask id="path-1-inside-1_11_2" fill="white">
+                            <path d="M0.144661 24.8553L24.8934 0.10661L49.6421 24.8553L24.8934 49.6041L0.144661 24.8553Z"/>
+                            </mask>
+                            <path d="M0.144661 24.8553L-5.51219 19.1985L-11.169 24.8553L-5.51219 30.5122L0.144661 24.8553ZM5.80152 30.5122L30.5503 5.76346L19.2365 -5.55024L-5.51219 19.1985L5.80152 30.5122ZM30.5503 43.9472L5.80152 19.1985L-5.51219 30.5122L19.2365 55.2609L30.5503 43.9472Z" fill="#000080" mask="url(#path-1-inside-1_11_2)"/>
+                        </svg>
+                    </button>
+                    <div class="page_2_title">승차권 예약</div>
+                </div>
+                <div class="dis_ticket_section">
+                    <div class="ticket_box">
+                        <div class="ticket_date">2023.08.10 (목) 07:00</div>
+                        <div class="ticket_info">
+                            <div class="course_box">
+                                서울경부<br>
+                                대전복합
+                            </div>
+                            <div class="selected_bus_info">
+                                [고속] 우등 | 동양고속<br>
+                                좌석 09번<br>
+                                운임 1장 16,600원
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="charge_section">
+                    <button class="charge_btn" onclick="page_default()">결제하기</button>
+                </div>
+            </div>
+        </div>
+
+        <div class=right_box>
+            <button class="login" type="button" onclick="location.href='#';">Logout</button>
+        </div>
+    </div>
+</body>
+
+</html>
