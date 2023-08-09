@@ -21,9 +21,11 @@ export {
     delete_button,
     remove_button,
     add_button,
+    getColorCount,
+    addColorCount,
+    minusColorCount,
 };
-export{
-    colorCount,
+export {
 }
 
 /*=============================== 1. preset =================================*/
@@ -147,9 +149,19 @@ function href_home() {
 /*============================= 2. Browsing menu ============================*/
 
 /*==================== 3. pick & count & coloring itmes ====================*/
-
-// const order_list = [];
 let colorCount = 0;
+function getColorCount() {
+    return colorCount;
+}
+function addColorCount() {
+    colorCount++;
+}
+
+function minusColorCount() {
+    colorCount--;
+}
+// const order_list = [];
+
 
 /*
 //get item infromation from HTML
@@ -201,7 +213,7 @@ function maxItems() {
 
 /*==================== 4. delete, add, minus itmes ====================*/
 
-function delete_button(id, order_list, colorCount) {
+function delete_button(id, order_list) {
     /*parsing*/
     const target = document.getElementById(id); // bring content(drink) from range div
     const innerText = target.innerText.substring(3); // get substring without "number."
@@ -214,7 +226,7 @@ function delete_button(id, order_list, colorCount) {
         if (order_list[i].name == drink.id) {
             drink.style.borderStyle = "none";
             drink.style.borderColor = "none";
-            colorCount--; // 7 was max numbers to select.
+            colorCount--;
             console.log(colorCount);
             order_list.splice(i, 1); // remove items from the list.
             console.log(order_list); // check
@@ -223,10 +235,50 @@ function delete_button(id, order_list, colorCount) {
     }
     open_order_list(order_list);
 }
-function add_button(id, order_list , colorCount) {
-
+function add_button(id, order_list) {
+    /*parsing*/
+    const target = document.getElementById(id); // bring content(drink) from range div
+    const innerText = target.innerText.substring(3); // get substring without "number."
+    const drink = document.getElementById(innerText); // get item image div on the table
+    console.log(drink.id); // check
+    /*parsing*/
+    for (let i = 0; i < order_list.length; i++) {
+        //only matched item in the ordered_list.
+        if (order_list[i].name == drink.id) {
+            order_list[i].number++;
+            break;
+        }
+    }
+    open_order_list(order_list);
 }
-function remove_button(id, order_list , colorCount) {
+function remove_button(id, order_list) {
+    /*parsing*/
+    const target = document.getElementById(id); // bring content(drink) from range div
+    const innerText = target.innerText.substring(3); // get substring without "number."
+    const drink = document.getElementById(innerText); // get item image div on the table
+    console.log(drink.id); // check
+    /*parsing*/
+    for (let i = 0; i < order_list.length; i++) {
+        //only matched item in the ordered_list.
+        if (order_list[i].name == drink.id) {
+            if (order_list[i].number == 1) {
+                drink.style.borderStyle = "none";
+                drink.style.borderColor = "none";
+                colorCount--; // 7 was max numbers to select.
+                console.log(colorCount);
+                order_list.splice(i, 1); // remove items from the list.
+                break;
+            }
+            else {
+                console.log(colorCount);
+                order_list[i].number--;
+                console.log(order_list); // check
+                break;
+            }
+
+        }
+    }
+    open_order_list(order_list);
 
 }
 

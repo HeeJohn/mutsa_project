@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const cardMovingButton = document.getElementById('insert_card_moving'); // moving card
   const deleteButtons = document.querySelectorAll('.delete_button'); // delete selected items from the oreder_list
   const minusButton = document.querySelectorAll('.minus_button');// add selected items from the oreder_list
-  const plusButton = document.querySelectorAll('plus_button');// remove selected items from the oreder_list
+  const plusButton = document.querySelectorAll('.plus_button');// remove selected items from the oreder_list
 
   /* -------------- event listener ---------- */
 
@@ -31,7 +31,6 @@ document.addEventListener('DOMContentLoaded', function () {
       const target = this.getAttribute('id');
       const number = target[target.search('[0-9]')];
       const content = document.getElementById('range_' + number);
-      colorCount--;
       commonModule.delete_button(content.id, order_list);
     });
   });
@@ -39,19 +38,18 @@ document.addEventListener('DOMContentLoaded', function () {
   minusButton.forEach((button) => {
     button.addEventListener('click', function () {
       const target = this.getAttribute('id');
-      target.search('[0-9]');
-      const content = document.getElementById('range_' + target);
-      commonModule.add_button(content.id, order_list);
+      const number = target[target.search('[0-9]')];
+      const content = document.getElementById('range_' + number);
+      commonModule.remove_button(content.id, order_list);
     });
   });
   // remove selected items from the oreder_list
   plusButton.forEach((button) => {
     button.addEventListener('click', function () {
       const target = this.getAttribute('id');
-      target.search('[0-9]');
-      const content = document.getElementById('range_' + target);
-      
-      commonModule.remove_button(content.id, order_list, colorCount);
+      const number = target[target.search('[0-9]')];
+      const content = document.getElementById('range_' + number);
+      commonModule.add_button(content.id, order_list);
     });
   });
   // moving card
@@ -147,7 +145,7 @@ function itemGet(name, price) {
 }
 
 const order_list = [];
-let colorCount = commonModule.colorCount;
+const colorCount = commonModule.colorCount;
 
 // when the user clicks any image of the item on the menu table.
 // add selected items to the order_list array;
@@ -166,17 +164,18 @@ function pick_item(id, price) {
     }
   }
   if (!found) {
-    if (colorCount == 7) {
+    if (commonModule.getColorCount() == 7) {
       maxItems();
       return;
     }
 
-    colorCount++;
+    commonModule.addColorCount();
+    console.log(commonModule.getColorCount());
     drink.style.borderStyle = "solid";
     drink.style.borderColor = "red";
     order_list.push(order);
   }
-  console.log(colorCount);
+
   commonModule.open_order_list(order_list);
 }
 
