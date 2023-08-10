@@ -273,7 +273,6 @@ function remove_button(id, order_list) {
             }
             else {
                 console.log(colorCount);
-                order_list[i].number--;
                 console.log(order_list); // check
                 break;
             }

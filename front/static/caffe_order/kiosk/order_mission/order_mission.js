@@ -68,6 +68,17 @@ document.addEventListener('DOMContentLoaded', function () {
       const number = target[target.search('[0-9]')];
       const content = document.getElementById('range_' + number);
       commonModule.delete_button(content.id, order_list);
+      let id = content.innerText.substring(3);
+      let mission = 0;
+      missionItems.forEach((value) => {
+        mission++;
+        if (id == value) {
+          const checkbox = document.getElementById('item_' + (mission));
+          checkbox.disabled = false;
+          checkbox.checked = false;
+          checkbox.disabled = true;
+        }
+      });
     });
   });
   // add selected items from the oreder_list
@@ -77,6 +88,27 @@ document.addEventListener('DOMContentLoaded', function () {
       const number = target[target.search('[0-9]')];
       const content = document.getElementById('range_' + number);
       commonModule.remove_button(content.id, order_list);
+
+      /*
+      let id = content.innerText.substring(3);
+      let mission = 0;
+      
+      order_list.forEach(value => function () {
+        if (value.name == id)
+          value.number--;
+        if (value.number == 0) {
+          missionItems.forEach((value) => {
+            mission++;
+            if (value == id) {
+              const checkbox = document.getElementById('item_' + (mission));
+              checkbox.disabled = false;
+              checkbox.checked = false;
+              checkbox.disabled = true;
+            }
+          });
+        }
+      });*/
+      
     });
   });
   // remove selected items from the oreder_list
@@ -109,47 +141,59 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
 
+    // it shows whether the user passed the mission or not.
+    let missionCompleted = false;
+    let missionItemAllPicked = false;
+    let successMessage = '음료 미션\n';
+    let errorMessage = '음료 미션\n';
     let count = 0;
     for (let i = 1; i <= missionItems.length; i++) {
       let success = document.getElementById('item_' + i).checked;
       if (success == true)
         count++;
     }
-
-    // it shows whether the user passed the mission or not.
-    let missionCompleted = false;
-    let missionItemAllPicked = false;
-    let successMessage = '';
-    let errorMessage = '';
+    if (missionItems.length == count)
+      missionItemAllPicked = true;
 
     // depends on mission level, different standard
     switch (missionItems.length) {
-      case 1: if (missionItemAllPicked) { //beginner
-        missionCompleted = true;
-        successMessage = '음료 미션\n';
-      } else {
-        errorMessage = '음료 미션\n';
-      } break;
-      case 2: if (eatInSelected && missionItemAllPicked) { // intermedate
-        missionCompleted = true;
-        successMessage = '음료미션\n먹고가기 미션\n';
-      } {
-          if (missionItemAllPicked) {
-            errorMessage = '먹고가기 미션\n';
-          } else { errorMessage = '음료 미션\n' }
-        } break;
-      case 3: if (eatInSelected && missionItemAllPicked && couponUsed) {
-        missionCompleted = true;
-        successMessage = '음료미션\n먹고가기 미션\n쿠폰사용 미션\n';
+      case 1: {
+        if (missionItemAllPicked) { //beginner
+          missionCompleted = true;
+          console.log(successMessage);
+        } console.log(errorMessage); break;
       }
-      else {
-        if (!missionItemAllPicked) errorMessage = '음료미션\n';
-        if (!eatInSelected) errorMessage += '먹고가기 미션\n';
-        if (!couponUsed) errorMessage += '쿠폰사용 미션\n';
-      } break;
+      case 2: {
+        if (eatInSelected && missionItemAllPicked) { // intermedate
+          missionCompleted = true;
+          successMessage += '먹고가기 미션\n';
+          console.log(successMessage);
+        } else {
+          if (missionItemAllPicked)
+            errorMessage = '먹고가기 미션\n';
+          console.log(errorMessage);
+        } break;
+      }
+      case 3: {
+        if (eatInSelected && missionItemAllPicked && couponUsed) {
+          missionCompleted = true;
+          successMessage += '먹고가기 미션\n쿠폰사용 미션\n';
+          console.log(successMessage);
+        }
+        else {
+          if (missionItemAllPicked) errorMessage = '';
+          console.log(errorMessage);
+          if (!eatInSelected) errorMessage += '먹고가기 미션\n';
+          console.log(errorMessage);
+          if (!couponUsed) errorMessage += '쿠폰사용 미션\n';
+          console.log(errorMessage);
+        }
+        break;
+      }
       default: throw Error('out of range');
     }
-
+    console.log(errorMessage);
+    console.log(successMessage);
     buy_item(); // buy items final check out
   });
   // confirmButton to scroll down the window page
