@@ -68,42 +68,6 @@
     padding-left: 5%;
 }
 
-#hex {
-    width: 80px;
-    height: 40px;
-    background: #6F9669;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 25px;
-    color: white;
-}
-
-#hex::before {
-    content: "";
-    position: absolute;
-    top: -25px;
-    left: 0;
-    width: 0;
-    height: 0;
-    border-left: 40px solid transparent;
-    border-right: 40px solid transparent;
-    border-bottom: 25px solid #6F9669;
-}
-
-#hex::after {
-    content: "";
-    position: absolute;
-    bottom: -25px;
-    left: 0;
-    width: 0;
-    height: 0;
-    border-left: 40px solid transparent;
-    border-right: 40px solid transparent; 
-    border-top: 25px solid #6F9669;
-}
-
 .hex2 {
     width: 80%;
     padding-left: 10px;
@@ -130,7 +94,16 @@
     padding-right: 5%;
 }
 
-#hex3 {
+
+#hex {
+    font-size: 25px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+/* #hex3 {
     width: 80px;
     height: 40px;
     background: #6F9669;
@@ -164,7 +137,7 @@
     border-left: 40px solid transparent;
     border-right: 40px solid transparent; 
     border-top: 25px solid #6F9669;
-}
+} */
 
 .hex4 {
     width: 80%;
