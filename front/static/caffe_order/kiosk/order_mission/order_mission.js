@@ -47,11 +47,15 @@ document.addEventListener('DOMContentLoaded', function () {
   const deleteButtons = document.querySelectorAll('.delete_button'); // delete selected items from the oreder_list
   const minusButton = document.querySelectorAll('.minus_button');// add selected items from the oreder_list
   const plusButton = document.querySelectorAll('.plus_button');// remove selected items from the oreder_list
-
+  const eatInButton = document.getElementById('먹고가기');
 
   /* -------------- event listener ---------- */
 
-
+  // select eatin when the user pays
+  let eatInSelected = false;
+  eatInButton.addEventListener('click', function () {
+    eatInSelected = true;
+  });
   // delete selected items from the oreder_list
   deleteButtons.forEach((button) => {
     button.addEventListener('click', function () {
@@ -82,31 +86,53 @@ document.addEventListener('DOMContentLoaded', function () {
   // moving card
   cardMovingButton.addEventListener('click', function () {
     function buy_item(items) {
-      if (missionSucced == true) {
+      if (missionCompleted == true) {
+        let count = 0;
         alert(
           "축하합니다. " +
-          items +
+          items.forEach(value => (++count) + '. ' + value + '\n') +
           " 주문하기 성공!"
         );
         location.href = returnAddress;
       } else {
         alert(
-          items + " 주문하기 실패! 다시 도전해보세요."
+          +
+          " 미션 실패!"+ " 다시 도전해보세요."
         );
         location.href =
           returnAddress;
       }
     }
 
-    let missionSucced = false;
+    let missionItemAllPicked = false;
     let count = 0;
     for (let i = 1; i <= missionItems.length; i++) {
       let success = document.getElementById('item_' + i).checked;
       if (success == true)
         count++;
     }
-    if (missionItems.length == count)
-      missionSucced = true;
+
+    // it shows whether the user passed the mission or not.
+    let missionCompleted = false;
+
+    // if all mission items selected.
+    if (missionItems.length == count) { //beginner
+      missionCompleted = true;
+    }
+
+    // depends on mission level, different standard
+    switch (missionItems.length) {
+      case 1: if (missionItemAllPicked) { //beginner
+        missionCompleted = true;
+      } break;
+      case 2: if (eatInSelected && missionItemAllPicked) { // intermedate
+        missionCompleted = true;
+      } break;
+      case 3: if (eatInSelected && missionItemAllPicked && couponUsed) {
+        missionCompleted = true;
+      } break;
+      default: throw Error('out of range');
+    }
 
     buy_item(missionItems);
   });
@@ -268,13 +294,13 @@ function pick_item(id, price) {
 
   let checked = new Map();
   missionItems.forEach((value) => {
-    checked.set(value,false);
+    checked.set(value, false);
   });
 
   let mission = 0;
   missionItems.forEach((value) => {
     mission++;
-    if (id == value ) {
+    if (id == value) {
       const checkbox = document.getElementById('item_' + (mission));
       checkbox.disabled = false;
       checkbox.checked = true;

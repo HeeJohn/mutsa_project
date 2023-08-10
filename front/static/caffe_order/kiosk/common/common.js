@@ -61,7 +61,7 @@ let setTime = min * 3; //3min
 
 //when timeOut method's called, sends the user to the beginning : ex) session expired.
 function invalid() {
-    location.href = "/front/static/caffe_order/kiosk/simulation/simulator.html";
+    location.reload(true);
     clearInterval(timer_start); // remove setInterval method.
 }
 
