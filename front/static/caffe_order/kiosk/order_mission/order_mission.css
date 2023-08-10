@@ -103,15 +103,3 @@ input[type=checkbox] {
 #level_3{
     display: none;
 }
-#barcode{
-    position: relative;
-}
-
-#barcode_insert{
-    display: none;
-    position: absolute;
-    left:20%;
-    top:150%;
-    width:80%;
-    height:50%;
-}

@@ -48,9 +48,14 @@ document.addEventListener('DOMContentLoaded', function () {
   const minusButton = document.querySelectorAll('.minus_button');// add selected items from the oreder_list
   const plusButton = document.querySelectorAll('.plus_button');// remove selected items from the oreder_list
   const eatInButton = document.getElementById('먹고가기');
-
+  const couponButton = document.getElementById('쿠폰사용');
   /* -------------- event listener ---------- */
-
+  // use coupon when the user pays
+  let couponUsed=false;
+  couponButton.addEventListener('click',function(){
+    commonModule.useCoupon();
+    couponUsed = true;
+  });
   // select eatin when the user pays
   let eatInSelected = false;
   eatInButton.addEventListener('click', function () {
@@ -85,25 +90,25 @@ document.addEventListener('DOMContentLoaded', function () {
   });
   // moving card
   cardMovingButton.addEventListener('click', function () {
-    function buy_item(items) {
+    function buy_item() {
       if (missionCompleted == true) {
-        let count = 0;
         alert(
           "축하합니다. " +
-          items.forEach(value => (++count) + '. ' + value + '\n') +
-          " 주문하기 성공!"
+          successMessage
+          +"성공!"
         );
         location.href = returnAddress;
       } else {
-        alert(
+        alert(errorMessage
           +
-          " 미션 실패!"+ " 다시 도전해보세요."
+          "실패!" + " 다시 도전해보세요."
         );
         location.href =
           returnAddress;
       }
     }
-
+    let successMessage = '음료 미션\n';
+    let errorMessage = '음료 미션\n';
     let missionItemAllPicked = false;
     let count = 0;
     for (let i = 1; i <= missionItems.length; i++) {
@@ -127,14 +132,22 @@ document.addEventListener('DOMContentLoaded', function () {
       } break;
       case 2: if (eatInSelected && missionItemAllPicked) { // intermedate
         missionCompleted = true;
-      } break;
+        successMessage += '먹고가기 미션\n';
+      } {
+          if (!eatInSelected) { errorMessage += '먹고가기 미션\n'; }
+        } break;
       case 3: if (eatInSelected && missionItemAllPicked && couponUsed) {
         missionCompleted = true;
+        successMessage += '먹고가기 미션\n쿠폰사용 미션\n';
+      }
+      else {
+        if (!eatInSelected)errorMessage += '먹고가기 미션\n';
+        if(!couponUsed)errorMessage += '쿠폰사용 미션\n';
       } break;
       default: throw Error('out of range');
     }
 
-    buy_item(missionItems);
+    buy_item(); // buy items final check out
   });
   // confirmButton to scroll down the window page
   confirmPayButton.addEventListener('click', function () {
