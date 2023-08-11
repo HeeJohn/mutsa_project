@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <script src="/front/static/bus_reservation/bus_main.js"></script>
+    <script src="/front/static/bus_reservation/bus_common.js"></script>
     <div id="wrap">
         <div class=left_box>
             <div class="side_nav">
@@ -34,16 +34,16 @@
             </div>
             <div id="page_2">
                 <div id="page_2_header_section">
-                    <button class="back_btn"> </button>
+                    <button class="back_btn" onclick="goBack()"> </button>
                     <div class="page_2_title">출발지 검색</div>
                 </div>
                 <div class="start-end_section">
-                    <button class="start_btn">
-                        <div class="small_text">출발지</div>
+                    <button id="start_btn">
+                        <div id="start_text">출발지</div>
                         <div class="start_result">출발지를 선택해주세요.</div>
                     </button>
-                    <button class="end_btn" onclick="dis_page_3()">
-                        <div class="small_text">도착지</div>
+                    <button id="end_btn" onclick="dis_page_3()">
+                        <div id="end_text">도착지</div>
                         <div class="end_result">도착지를 선택해주세요.</div>
                     </button>
                 </div>
@@ -61,7 +61,7 @@
                         <button class="province">대구/경북</button>
                     </div>
                     <div class="low_list">
-                        <button class="city">서울경부</button>
+                        <button class="city" onclick="focus()">서울경부</button>
                         <button class="city">센트럴시티(서울)</button>
                         <button class="city">동서울</button>
                         <button class="city">광주(유-스퀘어)</button>
@@ -79,7 +79,7 @@
             </div>
             <div id="page_3">
                 <div id="page_2_header_section">
-                    <button class="back_btn"> </button>
+                    <button class="back_btn" onclick="goBack()"> </button>
                     <div class="page_2_title">배차 조회</div>
                 </div>
                 <div class="page_3_start-end_section">
@@ -145,7 +145,7 @@
             </div>
             <div id="page_4">
                 <div id="page_2_header_section">
-                    <button class="back_btn"></button>
+                    <button class="back_btn" onclick="goBack()"></button>
                     <div class="page_2_title">매수 및 좌석 선택</div>
                 </div>
                 <div class="page_4_seat_info_section">
@@ -182,7 +182,7 @@
             </div>
             <div id="page_5">
                 <div id="page_2_header_section">
-                    <button class="back_btn"></button>
+                    <button class="back_btn" onclick="goBack()"></button>
                     <div class="page_2_title">승차권 예약</div>
                 </div>
                 <div class="dis_ticket_section">
