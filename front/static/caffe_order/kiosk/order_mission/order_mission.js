@@ -20,7 +20,6 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
   }
-  console.log(menu);
 });
 /* ========= preset ========= */
 
@@ -89,26 +88,22 @@ document.addEventListener('DOMContentLoaded', function () {
       const content = document.getElementById('range_' + number);
       commonModule.remove_button(content.id, order_list);
 
-      /*
+
       let id = content.innerText.substring(3);
       let mission = 0;
-      
-      order_list.forEach(value => function () {
-        if (value.name == id)
-          value.number--;
-        if (value.number == 0) {
-          missionItems.forEach((value) => {
-            mission++;
-            if (value == id) {
-              const checkbox = document.getElementById('item_' + (mission));
-              checkbox.disabled = false;
-              checkbox.checked = false;
-              checkbox.disabled = true;
-            }
-          });
-        }
-      });*/
-      
+
+      if (order_list.length == 0) {
+        missionItems.forEach((value) => {
+          mission++;
+          if (value == id) {
+            const checkbox = document.getElementById('item_' + (mission));
+            checkbox.disabled = false;
+            checkbox.checked = false;
+            checkbox.disabled = true;
+          }
+        });
+      }
+
     });
   });
   // remove selected items from the oreder_list
@@ -160,40 +155,34 @@ document.addEventListener('DOMContentLoaded', function () {
       case 1: {
         if (missionItemAllPicked) { //beginner
           missionCompleted = true;
-          console.log(successMessage);
-        } console.log(errorMessage); break;
+
+        } break;
       }
       case 2: {
         if (eatInSelected && missionItemAllPicked) { // intermedate
           missionCompleted = true;
           successMessage += '먹고가기 미션\n';
-          console.log(successMessage);
+
         } else {
           if (missionItemAllPicked)
             errorMessage = '먹고가기 미션\n';
-          console.log(errorMessage);
+
         } break;
       }
       case 3: {
         if (eatInSelected && missionItemAllPicked && couponUsed) {
           missionCompleted = true;
           successMessage += '먹고가기 미션\n쿠폰사용 미션\n';
-          console.log(successMessage);
         }
         else {
           if (missionItemAllPicked) errorMessage = '';
-          console.log(errorMessage);
           if (!eatInSelected) errorMessage += '먹고가기 미션\n';
-          console.log(errorMessage);
           if (!couponUsed) errorMessage += '쿠폰사용 미션\n';
-          console.log(errorMessage);
         }
         break;
       }
       default: throw Error('out of range');
     }
-    console.log(errorMessage);
-    console.log(successMessage);
     buy_item(); // buy items final check out
   });
   // confirmButton to scroll down the window page
@@ -297,7 +286,6 @@ function generateUniqueRandomNumbers(count, max) {
 function handleButtonClick(event) {
   // the number of drinks that the user has to order.
   const buttonValue = event.target.value;
-  console.log(buttonValue);
   // create the unique random numbers to get random drinks.
   generateUniqueRandomNumbers(buttonValue, menu.size);
 

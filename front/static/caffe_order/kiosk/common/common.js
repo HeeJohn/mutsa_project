@@ -220,7 +220,7 @@ function delete_button(id, order_list) {
     const target = document.getElementById(id); // bring content(drink) from range div
     const innerText = target.innerText.substring(3); // get substring without "number."
     const drink = document.getElementById(innerText); // get item image div on the table
-    console.log(drink.id); // check
+
     /*parsing*/
     // to erase the item from the order_list, and unmark the item with nomral boarder.
     for (let i = 0; i < order_list.length; i++) {
@@ -229,9 +229,8 @@ function delete_button(id, order_list) {
             drink.style.borderStyle = "none";
             drink.style.borderColor = "none";
             colorCount--;
-            console.log(colorCount);
             order_list.splice(i, 1); // remove items from the list.
-            console.log(order_list); // check
+
             break;
         }
     }
@@ -242,7 +241,7 @@ function add_button(id, order_list) {
     const target = document.getElementById(id); // bring content(drink) from range div
     const innerText = target.innerText.substring(3); // get substring without "number."
     const drink = document.getElementById(innerText); // get item image div on the table
-    console.log(drink.id); // check
+
     /*parsing*/
     for (let i = 0; i < order_list.length; i++) {
         //only matched item in the ordered_list.
@@ -258,7 +257,7 @@ function remove_button(id, order_list) {
     const target = document.getElementById(id); // bring content(drink) from range div
     const innerText = target.innerText.substring(3); // get substring without "number."
     const drink = document.getElementById(innerText); // get item image div on the table
-    console.log(drink.id); // check
+
     /*parsing*/
     for (let i = 0; i < order_list.length; i++) {
         //only matched item in the ordered_list.
@@ -267,13 +266,11 @@ function remove_button(id, order_list) {
                 drink.style.borderStyle = "none";
                 drink.style.borderColor = "none";
                 colorCount--; // 7 was max numbers to select.
-                console.log(colorCount);
                 order_list.splice(i, 1); // remove items from the list.
                 break;
             }
             else {
-                console.log(colorCount);
-                console.log(order_list); // check
+                order_list[i].number--;
                 break;
             }
 

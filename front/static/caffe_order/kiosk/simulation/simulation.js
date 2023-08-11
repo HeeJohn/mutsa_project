@@ -175,7 +175,6 @@ function pick_item(id, price) {
     }
 
     commonModule.addColorCount();
-    console.log(commonModule.getColorCount());
     drink.style.borderStyle = "solid";
     drink.style.borderColor = "red";
     order_list.push(order);
