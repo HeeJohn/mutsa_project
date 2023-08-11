@@ -9,7 +9,7 @@
     <link href="https://webfontworld.github.io/BMHannaPro/BMHannaPro.css" rel="stylesheet"> <!-- 배달의 민족 한나체 (호스팅방식) -->
 </head>
 
-<body onload="page_default()">
+<body>
     <script src="/front/static/bus_reservation/bus_main.js"></script>
     <div id="wrap">
         <div class=left_box>
@@ -25,7 +25,7 @@
             <div id="page_1">
                 <div class="page_1_dis_section">
                     <div class="page_1_title">버스 승차권 발매기</div>
-                    <div class="page_1_time">time</div>
+                    <div id="page_1_time"></div>
                 </div>
                 <div class="page_1_btn_section">
                     <button class="on_the_spot" onclick="dis_page_2()">현장발매</button>
@@ -34,15 +34,7 @@
             </div>
             <div id="page_2">
                 <div id="page_2_header_section">
-                    <button class="back_btn">
-                        <svg 
-                            width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <mask id="path-1-inside-1_11_2" fill="white">
-                            <path d="M0.144661 24.8553L24.8934 0.10661L49.6421 24.8553L24.8934 49.6041L0.144661 24.8553Z"/>
-                            </mask>
-                            <path d="M0.144661 24.8553L-5.51219 19.1985L-11.169 24.8553L-5.51219 30.5122L0.144661 24.8553ZM5.80152 30.5122L30.5503 5.76346L19.2365 -5.55024L-5.51219 19.1985L5.80152 30.5122ZM30.5503 43.9472L5.80152 19.1985L-5.51219 30.5122L19.2365 55.2609L30.5503 43.9472Z" fill="#000080" mask="url(#path-1-inside-1_11_2)"/>
-                        </svg>
-                    </button>
+                    <button class="back_btn"> </button>
                     <div class="page_2_title">출발지 검색</div>
                 </div>
                 <div class="start-end_section">
@@ -87,15 +79,7 @@
             </div>
             <div id="page_3">
                 <div id="page_2_header_section">
-                    <button class="back_btn">
-                        <svg 
-                            width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <mask id="path-1-inside-1_11_2" fill="white">
-                            <path d="M0.144661 24.8553L24.8934 0.10661L49.6421 24.8553L24.8934 49.6041L0.144661 24.8553Z"/>
-                            </mask>
-                            <path d="M0.144661 24.8553L-5.51219 19.1985L-11.169 24.8553L-5.51219 30.5122L0.144661 24.8553ZM5.80152 30.5122L30.5503 5.76346L19.2365 -5.55024L-5.51219 19.1985L5.80152 30.5122ZM30.5503 43.9472L5.80152 19.1985L-5.51219 30.5122L19.2365 55.2609L30.5503 43.9472Z" fill="#000080" mask="url(#path-1-inside-1_11_2)"/>
-                        </svg>
-                    </button>
+                    <button class="back_btn"> </button>
                     <div class="page_2_title">배차 조회</div>
                 </div>
                 <div class="page_3_start-end_section">
@@ -108,7 +92,7 @@
                         <div class="page_3_end_result">도착지</div>
                     </button>
                 </div>
-                <div class="page_3_date_section">08.10(목)</div>
+                <div id= page_3_date_section class="page_3_date_section">08.10(목)</div> 
                 <div class="page_3_list_section">
                     <div class="bus_time_list">
                         <button class="bus_time" onclick="dis_page_4()">
@@ -161,15 +145,7 @@
             </div>
             <div id="page_4">
                 <div id="page_2_header_section">
-                    <button class="back_btn">
-                        <svg 
-                            width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <mask id="path-1-inside-1_11_2" fill="white">
-                            <path d="M0.144661 24.8553L24.8934 0.10661L49.6421 24.8553L24.8934 49.6041L0.144661 24.8553Z"/>
-                            </mask>
-                            <path d="M0.144661 24.8553L-5.51219 19.1985L-11.169 24.8553L-5.51219 30.5122L0.144661 24.8553ZM5.80152 30.5122L30.5503 5.76346L19.2365 -5.55024L-5.51219 19.1985L5.80152 30.5122ZM30.5503 43.9472L5.80152 19.1985L-5.51219 30.5122L19.2365 55.2609L30.5503 43.9472Z" fill="#000080" mask="url(#path-1-inside-1_11_2)"/>
-                        </svg>
-                    </button>
+                    <button class="back_btn"></button>
                     <div class="page_2_title">매수 및 좌석 선택</div>
                 </div>
                 <div class="page_4_seat_info_section">
@@ -206,15 +182,7 @@
             </div>
             <div id="page_5">
                 <div id="page_2_header_section">
-                    <button class="back_btn">
-                        <svg 
-                            width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <mask id="path-1-inside-1_11_2" fill="white">
-                            <path d="M0.144661 24.8553L24.8934 0.10661L49.6421 24.8553L24.8934 49.6041L0.144661 24.8553Z"/>
-                            </mask>
-                            <path d="M0.144661 24.8553L-5.51219 19.1985L-11.169 24.8553L-5.51219 30.5122L0.144661 24.8553ZM5.80152 30.5122L30.5503 5.76346L19.2365 -5.55024L-5.51219 19.1985L5.80152 30.5122ZM30.5503 43.9472L5.80152 19.1985L-5.51219 30.5122L19.2365 55.2609L30.5503 43.9472Z" fill="#000080" mask="url(#path-1-inside-1_11_2)"/>
-                        </svg>
-                    </button>
+                    <button class="back_btn"></button>
                     <div class="page_2_title">승차권 예약</div>
                 </div>
                 <div class="dis_ticket_section">
@@ -244,5 +212,6 @@
         </div>
     </div>
 </body>
+
 
 </html>

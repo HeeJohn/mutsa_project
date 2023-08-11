@@ -47,27 +47,27 @@
 }
 .page_1_dis_section{
     width: 100%; height: 20%;
-    border: 1px solid #000;
+    /* border: 1px solid #000; */
     display: flex;
     flex-direction: row;
 }
 .page_1_title{
-    width: 70%; height: 100%;
-    border: 1px solid #000;
-    text-align: center;
-    font-size: 40px;
+    width: 60%; height: 100%;
+    /* border: 1px solid #000; */
+    text-align: end;
+    font-size: 50px;
     padding-top: 8%;
 }
-.page_1_time{
-    width: 30%; height: 100%;
-    border: 1px solid #000;
+#page_1_time{
+    width: 40%; height: 100%;
+    /* border: 1px solid #000; */
     text-align: center;
     font-size: 40px;
     padding-top: 8%;
 }
 .page_1_btn_section{
     width: 100%; height: 80%;
-    border: 1px solid #000;
+    /* border: 1px solid #000; */
 
     display: flex;
     justify-content: center;
@@ -76,23 +76,23 @@
 }
 .on_the_spot{
     width: 50%; height: 30%;
-    border: 1px solid #000;
+    border: 7px solid #62845c;
     border-radius: 30px;
-    background-color: orange;
+    background-color:#ABCBA4;
     color: white;
-    font-size: 30px;
+    font-size: 40px;
     margin-bottom: 8%;
 }
 .online_reservation{
     width: 50%; height: 30%;
-    border: 1px solid #000;
+    border: 7px solid #62845c;
     border-radius: 30px;
-    background-color: navy;
+    background-color:#ABCBA4;
     color: white;
-    font-size: 30px;
+    font-size: 40px;
 }
-.on_the_spot:hover{background-color: rgba(255, 166, 0, 0.818);}
-.online_reservation:hover{background-color: rgba(0, 0, 128, 0.798);}
+.on_the_spot:hover{background-color:#90ab8a;}
+.online_reservation:hover{background-color: #90ab8a;}
 /*------------------------------------------------------------------------------*/
 #page_2{
     width: 100%; height: 100%;
@@ -105,13 +105,17 @@
     /* border: 1px solid #000; */
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
+    align-items: center;
 }
 .back_btn{
-    width: 12%; height: 100%;
+    width: 12%; height: 80%;
     border: 0px;
-    background-color: #00000000;
+    background-image: url("/front/static/bus_reservation/back_btn_img.png");
     cursor: pointer;
+    background-color: #00000000;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-left: 2%;
 }
 .page_2_title{
     width: 88%; height: 100%;       /*나중에 가운데 정렬 시키기*/
@@ -119,6 +123,8 @@
     font-size: 35px;
     padding-top: 2%;
     text-align: center;
+    position: relative;
+    left:-7%;
 }
 .start-end_section{
     width: 100%; height: 22%;
@@ -213,13 +219,6 @@
     flex-direction: row;
     align-items: flex-start;
 }
-.page_3_back_btn{
-    width: 12%; height: 100%;
-    border: 0px;
-    background-color: #00000000;
-    cursor: pointer;
-    
-}
 .page_3_title{
     width: 88%; height: 100%;       /*나중에 가운데 정렬 시키기*/
     float: center;
@@ -273,12 +272,13 @@
     padding-top: 15%;
 }
 .page_3_date_section{
-    width: 100%; height: 5%;
+    width: 100%; height: 8%;
     text-align: center;
     font-size: 30px;
+    padding-top: 1%;
 }
 .page_3_list_section{
-    width: 100%; height: 65%;
+    width: 100%; height: 62%;
 }
 .bus_time_list{
     width: 100%; height: 100%;
