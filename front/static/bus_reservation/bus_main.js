@@ -1,4 +1,4 @@
-function displayClock(targetId) {  //시계함수 - 아이디만 넣으면 동작가능
+function displayClock(targetId) {  //시계함수 
     let target = document.getElementById(targetId);
 
     function updateClock() {
