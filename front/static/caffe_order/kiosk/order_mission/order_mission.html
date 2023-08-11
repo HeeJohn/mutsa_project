@@ -481,7 +481,24 @@
                 <div id="barcode">
                     <div id="barcode_img"></div>
                     <div class="barcode_text">바코드를 대주세요</div>
-                    <div id="barcode_png"></div>
+                    <div id="barcode_png">
+                        <div id='barcode_scan'>
+                            <svg width="128" height="128" viewBox="0 0 128 128" fill="none"
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <rect width="128" height="128" fill="url(#pattern0)" />
+                            <defs>
+                                <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1"
+                                    height="1">
+                                    <use xlink:href="#image0_2_3" transform="scale(0.0078125)" />
+                                </pattern>
+                                <image id="image0_2_3" width="128" height="128"
+                                    xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAADsQAAA7EB9YPtSQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAmGSURBVHic7Z15bBTXHce/v1kbDBjIOoaAXQcDjjlsMESxMaHFFziYtFRQtalSlKIW6BGaVCGpRJqeUoiqEKmVCmqE1EYNVdqqpSqUOHaxYyAcPtRAikM4jQPmsOM1lBjb4Hm//gG77DHLOOwxhvf7SJb2zXvz+73VfLyzY78DEARBXyj4wPRHFsw2DK5gxoSYJibFYOO4i7D9UEPNsVjmGqzkFZRlm8RLwJzFbIRci2hChFalqPLDpp3vBxz3L+QWlLwA0CsAXLHsTBC9xLTyv401f4pjTsfJzS9bDuLNAJLimNYEeN3hhndf9R7wCXDjN181Ir4X30u3y4Uph/bXtjmQO+7kzS1NN00cBTDCgfSmUka+95PA8B41DLUYzlx8ABih+qnYodxxx+ynEjhz8QHAZRhc4S34BABRmiPduYkiJDiZP54wOfaLdgNCuvelcbt2caQv0TB3Od2JeHHzvfY53Q9gcAhgMvNzBw/UnXa6I/Hi4IG600y0FoDpdF8G+LHLZwA6EPXsTCdA5tbmxrqmqMce5DTX12zMLSiuB7uWgTgr+hm4EKAMu1YDE4Cw73B97dcj7pMQwOGGuiYAMZE/d07Jn8F4wq7dYLgFCA4iAmiOCKA5IoDmiACaIwJojgigOSKA5ogAmiMCaI4IoDkigOaIAJojAmiOCKA5IoDmiACaE7WRuC0tLUnJycnlhmFkE5Gzo17vUZi5n4iOud3uaiKKyqDSqAjQ1dVVpJR6E0AGADBzNMIKFjAzPB7Pma6uruVut3t3pPEivgV4PJ6ZSqm3cfPiC3EhQylV6fF4ZkQayE8AbgnbinEybBXzKwCGR9oR4TMzXCm1Plwlg8JfT4VT3pc+AVxM2wD0WjQ3Af6HZRLmIQAWDqS3QvQhonJmTrSsVLQV1vMOel2E7d6CT4BDDTXHiGklgG6/xn3M/MzN4cshtLe3uwFYd0CIB0Pa29tTrCqaG2samehZBM5A6iamlf7T8UPmpOfNLU1X/VSsCAmJhrnrdjN2Ojo6xhuGcS6CNyBEiFIqbcyYMefD1c8qLM68rlxFBqPfSOC64BnYES1KIAI4j50AdsgfgjRHBNAcEUBzRADNidmqHGfbzmP3vgbbdpMzH8Sc/NkAgH/uqEb31R5fXdq4sSj+wlzL81pOf4z9Df+xjZ83YzpypmUHHNuzrwFn2s5j6kOT8PCsG39MY2a89bdtAe0mZKRhXmG+ZdxPOj2ort1jm98/BwDs2nsAbecu+soJLhe+tuyLvvLJllbUNx0MiDH/0QJ8Ln28ba47IWYCnGhpxeu/32LbbtGCIp8AW/6yFe0dnb66/Ifzwgpw7GQLXv+D/cJiq1Y8GSJAZfW72FvfhKVfWhQgQHB/i+YVhhXg3IX2Ab0//xwAsKOqFvWNt1ZqS0xMCBDgyNETIXHTxj8QMwHkFqA5IoDmiACaIwJojgigOSKA5ogAmiMCaI4IoDkigOaIAJojAmiOCKA5IoDmiACaIwJojgigOSKA5oRMDPm0fPI3GbQKgO0YJHK5XJw6znKH0Z7eXnR1XbbtwLBhSXDfNxoAcLG9A6apfHVDhw7B/Sluy/Ou9vTg0qX/2cYfOTIZI5MDd2jzdF1Cb28fRgwfhtGjRwG4MSTs/IX2gHZJSUOR4r7PMm7ftWvo7Oyyze+fAwA6PV3o67vmKxMB48c94Ct3X+3B5cuB78vtHo1hSdb7S9InF1rZNO33HiI6R1Cbk6tO/jHgsH/hSnnWJgDfsw0m3M1sGll94mlvwSfAlYVZRSDUOdIlIZ4wk1E0qurYHsDvOwABFeHPEe4hyGC12FuQL4Ga4xOAid4GIIv73PuwUmqHt+ATYGT18d0gbHKmT0LcYGwctfPUe95i6GPgY5OfYsZKgNKD64KRx8C76DEQ3EZEm5OrTrwZcL79ieG53QIRde8dwM9efs02xqIFRVi3dg0A4KtPfTdkatiGl1+yPK+qZhfWb/itbfxVK57E8ieWBhx78ee/8k0N++H3vw0AUEqh5PHAjTaL5hXily+ttYz7QfNH+MHzP7HN758DAH700/UhU8N2bnvLV/7XOzV49Te/C4jxix+vRfHnCy3jywIRQkSIAJojAmiOCKA5IoDmiACaIwJojgigOSKA5ogAmiMCaI4IoDkigOaIAJojAmiOCKA5IoDmiACaE7PVwrMnT8Rza1bZtnsw49bQw9UrvoGrPbeWix875v6w5+VMm4Lnn1kdcMw0Fa76LTcP3FguPpiK8hLk5kzF1Icm+Y4REb7zreUB7SZkpIXNnzZubEh7K/xzAMDjj5Vi1owcXznBFbjL7rQpWSFxsyZaDruMCrJp1F2OjAkUIkIE0BwRQHNEAM0JeQr4LFvHCoOfmQXlE02Y88NtHRvwCZCbX7bcNHGUibcQ+I1+ZXyUM6fsaYRBKaXC1Qnx4XbXYEZB6RqF/iMEfoOJt5gmjubmlwU8Y/oeA/MKyrJN8CEAwZPQTGaa29xY0xicgJkTPR7PpwCGRPg+hDvjWkpKSjIRXQ+uyMkvyyfi/QBcQVW9LlCedwdx3yeACfVlhF58AHARsNTiOIjoOhFV3nn/hUhg5iqriw8AIP4KQi8+ACSZxEu8hVu3ADIyw2Yy1KRwVUqpdQCu2PZWiDbdhmG8GK6SiDPDn0oTva8ifgpITU09wswLARyPNJYwYFqJqCIlJeVwpIGi8r+A1NTUemae3tnZWQQgxzCMYdGIKwTCzP1EdNTtdv+biPqiETNq/wwion4ANTd/hLsE+UOQ5ogAmiMCaI4IoDkigOaIAJojAmiOCKA5IoDmiACaIwJojgigOSKA5ogAmiMCaI4IoDkigOYMbEQQ49HcgtK/Rjs5E05C0VarIec6kJNflg+DlxFjctSDM1tvMRLEAIeEUQaAjAi6Yx2VARC/kDOn7Nnm+pqN0Y4/mJlRULqGwb8GWw7djgIDm/k/GG4BLmJ+bVZhcabTHYkXMwvKJzKwAdbj9uPKYBAAAIZeV64ipzsRL0yY8wEMdbofgL8AjLbbtIs5BpT1DJd7EIPR72wP1FnvK58ASlElgAHsPxcTug0X7XIod9wxErgOQLdD6U1lut7xFnz3oI5zpy6MTc/sAagU8b019BLT6g/qa/fGMaejXDzbcmVs2qSPQViMGC7UZYEJ8Lrmxtq/ew+EfFWc/siC2YbBFcyI3dJUAIgUg43jLsJ270xV3cgrKMs2iZeAOYvZiGjBLjuI0KoUVX7YtPN9+9aCIOjB/wETyDOFM5tT7wAAAABJRU5ErkJggg==" />
+                            </defs>
+                        </svg>
+                            <!-- <a href="https://www.flaticon.com/kr/free-icons/" title="바코드 아이콘 from Vectorslab -
+                            Flaticon"></a> -->
+                        </div>
+                    </div>
                 </div>
                 <div id="insert_card">
                     <div id="insert_card_moving"></div>
@@ -497,8 +514,10 @@
                     </div>
 
                     <div id="receipt">
-                        <div id="receipt_exit"></div>
-                        <div id="receipt_img"></div>
+                        <div id="receipt_exit">
+                            <div id="receipt_img"></div>
+                        </div>
+
                     </div>
                 </div>
             </div>

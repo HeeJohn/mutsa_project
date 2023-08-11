@@ -344,34 +344,38 @@
 
 #order_lsit div.delete_button:hover,
 #order_lsit div.plus_button:hover,
-#order_lsit div.minus_button:hover{
+#order_lsit div.minus_button:hover {
     transform: scale(1.1);
 }
+
 #order_lsit div.delete_button:active,
 #order_lsit div.plus_button:active,
-#order_lsit div.minus_button:active{
+#order_lsit div.minus_button:active {
     transform: scale(0.8);
 }
 
-#order_lsit div.delete_button{
+#order_lsit div.delete_button {
     background: gray;
     width: 5%;
     font-size: medium;
-    line-height: 130%;;
+    line-height: 130%;
+    ;
 }
 
-#order_lsit div.plus_button{
+#order_lsit div.plus_button {
     background: orange;
     width: 5%;
     font-size: x-large;
-    line-height: 90%;;
+    line-height: 90%;
+    ;
 }
 
-#order_lsit div.minus_button{
+#order_lsit div.minus_button {
     background: orange;
     width: 5%;
     font-size: large;
-    line-height: 120%;;
+    line-height: 120%;
+    ;
 }
 
 #order_list_right {
@@ -505,6 +509,36 @@
     background: url(../img/barcode.png) no-repeat center / cover;
 }
 
+#barcode_png {
+    position: relative;
+}
+
+@keyframes glowing {
+    0% {
+        box-shadow: 0 0 10px #6F9669, 0 0 20px #6F9669, 0 0 30px #6F9669;
+    }
+    50% {
+        box-shadow: 0 0 20px #6F9669, 0 0 30px #6F9669, 0 0 40px #6F9669;
+    }
+    100% {
+        box-shadow: 0 0 10px #6F9669, 0 0 20px #6F9669, 0 0 30px #6F9669;
+    }
+}
+#barcode_scan {
+    display: none;
+    position: absolute;
+    left: 25%;
+    top: 130%;
+    width: 128px;
+    width: 128px;
+    background-color: #6f966947;
+    border: 4px dotted #6F9669;
+    border-radius: 5px;
+    cursor: pointer;
+    animation: glowing 1s infinite;
+}
+
+
 #insert_card {
     position: relative;
     padding-top: 3%;
@@ -573,8 +607,6 @@
 }
 
 #receipt_img {
-    width: 30px;
-    height: 30px;
     background: url(../img/receipt.png)no-repeat center / cover;
 }
 

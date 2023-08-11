@@ -16,7 +16,7 @@ export {
     open_w_카드결제,
     close_w_카드결제,
     href_home,
-    scrollToBottom,
+    windowScrollToBottom,
     open_order_list,
     delete_button,
     remove_button,
@@ -24,7 +24,8 @@ export {
     getColorCount,
     addColorCount,
     minusColorCount,
-    scrollDown
+    scrollDown,
+    useCoupon,
 };
 export {
 }
@@ -219,7 +220,7 @@ function delete_button(id, order_list) {
     const target = document.getElementById(id); // bring content(drink) from range div
     const innerText = target.innerText.substring(3); // get substring without "number."
     const drink = document.getElementById(innerText); // get item image div on the table
-    console.log(drink.id); // check
+
     /*parsing*/
     // to erase the item from the order_list, and unmark the item with nomral boarder.
     for (let i = 0; i < order_list.length; i++) {
@@ -228,9 +229,8 @@ function delete_button(id, order_list) {
             drink.style.borderStyle = "none";
             drink.style.borderColor = "none";
             colorCount--;
-            console.log(colorCount);
             order_list.splice(i, 1); // remove items from the list.
-            console.log(order_list); // check
+
             break;
         }
     }
@@ -241,7 +241,7 @@ function add_button(id, order_list) {
     const target = document.getElementById(id); // bring content(drink) from range div
     const innerText = target.innerText.substring(3); // get substring without "number."
     const drink = document.getElementById(innerText); // get item image div on the table
-    console.log(drink.id); // check
+
     /*parsing*/
     for (let i = 0; i < order_list.length; i++) {
         //only matched item in the ordered_list.
@@ -257,7 +257,7 @@ function remove_button(id, order_list) {
     const target = document.getElementById(id); // bring content(drink) from range div
     const innerText = target.innerText.substring(3); // get substring without "number."
     const drink = document.getElementById(innerText); // get item image div on the table
-    console.log(drink.id); // check
+
     /*parsing*/
     for (let i = 0; i < order_list.length; i++) {
         //only matched item in the ordered_list.
@@ -266,14 +266,11 @@ function remove_button(id, order_list) {
                 drink.style.borderStyle = "none";
                 drink.style.borderColor = "none";
                 colorCount--; // 7 was max numbers to select.
-                console.log(colorCount);
                 order_list.splice(i, 1); // remove items from the list.
                 break;
             }
             else {
-                console.log(colorCount);
                 order_list[i].number--;
-                console.log(order_list); // check
                 break;
             }
 
@@ -391,7 +388,7 @@ function open_w_카드결제() {
     document.getElementById("insert_card_moving").style.display = "block";
     document.getElementById("w_카드결제_total_price").innerText =
         total_list[1] + "원";
-    scrollToBottom();
+    windowScrollToBottom();
 }
 
 function close_w_카드결제() {
@@ -399,8 +396,29 @@ function close_w_카드결제() {
     document.getElementById("screen_to_window_pay").style.display = "none";
     document.getElementById("insert_card_moving").style.display = "none";
 }
+function useCoupon() {
+    let coupon = document.getElementById('barcode_scan');
+    coupon.style.display = "block";
+    alert('쿠폰의 바코드를 스캔해주세요 ( 바코드 클릭 )');
+    windowScrollToBottom();
+    coupon.addEventListener('click', function () {
 
-function scrollToBottom() {
+
+        const destinationX = 0; // 이동할 x 좌표
+        const destinationY = -120; // 이동할 y 좌표
+
+        // 애니메이션 효과와 함께 이미지를 이동
+        coupon.style.transform = `translate(${destinationX}%, ${destinationY}%)`;
+
+        setTimeout(() => {
+            alert('주문하신 내역이 30% 할인되었습니다.\n결제를 진행해주세요.');
+        }, 2000);
+
+
+
+    });
+}
+function windowScrollToBottom() {
     window.scrollTo(0, document.documentElement.scrollHeight);
 }
 /*======================== 6. display payment window =======================*/

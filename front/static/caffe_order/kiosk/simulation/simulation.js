@@ -22,9 +22,14 @@ document.addEventListener('DOMContentLoaded', function () {
   const deleteButtons = document.querySelectorAll('.delete_button'); // delete selected items from the oreder_list
   const minusButton = document.querySelectorAll('.minus_button');// add selected items from the oreder_list
   const plusButton = document.querySelectorAll('.plus_button');// remove selected items from the oreder_list
+  const couponButton = document.getElementById('쿠폰사용');
 
   /* -------------- event listener ---------- */
 
+    // use coupon when the user pays
+    couponButton.addEventListener('click',function(){
+      commonModule.useCoupon();
+    });
   // delete selected items from the oreder_list
   deleteButtons.forEach((button) => {
     button.addEventListener('click', function () {
@@ -59,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
   // confirmButton to scroll down the window page
   confirmPayButton.addEventListener('click', function () {
-    commonModule.scrollToBottom();
+    commonModule.windowScrollToBottom();
     alert('아래 카드를 클릭해주세요!');
   });
   // x button for total cancellation.
@@ -170,7 +175,6 @@ function pick_item(id, price) {
     }
 
     commonModule.addColorCount();
-    console.log(commonModule.getColorCount());
     drink.style.borderStyle = "solid";
     drink.style.borderColor = "red";
     order_list.push(order);

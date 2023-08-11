@@ -20,7 +20,6 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
   }
-  console.log(menu);
 });
 /* ========= preset ========= */
 
@@ -48,9 +47,14 @@ document.addEventListener('DOMContentLoaded', function () {
   const minusButton = document.querySelectorAll('.minus_button');// add selected items from the oreder_list
   const plusButton = document.querySelectorAll('.plus_button');// remove selected items from the oreder_list
   const eatInButton = document.getElementById('먹고가기');
-
+  const couponButton = document.getElementById('쿠폰사용');
   /* -------------- event listener ---------- */
-
+  // use coupon when the user pays
+  let couponUsed = false;
+  couponButton.addEventListener('click', function () {
+    commonModule.useCoupon();
+    couponUsed = true;
+  });
   // select eatin when the user pays
   let eatInSelected = false;
   eatInButton.addEventListener('click', function () {
@@ -63,6 +67,17 @@ document.addEventListener('DOMContentLoaded', function () {
       const number = target[target.search('[0-9]')];
       const content = document.getElementById('range_' + number);
       commonModule.delete_button(content.id, order_list);
+      let id = content.innerText.substring(3);
+      let mission = 0;
+      missionItems.forEach((value) => {
+        mission++;
+        if (id == value) {
+          const checkbox = document.getElementById('item_' + (mission));
+          checkbox.disabled = false;
+          checkbox.checked = false;
+          checkbox.disabled = true;
+        }
+      });
     });
   });
   // add selected items from the oreder_list
@@ -72,6 +87,23 @@ document.addEventListener('DOMContentLoaded', function () {
       const number = target[target.search('[0-9]')];
       const content = document.getElementById('range_' + number);
       commonModule.remove_button(content.id, order_list);
+
+
+      let id = content.innerText.substring(3);
+      let mission = 0;
+
+      if (order_list.length == 0) {
+        missionItems.forEach((value) => {
+          mission++;
+          if (value == id) {
+            const checkbox = document.getElementById('item_' + (mission));
+            checkbox.disabled = false;
+            checkbox.checked = false;
+            checkbox.disabled = true;
+          }
+        });
+      }
+
     });
   });
   // remove selected items from the oreder_list
@@ -85,60 +117,77 @@ document.addEventListener('DOMContentLoaded', function () {
   });
   // moving card
   cardMovingButton.addEventListener('click', function () {
-    function buy_item(items) {
+    function buy_item() {
       if (missionCompleted == true) {
-        let count = 0;
         alert(
           "축하합니다. " +
-          items.forEach(value => (++count) + '. ' + value + '\n') +
-          " 주문하기 성공!"
+          successMessage
+          + "성공!"
         );
         location.href = returnAddress;
       } else {
         alert(
+          errorMessage
           +
-          " 미션 실패!"+ " 다시 도전해보세요."
+          "실패!" + " 다시 도전해보세요."
         );
         location.href =
           returnAddress;
       }
     }
 
+    // it shows whether the user passed the mission or not.
+    let missionCompleted = false;
     let missionItemAllPicked = false;
+    let successMessage = '음료 미션\n';
+    let errorMessage = '음료 미션\n';
     let count = 0;
     for (let i = 1; i <= missionItems.length; i++) {
       let success = document.getElementById('item_' + i).checked;
       if (success == true)
         count++;
     }
-
-    // it shows whether the user passed the mission or not.
-    let missionCompleted = false;
-
-    // if all mission items selected.
-    if (missionItems.length == count) { //beginner
-      missionCompleted = true;
-    }
+    if (missionItems.length == count)
+      missionItemAllPicked = true;
 
     // depends on mission level, different standard
     switch (missionItems.length) {
-      case 1: if (missionItemAllPicked) { //beginner
-        missionCompleted = true;
-      } break;
-      case 2: if (eatInSelected && missionItemAllPicked) { // intermedate
-        missionCompleted = true;
-      } break;
-      case 3: if (eatInSelected && missionItemAllPicked && couponUsed) {
-        missionCompleted = true;
-      } break;
+      case 1: {
+        if (missionItemAllPicked) { //beginner
+          missionCompleted = true;
+
+        } break;
+      }
+      case 2: {
+        if (eatInSelected && missionItemAllPicked) { // intermedate
+          missionCompleted = true;
+          successMessage += '먹고가기 미션\n';
+
+        } else {
+          if (missionItemAllPicked)
+            errorMessage = '먹고가기 미션\n';
+
+        } break;
+      }
+      case 3: {
+        if (eatInSelected && missionItemAllPicked && couponUsed) {
+          missionCompleted = true;
+          successMessage += '먹고가기 미션\n쿠폰사용 미션\n';
+        }
+        else {
+          if (missionItemAllPicked) errorMessage = '';
+          if (!eatInSelected) errorMessage += '먹고가기 미션\n';
+          if (!couponUsed) errorMessage += '쿠폰사용 미션\n';
+        }
+        break;
+      }
       default: throw Error('out of range');
     }
-
-    buy_item(missionItems);
+    buy_item(); // buy items final check out
   });
   // confirmButton to scroll down the window page
   confirmPayButton.addEventListener('click', function () {
-    commonModule.scrollToBottom();
+    commonModule.windowScrollToBottom();
     alert('아래 카드를 클릭해주세요!');
   });
   // x button for total cancellation.
@@ -237,7 +286,6 @@ function generateUniqueRandomNumbers(count, max) {
 function handleButtonClick(event) {
   // the number of drinks that the user has to order.
   const buttonValue = event.target.value;
-  console.log(buttonValue);
   // create the unique random numbers to get random drinks.
   generateUniqueRandomNumbers(buttonValue, menu.size);
 
