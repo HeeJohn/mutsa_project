@@ -10,7 +10,9 @@
 </head>
 
 <body>
-    <script src="/front/static/bus_reservation/bus_common.js"></script>
+    <script type="module" src="/front/static/bus_reservation/bus_common.js"></script>
+    <script type="module" src="/front/static/bus_reservation/bus_simulation.js"></script>
+
     <div id="wrap">
         <div class=left_box>
             <div class="side_nav">
@@ -28,28 +30,28 @@
                     <div id="page_1_time"></div>
                 </div>
                 <div class="page_1_btn_section">
-                    <button class="on_the_spot" onclick="dis_page_2()">현장발매</button>
+                    <button id="on_the_spot">현장발매</button>
                     <button class="online_reservation" onclick="location.href='#';">온라인 예매 발권</button>
                 </div>
             </div>
             <div id="page_2">
                 <div id="page_2_header_section">
-                    <button class="back_btn" onclick="goBack()"> </button>
+                    <button class="back_btn" > </button>
                     <div class="page_2_title">출발지 검색</div>
                 </div>
                 <div class="start-end_section">
-                    <button id="start_btn">
+                    <button id="start_btn" class="btn_default_style start">
                         <div id="start_text">출발지</div>
                         <div class="start_result">출발지를 선택해주세요.</div>
                     </button>
-                    <button id="end_btn" onclick="dis_page_3()">
+                    <button id="end_btn" class="btn_default_style" >
                         <div id="end_text">도착지</div>
                         <div class="end_result">도착지를 선택해주세요.</div>
                     </button>
                 </div>
                 <div class="list_section">
                     <div class="high_list">
-                        <button class="province">전체</button>
+                        <button id=temp_page class="province" onclick="dis_page_3()">전체</button>
                         <button class="province">서울</button>
                         <button class="province">인천/경기</button>
                         <button class="province">강원</button>
@@ -61,7 +63,7 @@
                         <button class="province">대구/경북</button>
                     </div>
                     <div class="low_list">
-                        <button class="city" onclick="focus()">서울경부</button>
+                        <button class="city">서울경부</button>
                         <button class="city">센트럴시티(서울)</button>
                         <button class="city">동서울</button>
                         <button class="city">광주(유-스퀘어)</button>
@@ -95,7 +97,7 @@
                 <div id= page_3_date_section class="page_3_date_section">08.10(목)</div> 
                 <div class="page_3_list_section">
                     <div class="bus_time_list">
-                        <button class="bus_time" onclick="dis_page_4()">
+                        <button id=temp_page_2 class="bus_time" >
                             <div class="time_box">20:20</div>
                             <div class="bus_info">동양고속<br>16,000원<br>2시간 예상</div>
                             <div class="bus_seat">17석<br>[우등]</div>
@@ -145,14 +147,14 @@
             </div>
             <div id="page_4">
                 <div id="page_2_header_section">
-                    <button class="back_btn" onclick="goBack()"></button>
+                    <button class="back_btn"></button>
                     <div class="page_2_title">매수 및 좌석 선택</div>
                 </div>
                 <div class="page_4_seat_info_section">
                     <div class="page_4_info_text">
                         서울경부 > 대전복합<br>전체 21 석 | 잔여 14석
                     </div>
-                    <button class="seat_selection" onclick="dis_page_5()">선택완료</button>
+                    <button id="seat_selection" onclick="dis_page_5()">선택완료</button>
                 </div>
                 <div class="dis_seat_section">
                     <div class="left_line_box">
@@ -212,6 +214,8 @@
         </div>
     </div>
 </body>
+<script>
 
+</script>
 
 </html>

@@ -1,15 +1,15 @@
-// export {
-//     page_default,
-//     dis_page_2,
-//     dis_page_3,
-//     dis_page_4,
-//     dis_page_5,
-//     get_Page_Id,
-//     goBack,
-//     focus,
-// };
-// export {
-// }
+export {
+    page_default,
+    dis_page_2,
+    dis_page_3,
+    dis_page_4,
+    dis_page_5,
+    get_Page_Id,
+    goBack,
+    
+};
+export {
+}
 
 
 
@@ -41,7 +41,7 @@ function displayClock(targetId) {  //시계함수
 /*=============================== Timer =================================*/
 
 /*=============================== Page_switch =================================*/
-window.onload=function page_default() { /*페이지 로드시 동작하는 함수*/
+function page_default() { /*페이지 로드시 동작하는 함수*/
     document.getElementById("page_1").style.display = "flex";
     document.getElementById("page_2").style.display = "none";
     document.getElementById("page_3").style.display = "none";
@@ -86,8 +86,9 @@ function dis_page_5() {
 function get_Page_Id() { //현재 페이지 아이디 가져오는 함수.
     var pages = ["page_1", "page_2", "page_3", "page_4", "page_5"];
     for (var i = 0; i < pages.length; i++) {
-      if (document.getElementById(pages[i]).style.display === "flex") {
-        return pages[i];
+      if (document.getElementById('page_'+i).style.display === "flex") {
+        document.getElementById('page_'+i-1).style.display = "flex";
+        document.getElementById('page_'+i).style.display = "none";
       }
     }
     return null; // 현재 페이지를 찾을 수 없는 경우
@@ -124,16 +125,28 @@ function goBack() {
 /*=============================== Page_switch =================================*/
 
 /*=============================== Page_2 script =================================*/
-let start_btn = document.getElementById('start_btn');
-let end_btn = document.getElementById('end_btn');
-let start_text = document.getElementById('start_text');
-let end_text = document.getElementById('end_text');
+// 출발지 도착지 색상변경.
+document.addEventListener("DOMContentLoaded", function() {
+  let startBtn = document.getElementById("start_btn");
+  let endBtn = document.getElementById("end_btn");
+  let startText = document.getElementById("start_text");
+  let endText = document.getElementById("end_text");
 
-function focus(){
-    start_btn.style.borderColor = 'gray';
-    end_btn.style.borderColor = '#ABCBA4';
-    start_text.style.backgroundColor = 'gray';
-    end_text.style.backgroundColor = '#ABCBA4';
-}
+
+  startBtn.addEventListener("click", function() {
+      startBtn.style.borderColor= "#ABCBA4";
+      startText.style.backgroundColor= "#ABCBA4";
+      endBtn.style.borderColor= "gray";
+      endText.style.backgroundColor= "gray";
+  });
+
+  endBtn.addEventListener("click", function() {
+      endBtn.style.borderColor= "#ABCBA4";
+      endText.style.backgroundColor= "#ABCBA4";
+      startBtn.style.borderColor= "gray";
+      startText.style.backgroundColor= "gray";
+  });
+});
+
+// 출발지 도착지 id 넣기
 /*=============================== Page_2 script =================================*/
-
