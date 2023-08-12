@@ -26,13 +26,8 @@ document.addEventListener('DOMContentLoaded', function () {
         busModule.dis_page_5();
     });
 
-    BackBtn.addEventListener('click',function(){
-        busModule.get_Page_Id();
-    });
-
-    BackBtn.forEach(Btn=>function(){
-        Btn.addEventListener('click',function(){
-            busModule.get_Page_Id();
-        });
-    });
-  });
+    BackBtn.forEach(btn => btn.addEventListener('click',function(){
+        console.log('hihihhi9');
+        busModule.goBack();
+    }));
+});
