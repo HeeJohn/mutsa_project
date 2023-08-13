@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <div id="wrap">
+    <div id="wrap"> 
         <div class=left_box>
             
         </div>
@@ -49,10 +49,9 @@
                         <ellipse cx="93.5454" cy="56" rx="31.1818" ry="28" fill="white"/>
                         <rect x="62.3636" width="62.3636" height="56" fill="white"/>
                         <ellipse cx="93.5454" cy="56" rx="31.1818" ry="28" fill="white"/>
-                    </svg> 
+                    </svg>  
                 </div>
-                <div class="dis_section_1">
-                    <form method="post" action="{% url 'signin' %}">
+                <form class="dis_section_1" method="post" action="{% url 'signin' %}">
                         {% csrf_token %}
                         <div class="input_box">
                             <input type="text" id="name_input" name="name" placeholder="이름"  size="5 " maxlength="5" value="{{form.name.value|default_if_none:''}}" required autofocus>
@@ -73,8 +72,7 @@
                             {% comment %} <button class="login_btn" type="button" onclick="location.href='../login/login_1920.html';">로그인</button> {% endcomment %}
                             <button class="join_btn" type="submit"> 회원가입</button>
                          </div>
-                    </form>
-                </div>
+                </form>
                 <div class="footer">
                     <div class="logo"></div>
                 </div>

@@ -5,15 +5,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static '/css/kiosk/common.css' %}">
+    <link rel="stylesheet" href="{% static '/css/kiosk/common.css' %}?after">
     <link rel="stylesheet" href="{% static '/css/kiosk/mega_menu.css' %}">
+
+    <script type="module" src="{% static '/js/kiosk/common.js' %}"></script>
+    <script type="module" src="{% static '/js/kiosk/simulation.js' %}"></script>
  
     <title>메가 커피 키오스크 연습</title>
     <link href="https://webfontworld.github.io/BMHannaPro/BMHannaPro.css" rel="stylesheet">
 </head>
 
 <body>
-
 
     <div id="wrap">
         <div class=left_box>
@@ -522,15 +524,17 @@
 
         </div>
         <div class=right_box>
-            <button class="login" type="button" onclick="location.href='/front/home/login/login_1920.html';">로그아웃</button>
+            {% if user.is_authenticated %}
+            <button class="login" type="button" onclick="location.href='{% url 'logout' %}'">Logout</button>
+            {% else %}
+            <button class="login" type="button" onclick="location.href='{% url 'login' %}'">Login</button>
+            {% endif %}
         </div>
     </div>
 
 
     {% comment %} <script src="{% static '/js/kiosk/common.js' %}"></script>
     <script src="{% static '/js/kiosk/simulation.js' %}"></script> {% endcomment %}
-    <script type="module" src="{% static '/js/kiosk/common.js' %}"></script>
-    <script type="module" src="{% static '/js/kiosk/simulation.js' %}"></script>
 
 </body>
 

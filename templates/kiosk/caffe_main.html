@@ -85,7 +85,11 @@
         </div>
 
         <div class=right_box>
-            <button class="login" type="button" onclick="location.href='#';">Logout</button>
+            {% if user.is_authenticated %}
+            <button class="login" type="button" onclick="location.href='{% url 'logout' %}'">Logout</button>
+            {% else %}
+            <button class="login" type="button" onclick="location.href='{% url 'login' %}'">Login</button>
+            {% endif %}
         </div>
     </div>
 </body>

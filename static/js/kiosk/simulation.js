@@ -1,5 +1,6 @@
 // import every function form common.js
-import * as commonModule from '/hackathon/static/js/kiosk/common.js';
+// import * as commonModule from '../../js/kiosk/common.js';
+import * as commonModule from './common.js';
 
 //after all content loaded.
 document.addEventListener('DOMContentLoaded', function () {
@@ -60,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // moving card
   cardMovingButton.addEventListener('click', function () {
     alert("감사합니다. 결제가 완료되었습니다. 교환권과 카드를 챙겨가세요.");
-    location.href = "/front/static/caffe_order/kiosk/simulation/simulator.html";
+    location.href = "../../kiosk/simulator/";
   });
   // confirmButton to scroll down the window page
   confirmPayButton.addEventListener('click', function () {

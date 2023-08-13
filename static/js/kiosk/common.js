@@ -145,7 +145,7 @@ function all_menu_none() {
 
 // For home_icon button. it sends the user to the beginning.
 function href_home() {
-    location.href = "/front/static/caffe_order/kiosk/simulation/simulator.html";
+    location.href = "../../kiosk/simulator/";
 }
 
 /*============================= 2. Browsing menu ============================*/
