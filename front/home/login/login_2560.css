@@ -7,7 +7,7 @@
 *::selection{background-color: #b7b6b600;}
 
 #wrap {
-    width: 1900px; height: 900px;
+    width: 2560px; height: 1250px;
     display: flex;
     align-items: center;
     position: absolute;
@@ -22,8 +22,8 @@
 .box {
     box-sizing: border-box;
     width: 40%; height: 100%;
-    border: 30px solid #000;
-    border-radius: 30px;
+    border: 50px solid #000;
+    border-radius: 50px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -83,7 +83,7 @@
     border-radius: 40px;
     border: 0px;
     padding-left: 5%;
-    font-size: 30px;
+    font-size: 40px;
     color: white;
 }
 input[type="password"] {
@@ -110,7 +110,7 @@ input[type="password"] {
     border: 0px solid red;
     border-radius: 40px;
     background-color: #6F9669;
-    font-size: 40px;
+    font-size: 50px;
     color: white;
 }
 .login_btn:hover,
@@ -127,12 +127,12 @@ input:focus{outline: 2px solid white;}
     width: 98%; height: 5%;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 .logo {
-    width: 35px; height: 35px;
-    border: 4px solid #000;
+    width: 50px; height: 50px;
+    border: 5px solid #000;
     border-radius: 100%;
     margin-left: auto;
     margin-right: auto;
@@ -158,7 +158,7 @@ input:focus{outline: 2px solid white;}
     background-color: #6D9668;
     border-radius: 15px;
     border: 0px;
-    font-size: 25px;
+    font-size: 35px;
     color: white;
     cursor: pointer;
     

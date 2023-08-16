@@ -5,7 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>after_login_1920</title>
-    <link rel="stylesheet" href="/front/home/login/login_1920.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" media="screen and (max-width:1920px)"
+        href="/front/home/login/login_1920.css">
+    <link rel="stylesheet" media="screen and (min-width:1921px) and (max-width:2560px)"
+        href="/front/home/login/login_2560.css">
     <link href="https://webfontworld.github.io/BMHannaPro/BMHannaPro.css" rel="stylesheet"> <!-- 배달의 민족 한나체 (호스팅방식) -->
 </head>
 
@@ -63,13 +67,13 @@
                     </div>
                 </div>
                 <div class="footer">
-                    <div class="logo"></div>
+                    <div class="logo" onclick="location.href='/front/home/index.html'"></div>
                 </div>
             </div>
         </div>
 
         <div class=right_box>
-            <button class="login" type="button" onclick="location.href='#';">Logout</button>
+            <button class="login" type="button" onclick="location.href='#';">로그아웃</button>
         </div>
     </div>
 </body>
