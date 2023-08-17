@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="{% static '/css/home/main.css' %}?after">
+    <link rel="stylesheet" media="screen and (max-width:1920px)" href="{% static '/css/home/main/main_1920.css' %}">
+    <link rel="stylesheet" media="screen and (min-width:1921px) and (max-width:2560px)" href="{% static '/css/home/main/main_2560.css' %}">
     <link href="https://webfontworld.github.io/BMHannaPro/BMHannaPro.css" rel="stylesheet"> <!-- 배달의 민족 한나체 (호스팅방식) -->
 </head>
 <body>
@@ -15,7 +16,7 @@
         <div class = "box">
             <div class = "main_section">
                 <div class = "header">
-                    <svg width="882" height="116" viewBox="0 0 882 116" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    {% comment %} <svg width="882" height="116" viewBox="0 0 882 116" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="1" width="80.1818" height="70" fill="#6F9669"/>
                         <rect x="81" width="80.1818" height="70" fill="white"/>
                         <rect x="161" width="80.1818" height="70" fill="#6F9669"/>
@@ -38,7 +39,7 @@
                         <circle cx="681.091" cy="75.0909" r="40.0909" fill="#6F9669"/>
                         <circle cx="761.091" cy="75.0909" r="40.0909" fill="white"/>
                         <circle cx="841.091" cy="75.0909" r="40.0909" fill="#6F9669"/>
-                        </svg>                        
+                        </svg>                         {% endcomment %}
                 </div>
                 <div class = "dis_section">
                     <div class = dis_btn>
@@ -67,9 +68,9 @@
                 </div>
                 <div class = "nav_section">
                     <button class = "nav1" onclick="location.href='{% url 'kiosk' %}'">키오스크</button>
-                    <button class = "nav2" onclick="location.href=';'">은행</button>
-                    <button class = "nav3" onclick="location.href=';'">버스</button>
-                    <button class = "nav4" onclick="location.href=';'">게시판</button>
+                    {% comment %} <button class = "nav2" onclick="location.href=';'">은행</button>
+                    <button class = "nav3" onclick="location.href=';'">버스</button> {% endcomment %}
+                    <button class = "nav2" onclick="location.href=';'">게시판</button>
                 </div>
                 <div class = "footer">
                     <div class = "logo" onclick="location.href='{% url 'index' %}'"></div>
@@ -78,9 +79,9 @@
         </div>
         <div class = right_box>
             {% if user.is_authenticated %}
-            <button class="login" type="button" onclick="location.href='{% url 'logout' %}'">Logout</button>
+            <button class="login" type="button" onclick="location.href='{% url 'logout' %}'">로그아웃</button>
             {% else %}
-            <button class="login" type="button" onclick="location.href='{% url 'login' %}'">Login</button>
+            <button class="login" type="button" onclick="location.href='{% url 'login' %}'">로그인</button>
             {% endif %}
         </div>
     </div>

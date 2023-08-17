@@ -5,7 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static '/css/kiosk/common.css' %}?after">
+    <link rel="stylesheet" media="screen and (max-width:1920px)" href="{% static '/css/kiosk/common/common_1920.css' %}">
+    <link rel="stylesheet" media="screen and (min-width:1921px) and (max-width:2560px)" href="{% static '/css/kiosk/common/common_2560.css' %}">
     <link rel="stylesheet" href="{% static '/css/kiosk/mega_menu.css' %}">
 
     <script type="module" src="{% static '/js/kiosk/common.js' %}"></script>
@@ -22,9 +23,9 @@
             <div class="side_nav">
                 <button class="side_nav1" type="button"
                     onclick="location.href='{% url 'kiosk' %}'">키오스크</button>
-                <button class="side_nav2" type="button" onclick="location.href='#';">은행</button>
-                <button class="side_nav3" type="button" onclick="location.href='#';">버스</button>
-                <button class="side_nav4" type="button" onclick="location.href='#';">게시판</button>
+                {% comment %} <button class="side_nav2" type="button" onclick="location.href='#';">은행</button>
+                <button class="side_nav3" type="button" onclick="location.href='#';">버스</button> {% endcomment %}
+                <button class="side_nav2" type="button" onclick="location.href='#';">게시판</button>
             </div>
         </div>
         <div class="kiosk_mega_backdround">
@@ -102,7 +103,7 @@
 
                         </div>
 
-
+ 
                         <div id="커피_HOT" class="p1">
                             <div class="row">
                                 <div id="hot_아메리카노" title="coffee" data-price="1500" class="pick_item"></div>
@@ -525,9 +526,9 @@
         </div>
         <div class=right_box>
             {% if user.is_authenticated %}
-            <button class="login" type="button" onclick="location.href='{% url 'logout' %}'">Logout</button>
+            <button class="login" type="button" onclick="location.href='{% url 'logout' %}'">로그아웃</button>
             {% else %}
-            <button class="login" type="button" onclick="location.href='{% url 'login' %}'">Login</button>
+            <button class="login" type="button" onclick="location.href='{% url 'login' %}'">로그인</button>
             {% endif %}
         </div>
     </div>
