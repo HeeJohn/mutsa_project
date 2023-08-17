@@ -54,6 +54,7 @@
   margin-right: auto;
   display: flex;
   justify-content: center;
+  background-image: url("../../../image/kiosk_guide_img/frame_2560.png");
 }
 
 .dis_section_1 {

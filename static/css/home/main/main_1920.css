@@ -47,7 +47,7 @@
     width: 98%; height: 10%;
     margin-left: auto;
     margin-right: auto;
-    
+    background-image: url("../../../image/kiosk_guide_img/frame_1920.png");
 }
 
 .dis_section {
@@ -81,8 +81,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 70px;
-
+    /* margin-left: auto;
+    margin-right: auto; */
+    background-image: url("../../../image/kiosk_guide_img/together.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .dis_btn2 {

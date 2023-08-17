@@ -92,6 +92,7 @@
     margin-right: auto;
     display: flex;
     justify-content: center;
+    background-image: url("../../../image/kiosk_guide_img/frame_1920.png");
 }
 
 .dis_section_1 {
@@ -107,25 +108,29 @@
     justify-content: end;
     align-items: center;
     flex-direction: column;
+
 }
 .dis_text{
     width: 50%; height: 20%;
     /* border: 2px solid #000; */
     text-align: center;
     font-size: 30px;
+    z-index: 1;
 }
 #user_name{font-size: 40px; font-weight: 600;}
 #practice {color: #6E6E6E;}
 
 
 .dis_img{
+    box-sizing: border-box;
     width: 100%; height: 70%;
-    /* border: 1px solid #000; */
-
-    box-sizing: border-box;     /*---------*/
-    text-align: center;
-    font-size: 50px;             /*임시img*/
-    padding: 10%;               /*---------*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../../../image/kiosk_guide_img/together.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .dis_section_2{
