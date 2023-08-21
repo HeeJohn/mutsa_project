@@ -40,43 +40,43 @@
                     <div class="page_2_title">출발지 검색</div>
                 </div>
                 <div class="start-end_section">
-                    <button id="start_btn" class="btn_default_style start">
+                    <button id="start_btn" class="btn_default_style start" value="true">
                         <div id="start_text">출발지</div>
-                        <div class="start_result">출발지를 선택해주세요.</div>
+                        <div id="start_result">출발지를 선택해주세요.</div>
                     </button>
                     <button id="end_btn" class="btn_default_style" >
                         <div id="end_text">도착지</div>
-                        <div class="end_result">도착지를 선택해주세요.</div>
+                        <div id="end_result">도착지를 선택해주세요.</div>
                     </button>
                 </div>
                 <div class="list_section">
-                    <div class="high_list">
-                        <button id=temp_page class="province" onclick="dis_page_3()">전체</button>
-                        <button class="province">서울</button>
-                        <button class="province">인천/경기</button>
-                        <button class="province">강원</button>
-                        <button class="province">대전/충남</button>
-                        <button class="province">충북</button>
-                        <button class="province">광주/전남</button>
-                        <button class="province">전북</button>
-                        <button class="province">부산/경남</button>
-                        <button class="province">대구/경북</button>
-                    </div>
-                    <div class="low_list">
-                        <button class="city">서울경부</button>
-                        <button class="city">센트럴시티(서울)</button>
-                        <button class="city">동서울</button>
-                        <button class="city">광주(유-스퀘어)</button>
-                        <button class="city">대전복합</button>
-                        <button class="city">서울남부</button>
-                        <button class="city">원주종합</button>
-                        <button class="city">인천</button>
-                        <button class="city">청주고속터미널</button>
-                        <button class="city">청주시외</button>
-                        <button class="city">천안고속</button>
-                        <button class="city">천안</button>
-                        <button class="city">동대구</button>
-                    </div>
+                    <ul class="high_list">
+                            <li class="list_bit"><button id=temp_page    class="province" onclick="dis_page_3()">(임시)<br> 다음버튼</button></li>
+                            <li class="list_bit"><button id="서울"       class="province">서울</button></li>
+                            <li class="list_bit"><button id="인천_경기"  class="province">인천/경기</button></li>
+                            <li class="list_bit"><button id="강원"       class="province">강원</button></li>
+                            <li class="list_bit"><button id="대전_충남"  class="province">대전/충남</button></li>
+                            <li class="list_bit"><button id="충북"       class="province">충북</button></li>
+                            <li class="list_bit"><button id="광주_전남"  class="province">광주/전남</button></li>
+                            <li class="list_bit"><button id="전북"       class="province">전북</button></li>
+                            <li class="list_bit"><button id="부산_경남"  class="province">부산/경남</button></li>
+                            <li class="list_bit"><button id="대구_경북"  class="province">대구/경북</button></li>
+                    </ul>
+                    <ul class="low_list">
+                        <li class="list_bit"><button id="서울경부"       class="city">서울경부</button>
+                        <li class="list_bit"><button id="센트럴시티"     class="city">센트럴시티(서울)</button>
+                        <li class="list_bit"><button id="동서울"         class="city">동서울</button>
+                        <li class="list_bit"><button id="광주"           class="city">광주(유-스퀘어)</button>
+                        <li class="list_bit"><button id="대전복합"       class="city">대전복합</button>
+                        <li class="list_bit"><button id="서울남부"       class="city">서울남부</button>
+                        <li class="list_bit"><button id="원주종합"       class="city">원주종합</button>
+                        <li class="list_bit"><button id="인천"           class="city">인천</button>
+                        <li class="list_bit"><button id="청주고속터미널" class="city">청주고속터미널</button>
+                        <li class="list_bit"><button id="청주시외"       class="city">청주시외</button>
+                        <li class="list_bit"><button id="천안고속"       class="city">천안고속</button>
+                        <li class="list_bit"><button id="천안"           class="city">천안</button>
+                        <li class="list_bit"><button id="동대구"         class="city">동대구</button>
+                    </ul>
                 </div>
             </div>
             <div id="page_3">
@@ -85,13 +85,13 @@
                     <div class="page_2_title">배차 조회</div>
                 </div>
                 <div class="page_3_start-end_section">
-                    <button class="page_3_start_btn">
+                    <button id="page_3_start_btn">
                         <div class="page_3_small_text">출발지</div>
-                        <div class="page_3_start_result">출발지</div>
+                        <div id="page_3_start_result">출발지</div>
                     </button>
-                    <button class="page_3_end_btn">
+                    <button id="page_3_end_btn">
                         <div class="page_3_small_text">도착지</div>
-                        <div class="page_3_end_result">도착지</div>
+                        <div id="page_3_end_result">도착지</div>
                     </button>
                 </div>
                 <div id= page_3_date_section class="page_3_date_section">08.10(목)</div> 

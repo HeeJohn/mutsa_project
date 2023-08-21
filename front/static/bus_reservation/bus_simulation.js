@@ -9,6 +9,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const TempPage2 = document.getElementById('temp_page_2'); //page_3 -> page_4 (임시로 넘겨주는 id라서 나중에 바뀔예정.)
     const SeatSelection = document.getElementById('seat_selection'); //page_4 -> page_5 
     const BackBtn = document.querySelectorAll('.back_btn'); // 뒤로가기 버튼
+    const startBtn_On = document.getElementById('start_btn');
+    const endtBtn_On = document.getElementById('end_btn');
+
+    // const startResultDiv = document.getElementById('start_result'); // 표시할 div
+    // const endResultDiv = document.getElementById('end_result'); // 표시할 div
     /* -------------- event listener ---------- */
     OnTheSpot.addEventListener('click',function(){
         busModule.dis_page_2();
@@ -27,7 +32,14 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     BackBtn.forEach(btn => btn.addEventListener('click',function(){
-        console.log('hihihhi9');
         busModule.goBack();
     }));
+
+    startBtn_On.addEventListener('click',function(){
+        busModule.startBtn_on();
+    });
+
+    endtBtn_On.addEventListener('click',function(){
+        busModule.endBtn_on();
+    });
 });

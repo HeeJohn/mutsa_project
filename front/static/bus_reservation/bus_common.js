@@ -5,13 +5,17 @@ export {
     dis_page_4,
     dis_page_5,
     goBack,
-    
+    startBtn_on,
+    endBtn_on,
+    load_start_end,
+    page_3_default,
 };
 export {
 }
 
 
-
+let finalStart; // 결제창에서 불러올 출발지
+let finalEnd; // 결제창에서 불러올 도착지
 
 /*=============================== Timer =================================*/
 function displayClock(targetId) {  //시계함수 
@@ -52,32 +56,22 @@ function page_default() { /*페이지 로드시 동작하는 함수*/
 function dis_page_2() {
     document.getElementById("page_1").style.display = "none";
     document.getElementById("page_2").style.display = "flex";
-    document.getElementById("page_3").style.display = "none";
-    document.getElementById("page_4").style.display = "none";
-    document.getElementById("page_5").style.display = "none";
+    load_start_end();
 }
 
 function dis_page_3() {
-    document.getElementById("page_1").style.display = "none";
     document.getElementById("page_2").style.display = "none";
     document.getElementById("page_3").style.display = "flex";
-    document.getElementById("page_4").style.display = "none";
-    document.getElementById("page_5").style.display = "none";
     displayClock("page_3_date_section");
+    page_3_default();
 }
 
 function dis_page_4() {
-    document.getElementById("page_1").style.display = "none";
-    document.getElementById("page_2").style.display = "none";
     document.getElementById("page_3").style.display = "none";
     document.getElementById("page_4").style.display = "flex";
-    document.getElementById("page_5").style.display = "none";
 }
 
 function dis_page_5() {
-    document.getElementById("page_1").style.display = "none";
-    document.getElementById("page_2").style.display = "none";
-    document.getElementById("page_3").style.display = "none";
     document.getElementById("page_4").style.display = "none";
     document.getElementById("page_5").style.display = "flex";
 }
@@ -96,28 +90,84 @@ function goBack() { //현재 페이지 아이디 가져오는 함수.
 /*=============================== Page_switch =================================*/
 
 /*=============================== Page_2 script =================================*/
+//page_2 초기값
+// function page_2_default() {
+//     let high_list_default = document.getElementById("서울");
+
+
+// }
+// document.addEventListener('DOMContentLoaded', function() {
+//     var seoulButton = document.getElementById('서울');
+  
+//     seoulButton.style.backgroundColor = '#ABCBA4'; // 배경색 변경
+//     seoulButton.style.outline = 'none'; // 포커스 표시 해제
+//   });
+
+
+
 // 출발지 도착지 색상변경.
-document.addEventListener("DOMContentLoaded", function() {
-  let startBtn = document.getElementById("start_btn");
-  let endBtn = document.getElementById("end_btn");
-  let startText = document.getElementById("start_text");
-  let endText = document.getElementById("end_text");
+function endBtn_on(){
+    let startBtn = document.getElementById("start_btn");
+    let endBtn = document.getElementById("end_btn");
+    let startText = document.getElementById("start_text");
+    let endText = document.getElementById("end_text");
 
+    endBtn.style.borderColor= "#6D9668";
+    endText.style.backgroundColor= "#ABCBA4";
+    startBtn.style.borderColor= "rgb(165, 165, 165)";
+    startText.style.backgroundColor= "rgb(165, 165, 165)";
+    startBtn.value = "false";
+}
 
-  startBtn.addEventListener("click", function() {
-      startBtn.style.borderColor= "#ABCBA4";
-      startText.style.backgroundColor= "#ABCBA4";
-      endBtn.style.borderColor= "gray";
-      endText.style.backgroundColor= "gray";
-  });
+function startBtn_on(){
+    let startBtn = document.getElementById("start_btn");
+    let endBtn = document.getElementById("end_btn");
+    let startText = document.getElementById("start_text");
+    let endText = document.getElementById("end_text");
 
-  endBtn.addEventListener("click", function() {
-      endBtn.style.borderColor= "#ABCBA4";
-      endText.style.backgroundColor= "#ABCBA4";
-      startBtn.style.borderColor= "gray";
-      startText.style.backgroundColor= "gray";
-  });
-});
+    startBtn.style.borderColor= "#6D9668";
+    startText.style.backgroundColor= "#ABCBA4";
+    endBtn.style.borderColor= "rgb(165, 165, 165)";
+    endText.style.backgroundColor= "rgb(165, 165, 165)";
+    startBtn.value = "true";
+}
 
-// 출발지 도착지 id 넣기
+// 텍스트 가져오기
+function load_start_end(){
+    const startButton = document.getElementById('start_btn'); //활성화 유무를 구분하기 위한 변수
+
+    const startResultDiv = document.getElementById('start_result'); // 표시할 div
+    const endResultDiv = document.getElementById('end_result'); // 표시할 div
+
+    const buttons = document.querySelectorAll('.city');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                const buttonText = button.textContent; // 버튼의 텍스트 내용 가져오기
+                if (startButton.getAttribute('value') === 'true') {
+                    startResultDiv.textContent = buttonText; // 출발지 설정
+                    finalStart = buttonText; // 결제창에서 불러올 출발지
+                    endBtn_on();
+                    endResultDiv.textContent = "도착지를 선택해주세요.";
+
+                } else if (startButton.getAttribute('value') === 'false' && buttonText !== startResultDiv.textContent) {
+                    endResultDiv.textContent = buttonText; // 도착지 설정
+                    finalEnd = buttonText; // 결제창에서 불러올 도착지
+                    setTimeout(() => {
+                        dis_page_3();
+                      }, 1000);
+                }
+            });
+        });
+}
 /*=============================== Page_2 script =================================*/
+
+/*=============================== Page_3 script =================================*/
+function page_3_default() {
+    const startResult = document.getElementById('page_3_start_result'); // 표시할 div
+    const endResult = document.getElementById('page_3_end_result'); // 표시할 div
+
+    startResult.textContent = finalStart;
+    endResult.textContent = finalEnd;
+}
+/*=============================== Page_3 script =================================*/

@@ -149,7 +149,7 @@
 .btn_default_style {
     width: 45%;
     height: 90%;
-    border: 3px solid gray;
+    border: 3px solid rgb(165, 165, 165);
     border-radius: 20px;
     background-color: #00000000;
     display: flex;
@@ -158,7 +158,6 @@
     cursor: pointer;
 }
 .start {border-color: #6D9668;}
-.end {border-color: gray;}
 
 #start_text{
     width: 100%; height: 25%;
@@ -175,14 +174,14 @@
     border-radius: 17px 17px 0 0;
     font-size: 28px;
     padding-top: 2%;
-    background-color:gray;
+    background-color:rgb(165, 165, 165);
     color: white;
 }
 
-.start_result, .end_result{
+#start_result, #end_result{
     width: 100%; height: 75%;
     text-align: center;
-    font-size: 23px;
+    font-size: 28px;
     padding-top: 15%;
 }
 .list_section{
@@ -195,13 +194,22 @@
     border-top: 2px solid rgba(128, 128, 128, 0.409);
     overflow-y:scroll;
 }
+.list_bit{
+    width: 100%; height: 13%;
+    border: 0px solid red;
+    font-size: 28px;
+    text-align: center;
+    background-color: #00000000;
+    cursor: pointer;
+}
+
 .low_list{
     width: 75%; height: 100%;
     border-top: 1px solid rgba(128, 128, 128, 0.409);
     overflow-y:auto;
 }
 .province{
-    width: 100%; height: 13%;
+    width: 100%; height: 100%;
     border: 0px;
     font-size: 28px;
     text-align: center;
@@ -209,7 +217,7 @@
     cursor: pointer;
 }
 .city{
-    width: 100%; height: 13%;
+    width: 100%; height: 100%;
     border: 1px solid rgba(128, 128, 128, 0.409);
     font-size: 28px;
     text-align: start;
@@ -249,7 +257,7 @@
     justify-content: center;
     align-items: start;
 }
-.page_3_start_btn{
+#page_3_start_btn{
     width: 45%; height: 90%;
     border: 3px solid gray;
     border-radius: 20px;
@@ -259,7 +267,7 @@
     justify-content: start;
     cursor: pointer;
 }
-.page_3_end_btn{
+#page_3_end_btn{
     width: 45%; height: 90%;
     border: 3px solid gray;
     
@@ -279,10 +287,10 @@
     background-color:gray;
     color: white;
 }
-.page_3_start_result, .page_3_end_result{
+#page_3_start_result, #page_3_end_result{
     width: 100%; height: 75%;
     text-align: center;
-    font-size: 23px;
+    font-size: 35px;
     padding-top: 15%;
 }
 .page_3_date_section{
