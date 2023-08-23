@@ -194,7 +194,16 @@
     border-top: 2px solid rgba(128, 128, 128, 0.409);
     overflow-y:scroll;
 }
-.list_bit{
+
+/* .list_bit{
+    width: 100%; height: 50%;
+    border: 1px solid red;
+    font-size: 28px;
+    text-align: center;
+    background-color: #00000000;
+    cursor: pointer;
+} */
+li{
     width: 100%; height: 13%;
     border: 0px solid red;
     font-size: 28px;
@@ -205,9 +214,15 @@
 
 .low_list{
     width: 75%; height: 100%;
+    display: flex;
+    flex-direction: column;
     border-top: 1px solid rgba(128, 128, 128, 0.409);
-    overflow-y:auto;
+    overflow-y:scroll;
 }
+#서울, #인천경기, #강원, #대전충남, #충북, #광주전남, #전북, #부산경남, #대구경북{
+    display: none;
+}
+
 .province{
     width: 100%; height: 100%;
     border: 0px;
@@ -222,6 +237,7 @@
     font-size: 28px;
     text-align: start;
     padding-left: 5%;
+    padding: 5%;
     background-color: #00000000;
     cursor: pointer;
 }

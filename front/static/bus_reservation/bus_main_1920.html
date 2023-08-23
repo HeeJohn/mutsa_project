@@ -51,31 +51,166 @@
                 </div>
                 <div class="list_section">
                     <ul class="high_list">
-                            <li class="list_bit"><button id=temp_page    class="province" onclick="dis_page_3()">(임시)<br> 다음버튼</button></li>
-                            <li class="list_bit"><button id="서울"       class="province">서울</button></li>
-                            <li class="list_bit"><button id="인천_경기"  class="province">인천/경기</button></li>
-                            <li class="list_bit"><button id="강원"       class="province">강원</button></li>
-                            <li class="list_bit"><button id="대전_충남"  class="province">대전/충남</button></li>
-                            <li class="list_bit"><button id="충북"       class="province">충북</button></li>
-                            <li class="list_bit"><button id="광주_전남"  class="province">광주/전남</button></li>
-                            <li class="list_bit"><button id="전북"       class="province">전북</button></li>
-                            <li class="list_bit"><button id="부산_경남"  class="province">부산/경남</button></li>
-                            <li class="list_bit"><button id="대구_경북"  class="province">대구/경북</button></li>
+                            <li><button id="전체_"      class="province">전체</button></li>
+                            <li><button id="서울_"      class="province">서울</button></li>
+                            <li><button id="인천_경기"  class="province">인천/경기</button></li>
+                            <li><button id="강원_"      class="province">강원</button></li>
+                            <li><button id="대전_충남"  class="province">대전/충남</button></li>
+                            <li><button id="충북_"      class="province">충북</button></li>
+                            <li><button id="광주_전남"  class="province">광주/전남</button></li>
+                            <li><button id="전북_"      class="province">전북</button></li>
+                            <li><button id="부산_경남"  class="province">부산/경남</button></li>
+                            <li><button id="대구_경북"  class="province">대구/경북</button></li>
                     </ul>
-                    <ul class="low_list">
-                        <li class="list_bit"><button id="서울경부"       class="city">서울경부</button>
-                        <li class="list_bit"><button id="센트럴시티"     class="city">센트럴시티(서울)</button>
-                        <li class="list_bit"><button id="동서울"         class="city">동서울</button>
-                        <li class="list_bit"><button id="광주"           class="city">광주(유-스퀘어)</button>
-                        <li class="list_bit"><button id="대전복합"       class="city">대전복합</button>
-                        <li class="list_bit"><button id="서울남부"       class="city">서울남부</button>
-                        <li class="list_bit"><button id="원주종합"       class="city">원주종합</button>
-                        <li class="list_bit"><button id="인천"           class="city">인천</button>
-                        <li class="list_bit"><button id="청주고속터미널" class="city">청주고속터미널</button>
-                        <li class="list_bit"><button id="청주시외"       class="city">청주시외</button>
-                        <li class="list_bit"><button id="천안고속"       class="city">천안고속</button>
-                        <li class="list_bit"><button id="천안"           class="city">천안</button>
-                        <li class="list_bit"><button id="동대구"         class="city">동대구</button>
+                    <ul id="전체" class="low_list">
+                        <li><button id="서울경부"       class="city">서울경부</button>
+                        <li><button id="센트럴시티"     class="city">센트럴시티(서울)</button>
+                        <li><button id="동서울"         class="city">동서울</button>
+                        <li><button id="광주"           class="city">광주(유-스퀘어)</button>
+                        <li><button id="대전복합"       class="city">대전복합</button>
+                        <li><button id="서울남부"       class="city">서울남부</button>
+                        <li><button id="원주종합"       class="city">원주종합</button>
+                        <li><button id="인천"           class="city">인천</button>
+                        <li><button id="청주고속터미널" class="city">청주고속터미널</button>
+                        <li><button id="청주시외"       class="city">청주시외</button>
+                        <li><button id="천안고속"       class="city">천안고속</button>
+                        <li><button id="천안"           class="city">천안</button>
+                        <li><button id="동대구"         class="city">동대구</button>
+                    </ul>
+                    <ul id="서울" class="low_list">
+                        <li class="list_bit"><button id="-"       class="city">서울경부</button>
+                        <li class="list_bit"><button id="-"     class="city">센트럴시티(서울)</button>
+                        <li class="list_bit"><button id="-"         class="city">동서울</button>
+                        <li class="list_bit"><button id="-"           class="city">서울남부</button>
+                        <li class="list_bit"><button id="-"       class="city">김포공항</button>
+                        <li class="list_bit"><button id="-"       class="city">여의나루역</button>
+                        <li class="list_bit"><button id="-"       class="city">잠실역</button>
+                        <li class="list_bit"><button id="-"           class="city">코엑스(도심공항)</button>
+                        <li class="list_bit"><button id="-" class="city">송파역</button>
+                        <li class="list_bit"><button id="-"       class="city">장지역</button>
+                        <li class="list_bit"><button id="-"       class="city">사당역</button>
+                        <li class="list_bit"><button id="-"           class="city">문정로데오거리입구</button>
+                        <li class="list_bit"><button id="-"         class="city">상봉</button>
+                    </ul>
+                    <ul id="인천경기" class="low_list">
+                        <li class="list_bit"><button id="-"       class="city">인천</button>
+                        <li class="list_bit"><button id="-"     class="city">인천공항</button>
+                        <li class="list_bit"><button id="-"         class="city">성남</button>
+                        <li class="list_bit"><button id="-"           class="city">수원</button>
+                        <li class="list_bit"><button id="-"       class="city">안산</button>
+                        <li class="list_bit"><button id="-"       class="city">이천</button>
+                        <li class="list_bit"><button id="-"       class="city">용인</button>
+                        <li class="list_bit"><button id="-"           class="city">남양주</button>
+                        <li class="list_bit"><button id="-" class="city">파주</button>
+                        <li class="list_bit"><button id="-"       class="city">가평</button>
+                        <li class="list_bit"><button id="-"       class="city">구리</button>
+                        <li class="list_bit"><button id="-"           class="city">동두천</button>
+                        <li class="list_bit"><button id="-"         class="city">포천</button>
+                    </ul>
+                    <ul id="강원" class="low_list">
+                        <li class="list_bit"><button id="-"       class="city">원주</button>
+                        <li class="list_bit"><button id="-"     class="city">춘천</button>
+                        <li class="list_bit"><button id="-"         class="city">강릉</button>
+                        <li class="list_bit"><button id="-"           class="city">속초</button>
+                        <li class="list_bit"><button id="-"       class="city">대화</button>
+                        <li class="list_bit"><button id="-"       class="city">화천</button>
+                        <li class="list_bit"><button id="-"       class="city">철원</button>
+                        <li class="list_bit"><button id="-"           class="city">인제</button>
+                        <li class="list_bit"><button id="-" class="city">삼척</button>
+                        <li class="list_bit"><button id="-"       class="city">양양</button>
+                        <li class="list_bit"><button id="-"       class="city">양구</button>
+                        <li class="list_bit"><button id="-"           class="city">신남</button>
+                        <li class="list_bit"><button id="-"         class="city">평창</button>
+                    </ul>
+                    <ul id="대전충남" class="low_list">
+                        <li class="list_bit"><button id="-"       class="city">천안</button>
+                        <li class="list_bit"><button id="-"     class="city">아산</button>
+                        <li class="list_bit"><button id="-"         class="city">서산</button>
+                        <li class="list_bit"><button id="-"           class="city">대전</button>
+                        <li class="list_bit"><button id="-"       class="city">태안</button>
+                        <li class="list_bit"><button id="-"       class="city">세종</button>
+                        <li class="list_bit"><button id="-"       class="city">금산</button>
+                        <li class="list_bit"><button id="-"           class="city">보령</button>
+                        <li class="list_bit"><button id="-" class="city">당진</button>
+                        <li class="list_bit"><button id="-"       class="city">예산</button>
+                        <li class="list_bit"><button id="-"       class="city">한서대</button>
+                        <li class="list_bit"><button id="-"           class="city">해미</button>
+                        <li class="list_bit"><button id="-"         class="city">홍성</button>
+                    </ul>
+                    <ul id="충북" class="low_list">
+                        <li class="list_bit"><button id="-"       class="city">청주고속터미널</button>
+                        <li class="list_bit"><button id="-"     class="city">충주</button>
+                        <li class="list_bit"><button id="-"         class="city">건국대(충주)</button>
+                        <li class="list_bit"><button id="-"           class="city">괴산</button>
+                        <li class="list_bit"><button id="-"       class="city">속리산</button>
+                        <li class="list_bit"><button id="-"       class="city">제천</button>
+                        <li class="list_bit"><button id="-"       class="city">진천</button>
+                        <li class="list_bit"><button id="-"           class="city">청주공항</button>
+                        <li class="list_bit"><button id="-" class="city">영동</button>
+                        <li class="list_bit"><button id="-"       class="city">오송역</button>
+                        <li class="list_bit"><button id="-"       class="city">단양상진</button>
+                        <li class="list_bit"><button id="-"           class="city">보은</button>
+                        <li class="list_bit"><button id="-"         class="city">북청주</button>
+                    </ul>
+                    <ul id="광주전남" class="low_list">
+                        <li class="list_bit"><button id="-"       class="city">광주</button>
+                        <li class="list_bit"><button id="-"     class="city">순천</button>
+                        <li class="list_bit"><button id="-"         class="city">목포</button>
+                        <li class="list_bit"><button id="-"           class="city">강진</button>
+                        <li class="list_bit"><button id="-"       class="city">고흥</button>
+                        <li class="list_bit"><button id="-"       class="city">관산</button>
+                        <li class="list_bit"><button id="-"       class="city">광양</button>
+                        <li class="list_bit"><button id="-"           class="city">구례</button>
+                        <li class="list_bit"><button id="-" class="city">나주</button>
+                        <li class="list_bit"><button id="-"       class="city">나주혁신도시</button>
+                        <li class="list_bit"><button id="-"       class="city">매화축제장</button>
+                        <li class="list_bit"><button id="-"           class="city">벌교</button>
+                        <li class="list_bit"><button id="-"         class="city">여수</button>
+                    </ul>
+                    <ul id="전북" class="low_list">
+                        <li class="list_bit"><button id="-"       class="city">전주</button>
+                        <li class="list_bit"><button id="-"     class="city">군산</button>
+                        <li class="list_bit"><button id="-"         class="city">고창</button>
+                        <li class="list_bit"><button id="-"           class="city">김제</button>
+                        <li class="list_bit"><button id="-"       class="city">남원</button>
+                        <li class="list_bit"><button id="-"       class="city">대야</button>
+                        <li class="list_bit"><button id="-"       class="city">덕과</button>
+                        <li class="list_bit"><button id="-"           class="city">완주혁신도시</button>
+                        <li class="list_bit"><button id="-" class="city">원광대학교 앞</button>
+                        <li class="list_bit"><button id="-"       class="city">익산</button>
+                        <li class="list_bit"><button id="-"       class="city">임실</button>
+                        <li class="list_bit"><button id="-"           class="city">전주대</button>
+                        <li class="list_bit"><button id="-"         class="city">진안</button>
+                    </ul>
+                    <ul id="부산경남" class="low_list">
+                        <li class="list_bit"><button id="-"       class="city">부산서부(사상)</button>
+                        <li class="list_bit"><button id="-"     class="city">부산</button>
+                        <li class="list_bit"><button id="-"         class="city">창원</button>
+                        <li class="list_bit"><button id="-"           class="city">진주</button>
+                        <li class="list_bit"><button id="-"       class="city">마산</button>
+                        <li class="list_bit"><button id="-"       class="city">고현(거제)</button>
+                        <li class="list_bit"><button id="-"       class="city">김해</button>
+                        <li class="list_bit"><button id="-"           class="city">김해공항</button>
+                        <li class="list_bit"><button id="-" class="city">밀양</button>
+                        <li class="list_bit"><button id="-"       class="city">부곡</button>
+                        <li class="list_bit"><button id="-"       class="city">부산동래</button>
+                        <li class="list_bit"><button id="-"           class="city">부산동부</button>
+                        <li class="list_bit"><button id="-"         class="city">부산해운대</button>
+                    </ul>
+                    <ul id="대구경북" class="low_list">
+                        <li class="list_bit"><button id="-"       class="city">동대구</button>
+                        <li class="list_bit"><button id="-"     class="city">구미</button>
+                        <li class="list_bit"><button id="-"         class="city">대구서부</button>
+                        <li class="list_bit"><button id="-"           class="city">포항</button>
+                        <li class="list_bit"><button id="-"       class="city">경산</button>
+                        <li class="list_bit"><button id="-"       class="city">구미</button>
+                        <li class="list_bit"><button id="-"       class="city">김천</button>
+                        <li class="list_bit"><button id="-"           class="city">구미공단</button>
+                        <li class="list_bit"><button id="-" class="city">대구공항</button>
+                        <li class="list_bit"><button id="-"       class="city">대구대</button>
+                        <li class="list_bit"><button id="-"       class="city">문경</button>
+                        <li class="list_bit"><button id="-"           class="city">영양</button>
+                        <li class="list_bit"><button id="-"         class="city">서대구역</button>
                     </ul>
                 </div>
             </div>

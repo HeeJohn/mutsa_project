@@ -9,6 +9,7 @@ export {
     endBtn_on,
     load_start_end,
     page_3_default,
+    Catagoty_Selection,
 };
 export {
 }
@@ -54,8 +55,10 @@ function page_default() { /*페이지 로드시 동작하는 함수*/
 }
 
 function dis_page_2() {
+    let 전체버튼 = document.getElementById("전체_");
     document.getElementById("page_1").style.display = "none";
     document.getElementById("page_2").style.display = "flex";
+    전체버튼.focus();
     load_start_end();
 }
 
@@ -159,6 +162,31 @@ function load_start_end(){
                 }
             });
         });
+}
+
+//카테고리 선택
+function Catagoty_Selection(){
+    const high_list_select = document.querySelectorAll('.province');
+    const low_list_select = document.querySelectorAll('.low_list');
+
+    let prevIndex = 0; // 초기에 첫 번째 요소가 보이도록 설정
+
+    low_list_select[prevIndex].style.display = 'flex'; // 초기에 첫 번째 요소를 보이도록 설정
+
+    high_list_select.forEach((element, index) => {
+        element.addEventListener('click', () => {
+
+            high_list_select[prevIndex].style.backgroundColor = ''; // 다시 초기화
+            
+            low_list_select[prevIndex].style.display = 'none';
+            
+            element.style.backgroundColor = '#ABCBA4'; // 색상변경
+            
+            low_list_select[index].style.display = 'flex';
+            
+            prevIndex = index;
+        });
+    });
 }
 /*=============================== Page_2 script =================================*/
 
