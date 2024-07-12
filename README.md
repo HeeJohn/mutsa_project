@@ -87,6 +87,16 @@ Our service is designed with the elderly in mind, emphasizing:
 ![한서대학교_투게더_page-0005](https://github.com/user-attachments/assets/7ce9803e-85e6-43e7-8a57-2f33695d4618)
 
 ---
+## 미션
+
+![미션_1](https://github.com/user-attachments/assets/371f2590-8479-43ba-ba56-9a233ab36a40)
+---
+![미션_2](https://github.com/user-attachments/assets/b4b08c12-35d7-4427-a96d-f73ab19f4edd)
+---
+![미션_3](https://github.com/user-attachments/assets/aa1c38c4-c52b-440e-bffb-ce2cfda0af88)
+---
+![미션_4](https://github.com/user-attachments/assets/200ee3ca-3452-4267-95cd-74128570f134)
+---
 
 ![한서대학교_투게더_page-0006](https://github.com/user-attachments/assets/fa994295-2c9f-4cf7-887f-cff672fcc81c)
 
